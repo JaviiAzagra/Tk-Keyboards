@@ -13,7 +13,7 @@ const Keyboards = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/keyboards?${searchCategory}=${searchTerm}`
+          `https://tkkeyboards-api.vercel.app/keyboards?${searchCategory}=${searchTerm}`
         );
         setData(response.data);
       } catch (error) {

@@ -13,7 +13,7 @@ const Switch = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/switches?${searchCategory}=${searchTerm}`
+          `https://tkkeyboards-api.vercel.app/switches?${searchCategory}=${searchTerm}`
         );
         setData(response.data);
       } catch (error) {
