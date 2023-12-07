@@ -1,0 +1,98 @@
+.home {
+  color: black;
+  /* background-color: rgb(247, 247, 247); */
+
+  &--top {
+    background-image: url("../../../public/assets/keyboardshome.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+  }
+
+  &--mid {
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    h3 {
+      text-align: center;
+      font-size: 35px;
+      font-weight: 400;
+    }
+
+    &__products {
+      width: 100%;
+      padding-top: 50px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+
+      img {
+        width: 400px;
+        transition: transform 0.2s;
+      }
+
+      img:hover {
+        transform: scale(0.9);
+      }
+
+      &--left {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+      &--mid {
+        display: flex;
+        align-items: center;
+      }
+      &--right {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+    }
+  }
+}
+
+.container {
+  position: relative;
+  transition: width 0.3s ease;
+  overflow: hidden;
+  transition: transform 0.2s;
+
+  h4 {
+    font-size: 40px;
+  }
+}
+
+.container:hover {
+  transform: scale(0.9);
+}
+
+.capa-oscura {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.356);
+}
+
+.img {
+  width: 100%;
+  height: auto;
+  display: block;
+  height: 249px;
+}
+
+.superpuesto {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white; /* Puedes ajustar el color del texto según tu diseño */
+  text-align: center;
+  font-size: 24px; /* Ajusta el tamaño de fuente según tus necesidades */
+  font-weight: bold; /* Puedes ajustar el peso de la fuente según tu diseño */
+}
