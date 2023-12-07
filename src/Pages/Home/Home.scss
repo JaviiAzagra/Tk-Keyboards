@@ -1,6 +1,5 @@
 .home {
   color: black;
-  /* background-color: rgb(247, 247, 247); */
 
   &--top {
     background-image: url("../../../public/assets/keyboardshome.jpg");
@@ -95,4 +94,78 @@
   text-align: center;
   font-size: 24px; /* Ajusta el tamaño de fuente según tus necesidades */
   font-weight: bold; /* Puedes ajustar el peso de la fuente según tu diseño */
+}
+
+@media screen and (max-width: 1300px) {
+  .home--mid__products {
+    img {
+      width: 267px;
+    }
+    &--left {
+      img {
+        width: 300px;
+        height: 160px;
+        transition: transform 0.2s;
+      }
+    }
+    &--right {
+      img {
+        width: 300px;
+        height: 160px;
+        transition: transform 0.2s;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .home--mid__products {
+    /* text-align: center;
+    display: grid;
+    grid-template-columns: repeat(1, 0fr); */
+    img {
+      width: 267px;
+    }
+    &--left {
+      img {
+        width: 300px;
+        height: 160px;
+        transition: transform 0.2s;
+      }
+    }
+    &--right {
+      img {
+        width: 300px;
+        height: 160px;
+        transition: transform 0.2s;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 616px) {
+  .home--mid__products {
+    /* text-align: center;
+    display: grid;
+    grid-template-columns: repeat(1, 0fr); */
+    img {
+      width: 360px;
+      height: 100%;
+      transition: transform 0.2s;
+    }
+    &--left {
+      img {
+        width: 360px;
+        height: 100%;
+        transition: transform 0.2s;
+      }
+    }
+    &--right {
+      img {
+        width: 360px;
+        height: 100%;
+        transition: transform 0.2s;
+      }
+    }
+  }
 }

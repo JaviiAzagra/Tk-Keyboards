@@ -45,7 +45,7 @@
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(4, 0fr);
-  gap: 100px;
+  gap: 50px;
 
   &--cards {
     width: 350px;
@@ -82,5 +82,23 @@
         padding: 10px;
       }
     }
+  }
+}
+
+@media screen and (max-width: 1585px) {
+  .keyboards {
+    grid-template-columns: repeat(3, 0fr);
+  }
+}
+
+@media screen and (max-width: 1180px) {
+  .keyboards {
+    grid-template-columns: repeat(2, 0fr);
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .keyboards {
+    grid-template-columns: repeat(1, 0fr);
   }
 }
