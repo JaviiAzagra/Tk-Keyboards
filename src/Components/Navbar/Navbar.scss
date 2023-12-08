@@ -54,12 +54,24 @@
     &--svg {
       /* width: 200px; */
       display: flex;
+      align-items: center;
       gap: 10px;
       svg {
         width: 28px;
       }
     }
   }
+}
+
+.profile {
+  stroke: black;
+}
+.profile:hover {
+  stroke: rgb(73, 73, 73);
+}
+
+.cart:hover {
+  fill: rgb(73, 73, 73);
 }
 
 .navbar.colorChange {
