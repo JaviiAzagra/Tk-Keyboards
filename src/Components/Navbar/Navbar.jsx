@@ -5,6 +5,7 @@ import Navbar2 from "../Navbar2/Navbar2";
 
 const Navbar = () => {
   const [hamburger, setHamburger] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const hamburgerMenu = () => {
     setHamburger(!hamburger);
@@ -15,7 +16,11 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { to: "/products", text: "Products" },
+    {
+      to: "/products",
+      text: "Products",
+      subMenu: ["Keyboards", "Switches", "Keycaps", "Accesories"],
+    },
     { to: "/Support", text: "Support" },
     { to: "/story", text: "Our Story" },
     { to: "/contact", text: "Contact" },
@@ -35,14 +40,41 @@ const Navbar = () => {
             </NavLink>
           </div>
 
-          <div className="navbar--nav--links">
+          {/* <div className="navbar--nav--links">
             {navLinks.map((link, index) => (
               <NavLink key={index} to={link.to} activeClassName="active">
                 {link.text}
               </NavLink>
             ))}
+          </div> */}
+          <div className="navbar--nav--links">
+            {navLinks.map((link, index) => (
+              <div key={index} className="nav-link-wrapper">
+                {link.subMenu ? (
+                  <div className="dropdown">
+                    <NavLink to={link.to} activeClassName="active">
+                      {link.text}
+                    </NavLink>
+                    <div className="dropdown-content">
+                      {link.subMenu.map((item, subIndex) => (
+                        <NavLink
+                          key={subIndex}
+                          to={`/products/${item}`}
+                          activeClassName="active"
+                        >
+                          {item}
+                        </NavLink>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <NavLink to={link.to} activeClassName="active">
+                    {link.text}
+                  </NavLink>
+                )}
+              </div>
+            ))}
           </div>
-
           <div className="navbar--nav--svg">
             <Link to="/profile">
               <svg
