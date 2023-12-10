@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Loader from "../Loader/Loader";
+import { keyboard } from "@testing-library/user-event/dist/keyboard";
+import { useNavigate } from "react-router-dom";
 
 const Keyboards = () => {
   const [data, setData] = useState(null);
@@ -9,6 +11,7 @@ const Keyboards = () => {
   const [searchCategory, setSearchCategory] = useState("name");
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -86,7 +89,11 @@ const Keyboards = () => {
         <div>
           <div className="keyboards">
             {data.map((item, index) => (
-              <div className="keyboards--cards" key={index}>
+              <div
+                className="keyboards--cards"
+                onClick={() => navigate(`/products/Keyboards/${item._id}`)}
+                key={index}
+              >
                 <div className="keyboards--cards__img">
                   <img src={item?.img} alt={item?.name} />
                 </div>

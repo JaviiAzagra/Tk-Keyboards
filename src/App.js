@@ -11,6 +11,7 @@ import Profile from "./Pages/Profile/Profile";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { checkSession } from "./Redux/auth/auth.actions";
+import KeyboardsDetail from "./Components/KeyboardsDetail/KeyboardsDetail";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ function App() {
         <Route path="/products/switches" element={<Switch />} />
         <Route path="/products/keyboards" element={<Keyboards />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/products/Keyboards/:id" element={<KeyboardsDetail />} />
         <Route path="*" Component={NotFound} />
       </Routes>
       <Footer />
