@@ -7,6 +7,7 @@ import { loginUser, newUser } from "../../Redux/auth/auth.actions";
 import "./Login2.scss";
 
 import axios from "axios";
+import Loader from "../Loader/Loader";
 
 const Login2 = ({ type, className }) => {
   //LOGIN
@@ -91,7 +92,10 @@ const Login2 = ({ type, className }) => {
     <div className="formLogin__box">
       <div className="formLogin">
         {isLoading && (
-          <div className="formLogin__form">{/*  <Loader /> */}</div>
+          <div className="formLogin__form">
+            {" "}
+            <Loader />{" "}
+          </div>
         )}
         {!isLoading && (
           <>
