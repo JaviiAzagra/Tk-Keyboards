@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 .login-container {
@@ -15,7 +15,7 @@
 }
 
 .login {
-  padding-top: 100px;
+  /* padding-top: 100px; */
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -165,16 +165,16 @@
 }
 
 .register-container {
-  padding-bottom: 100px;
+  /* padding-bottom: 100px; */
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 .register {
-  padding-top: 200px;
+  /* padding-top: 200px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -275,3 +275,10 @@
   flex-direction: column;
   gap: 20px;
 }
+/* 
+@media screen and (max-width: 600px) {
+  .register-container {
+    padding-top: 800px;
+    padding-bottom: 800px;
+  }
+} */

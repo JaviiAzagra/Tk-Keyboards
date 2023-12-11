@@ -7,7 +7,7 @@ import User from "../../Components/User/User";
 const Profile = () => {
   const { user, token } = useSelector((state) => state.auth);
   return (
-    <div>
+    <div className="userprofile">
       {!user && <Login2 type="login" />}
       {user && <User />}
     </div>

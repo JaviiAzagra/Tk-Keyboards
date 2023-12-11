@@ -195,7 +195,7 @@ const Login2 = ({ type, className }) => {
                   className="register"
                 >
                   <img src="/assets/logotk.png" alt="logotk" />
-                  <h2>Sign up to Mestre Cabreta</h2>
+                  <h2>Sign up to TkKeyboards</h2>
                   <div className="form">
                     <div>
                       <label>
