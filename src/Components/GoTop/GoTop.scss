@@ -23,3 +23,9 @@
 .gotop:hover {
   background-color: rgb(241, 180, 67);
 }
+
+@media screen and (max-width: 900px) {
+  .gotop {
+    display: none;
+  }
+}
