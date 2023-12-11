@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Loader from "../Loader/Loader";
 
 const Switch = () => {
   const [data, setData] = useState(null);
@@ -8,6 +10,7 @@ const Switch = () => {
   const [searchCategory, setSearchCategory] = useState("name");
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,7 +55,7 @@ const Switch = () => {
   return (
     <div className="products">
       <h2>Switches</h2>
-      <div>
+      {/* <div>
         <select
           value={searchCategory}
           onChange={(e) => setSearchCategory(e.target.value)}
@@ -79,90 +82,18 @@ const Switch = () => {
           onChange={(e) => setMaxPrice(e.target.value)}
         />
         <button onClick={handleSearch}>Search</button>
-      </div>
+      </div> */}
       {loading ? (
-        <svg
-          width="45"
-          height="45"
-          viewBox="0 0 45 45"
-          xmlns="http://www.w3.org/2000/svg"
-          stroke="#fff"
-        >
-          <g
-            fill="none"
-            fill-rule="evenodd"
-            transform="translate(1 1)"
-            stroke-width="2"
-          >
-            <circle cx="22" cy="22" r="6" stroke-opacity="0">
-              <animate
-                attributeName="r"
-                begin="1.5s"
-                dur="3s"
-                values="6;22"
-                calcMode="linear"
-                repeatCount="indefinite"
-              />
-              <animate
-                attributeName="stroke-opacity"
-                begin="1.5s"
-                dur="3s"
-                values="1;0"
-                calcMode="linear"
-                repeatCount="indefinite"
-              />
-              <animate
-                attributeName="stroke-width"
-                begin="1.5s"
-                dur="3s"
-                values="2;0"
-                calcMode="linear"
-                repeatCount="indefinite"
-              />
-            </circle>
-            <circle cx="22" cy="22" r="6" stroke-opacity="0">
-              <animate
-                attributeName="r"
-                begin="3s"
-                dur="3s"
-                values="6;22"
-                calcMode="linear"
-                repeatCount="indefinite"
-              />
-              <animate
-                attributeName="stroke-opacity"
-                begin="3s"
-                dur="3s"
-                values="1;0"
-                calcMode="linear"
-                repeatCount="indefinite"
-              />
-              <animate
-                attributeName="stroke-width"
-                begin="3s"
-                dur="3s"
-                values="2;0"
-                calcMode="linear"
-                repeatCount="indefinite"
-              />
-            </circle>
-            <circle cx="22" cy="22" r="8">
-              <animate
-                attributeName="r"
-                begin="0s"
-                dur="1.5s"
-                values="6;1;2;3;4;5;6"
-                calcMode="linear"
-                repeatCount="indefinite"
-              />
-            </circle>
-          </g>
-        </svg>
+        <Loader />
       ) : (
         <div>
           <div className="keyboards">
             {data.map((item, index) => (
-              <div className="keyboards--cards" key={index}>
+              <div
+                className="keyboards--cards"
+                onClick={() => navigate(`/products/switches/${item._id}`)}
+                key={index}
+              >
                 <div className="keyboards--cards__img">
                   <img src={item?.img} alt={item?.name} />
                 </div>
@@ -170,7 +101,7 @@ const Switch = () => {
                   <p className="keyboards--cards__text--name">{item?.name}</p>
                   <p className="keyboards--cards__text--brand">{item?.brand}</p>
                   <p className="keyboards--cards__text--price">
-                    {item?.price} $
+                    {item?.price.toFixed(2)} $
                   </p>
                 </div>
               </div>

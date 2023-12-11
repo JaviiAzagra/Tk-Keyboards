@@ -50,3 +50,41 @@
     }
   }
 }
+
+@media screen and (max-width: 1330px) {
+  .keyboardsdetail {
+    gap: 10px;
+  }
+}
+
+@media screen and (max-width: 1140px) {
+  .keyboardsdetail {
+    img {
+      width: 400px;
+    }
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .keyboardsdetail {
+    flex-direction: column;
+
+    img {
+      width: 500px;
+    }
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .keyboardsdetail {
+    flex-direction: column;
+
+    img {
+      width: 350px;
+    }
+
+    &--text {
+      padding: 20px;
+    }
+  }
+}

@@ -55,7 +55,7 @@ const Keyboards = () => {
   return (
     <div className="products">
       <h2>Keyboards</h2>
-      <div>
+      {/* <div>
         <select
           value={searchCategory}
           onChange={(e) => setSearchCategory(e.target.value)}
@@ -82,7 +82,7 @@ const Keyboards = () => {
           onChange={(e) => setMaxPrice(e.target.value)}
         />
         <button onClick={handleSearch}>Search</button>
-      </div>
+      </div> */}
       {loading ? (
         <Loader />
       ) : (
@@ -91,7 +91,7 @@ const Keyboards = () => {
             {data.map((item, index) => (
               <div
                 className="keyboards--cards"
-                onClick={() => navigate(`/products/Keyboards/${item._id}`)}
+                onClick={() => navigate(`/products/keyboards/${item._id}`)}
                 key={index}
               >
                 <div className="keyboards--cards__img">
@@ -101,7 +101,7 @@ const Keyboards = () => {
                   <p className="keyboards--cards__text--name">{item?.name}</p>
                   <p className="keyboards--cards__text--brand">{item?.brand}</p>
                   <p className="keyboards--cards__text--price">
-                    {item?.price} $
+                    {item?.price.toFixed(2)} $
                   </p>
                 </div>
               </div>

@@ -2,7 +2,8 @@
   display: none;
 }
 .navbar {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.767);
+  backdrop-filter: blur(10px);
   position: fixed;
   width: 100%;
   z-index: 10;

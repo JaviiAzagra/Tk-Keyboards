@@ -1,0 +1,149 @@
+.contact {
+  padding-top: 150px;
+  padding-bottom: 120px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &--container {
+    max-width: 1300px;
+    text-wrap: pretty;
+
+    h1 {
+      padding-bottom: 10px;
+      font-size: 40px;
+      font-weight: 600;
+      color: rgb(223, 145, 2);
+    }
+
+    span {
+      font-weight: 600;
+    }
+
+    p {
+      padding-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 40px;
+      padding-bottom: 10px;
+    }
+  }
+
+  form {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    font-size: 18px;
+
+    div {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      input {
+        width: 500px;
+        padding: 14px;
+        border: 1px solid rgb(223, 145, 2) !important;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        outline: none;
+        font-size: 16px;
+      }
+
+      select {
+        width: 518px;
+        padding: 14px;
+        border: 1px solid rgb(223, 145, 2) !important;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        outline: none;
+        font-size: 16px;
+      }
+
+      textarea {
+        padding: 10px;
+        height: 160px;
+        line-height: 2;
+        font-size: 14px;
+        overflow: auto;
+        border: 1px solid rgb(223, 145, 2) !important;
+        outline: none;
+        font-size: 16px;
+      }
+    }
+    button {
+      width: 200px;
+      padding: 10px;
+      background-color: rgb(223, 145, 2);
+      color: white;
+      font-weight: 600;
+      border: none;
+      border-radius: 14px;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: rgb(241, 180, 67);
+    }
+  }
+}
+
+@media screen and (max-width: 1370px) {
+  .contact {
+    &--container {
+      padding: 20px;
+    }
+  }
+}
+
+@media screen and (max-width: 1120px) {
+  .contact {
+    form {
+      div {
+        flex-direction: column;
+      }
+      label {
+        input {
+          width: 500px;
+        }
+        select {
+          width: 528px;
+        }
+        textarea {
+          width: 500px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .contact {
+    form {
+      div {
+        flex-direction: column;
+      }
+      label {
+        input {
+          width: 250px;
+        }
+        select {
+          width: 278px;
+        }
+        textarea {
+          width: 250px;
+        }
+      }
+    }
+  }
+}
