@@ -2,8 +2,8 @@
   display: none;
 }
 .navbar {
-  background-color: rgba(255, 255, 255, 0.767);
-  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255);
+  /* backdrop-filter: blur(10px); */
   position: fixed;
   width: 100%;
   z-index: 10;
@@ -19,7 +19,6 @@
 
       a {
         display: block;
-        padding: 14px 16px;
         text-decoration: none;
         color: rgb(0, 0, 0);
         cursor: pointer;
@@ -58,7 +57,7 @@
   }
 
   &--nav {
-    padding: 5px 0px 5px 0px;
+    /* padding: 5px 0px 5px 0px; */
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -74,6 +73,10 @@
       }
       img {
         width: 60px;
+        height: 60px;
+      }
+      a {
+        display: flex;
       }
     }
 
@@ -204,7 +207,7 @@
     display: flex;
     justify-content: space-between;
     gap: 20px;
-    padding: 10px;
+    padding: 0px 10px 0px 10px;
   }
   .menu {
     display: flex;

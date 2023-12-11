@@ -3,3 +3,9 @@
   background-color: rgb(223, 145, 2);
   text-align: center;
 }
+
+@media screen and (max-width: 500px) {
+  .navbar2 {
+    display: none;
+  }
+}

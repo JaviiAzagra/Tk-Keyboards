@@ -199,6 +199,30 @@ const Login2 = ({ type, className }) => {
                   <div className="form">
                     <div>
                       <label>
+                        First Name
+                        <input
+                          type="text"
+                          name="name"
+                          {...register("name", {
+                            required: true,
+                          })}
+                        />
+                      </label>
+                    </div>
+                    <div>
+                      <label>
+                        Last Name
+                        <input
+                          type="text"
+                          name="surname"
+                          {...register("surname", {
+                            required: true,
+                          })}
+                        />
+                      </label>
+                    </div>
+                    <div>
+                      <label>
                         Email
                         <input
                           type="email"

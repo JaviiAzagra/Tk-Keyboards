@@ -1,12 +1,14 @@
 import React from "react";
 import "./User.scss";
 import { useSelector } from "react-redux";
+import Logout from "../Logout/Logout";
 
 const User = () => {
   const { user, token } = useSelector((state) => state.auth);
   return (
     <div className="users">
       <h1>Account</h1>
+      <Logout />
       <div className="user">
         <div className="user--orders">
           <h3>Order history</h3>
@@ -17,6 +19,10 @@ const User = () => {
           <p>
             <span>Email: </span>
             {user?.email}
+          </p>
+          <p>
+            <span>Name: </span>
+            {user?.name} {user?.surname}
           </p>
         </div>
       </div>

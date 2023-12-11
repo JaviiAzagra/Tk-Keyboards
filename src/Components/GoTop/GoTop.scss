@@ -1,0 +1,25 @@
+.gotop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 40%;
+  background-color: rgb(223, 145, 2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: opacity 0.3s ease-in-out;
+  &--svg {
+    stroke: white;
+    fill: rgb(255, 255, 255);
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.gotop:hover {
+  background-color: rgb(241, 180, 67);
+}

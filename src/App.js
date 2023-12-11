@@ -14,6 +14,7 @@ import { checkSession } from "./Redux/auth/auth.actions";
 import KeyboardsDetail from "./Components/KeyboardsDetail/KeyboardsDetail";
 import SwitchesDetail from "./Components/SwitchesDetails/SwitchesDetail";
 import Contact from "./Pages/Contact/Contact";
+import GoTop from "./Components/GoTop/GoTop";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ function App() {
   }, []);
   return (
     <div className="App">
+      <GoTop />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
