@@ -3,6 +3,7 @@ import "./Products.scss";
 import axios from "axios";
 import Switch from "../../Components/Switchs/Switch";
 import Keyboards from "../../Components/Keyboards/Keyboards";
+import Keycaps from "../../Components/Keycaps/Keycaps";
 
 const Products = () => {
   const [data, setData] = useState(null);
@@ -40,6 +41,7 @@ const Products = () => {
       <h1>All Products</h1>
       <Keyboards />
       <Switch />
+      <Keycaps />
     </div>
   );
 };

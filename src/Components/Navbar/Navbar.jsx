@@ -40,14 +40,6 @@ const Navbar = () => {
                 <img src="/assets/logotk.png" alt="logotk" />
               </NavLink>
             </div>
-
-            {/* <div className="navbar--nav--links">
-            {navLinks.map((link, index) => (
-              <NavLink key={index} to={link.to} activeClassName="active">
-                {link.text}
-              </NavLink>
-            ))}
-          </div> */}
             <div className="navbar--nav--links">
               {navLinks.map((link, index) => (
                 <div key={index} className="nav-link-wrapper">

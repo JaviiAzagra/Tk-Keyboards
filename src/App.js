@@ -15,6 +15,8 @@ import KeyboardsDetail from "./Components/KeyboardsDetail/KeyboardsDetail";
 import SwitchesDetail from "./Components/SwitchesDetails/SwitchesDetail";
 import Contact from "./Pages/Contact/Contact";
 import GoTop from "./Components/GoTop/GoTop";
+import Keycaps from "./Components/Keycaps/Keycaps";
+import KeycapsDetail from "./Components/KeycapsDetail/KeycapsDetail";
 
 function App() {
   const dispatch = useDispatch();
@@ -42,9 +44,11 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/products/switches" element={<Switch />} />
         <Route path="/products/keyboards" element={<Keyboards />} />
+        <Route path="/products/keycaps" element={<Keycaps />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/products/keyboards/:id" element={<KeyboardsDetail />} />
         <Route path="/products/switches/:id" element={<SwitchesDetail />} />
+        <Route path="/products/keycaps/:id" element={<KeycapsDetail />} />
         <Route path="*" Component={NotFound} />
       </Routes>
       <Footer />
