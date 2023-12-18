@@ -38,7 +38,7 @@ const Products = () => {
   };
 
   return (
-    <div className="products">
+    <div className="product">
       <h1>All Products</h1>
       <Keyboards />
       <Switch />

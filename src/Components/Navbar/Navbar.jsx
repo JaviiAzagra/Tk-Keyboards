@@ -22,7 +22,7 @@ const Navbar = () => {
       subMenu: ["keyboards", "switches", "keycaps", "accessories"],
     },
     { to: "/support", text: "Support" },
-    { to: "/story", text: "Our Story" },
+    { to: "/about", text: "Our Story" },
     { to: "/contact", text: "Contact" },
   ];
 

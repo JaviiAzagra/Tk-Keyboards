@@ -19,6 +19,8 @@ import Keycaps from "./Components/Keycaps/Keycaps";
 import KeycapsDetail from "./Components/KeycapsDetail/KeycapsDetail";
 import Accessories from "./Components/Accessories/Accessories";
 import AccessoriesDetail from "./Components/AccessoriesDetail/AccessoriesDetail";
+import Support from "./Pages/Support/Support";
+import History from "./Pages/History/History";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,6 +46,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/support" element={<Support />} />
+        <Route path="/about" element={<History />} />
         <Route path="/products/switches" element={<Switch />} />
         <Route path="/products/keyboards" element={<Keyboards />} />
         <Route path="/products/keycaps" element={<Keycaps />} />
