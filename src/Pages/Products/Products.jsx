@@ -4,6 +4,7 @@ import axios from "axios";
 import Switch from "../../Components/Switchs/Switch";
 import Keyboards from "../../Components/Keyboards/Keyboards";
 import Keycaps from "../../Components/Keycaps/Keycaps";
+import Accessories from "../../Components/Accessories/Accessories";
 
 const Products = () => {
   const [data, setData] = useState(null);
@@ -42,6 +43,7 @@ const Products = () => {
       <Keyboards />
       <Switch />
       <Keycaps />
+      <Accessories />
     </div>
   );
 };

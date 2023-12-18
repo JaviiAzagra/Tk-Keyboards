@@ -19,9 +19,9 @@ const Navbar = () => {
     {
       to: "/products",
       text: "Products",
-      subMenu: ["Keyboards", "Switches", "Keycaps", "Accesories"],
+      subMenu: ["keyboards", "switches", "keycaps", "accessories"],
     },
-    { to: "/Support", text: "Support" },
+    { to: "/support", text: "Support" },
     { to: "/story", text: "Our Story" },
     { to: "/contact", text: "Contact" },
   ];
