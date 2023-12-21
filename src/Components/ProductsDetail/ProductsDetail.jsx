@@ -2,30 +2,30 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-const KeycapsDetail = ({ productos, agregarAlCarrito }) => {
-  const [keycap, setKeycap] = useState();
+const ProductsDetail = ({ productos, agregarAlCarrito }) => {
+  const [product, setProduct] = useState();
   const { id } = useParams();
 
   useEffect(() => {
-    const fetchKeyboard = async () => {
+    const fetchProduct = async () => {
       const { data } = await axios.get(
         `https://tkkeyboards-api.vercel.app/products/${id}`
       );
-      setKeycap(data);
+      setProduct(data);
     };
-    fetchKeyboard();
+    fetchProduct();
   }, []);
 
   return (
     <div className="keyboardsdetail">
       <div className="keyboardsdetail--img">
-        <img src={keycap?.img} alt={keycap?.name} />
+        <img src={product?.img} alt={product?.name} />
       </div>
       <div className="keyboardsdetail--text">
         <div className="keyboardsdetail--text__top">
-          <h1>{keycap?.name}</h1>
-          <p>${keycap?.price.toFixed(2)}</p>
-          <p>{keycap?.brand}</p>
+          <h1>{product?.name}</h1>
+          <p>${product?.price.toFixed(2)}</p>
+          <p>{product?.brand}</p>
         </div>
         <p>
           Akko x Designer EnjoyInMySec official Wavez keycap set; The
@@ -33,10 +33,18 @@ const KeycapsDetail = ({ productos, agregarAlCarrito }) => {
           Featuring PBT material and ASA profile for enhanced durability and a
           comfortable typing experience.
         </p>
-        <button onClick={() => agregarAlCarrito(keycap)}>Add To Cart</button>
+        {product?.switch && (
+          <>
+            <p>
+              <span>Switch: </span>
+              {product?.switch}
+            </p>
+          </>
+        )}
+        <button onClick={() => agregarAlCarrito(product)}>Add To Cart</button>
       </div>
     </div>
   );
 };
 
-export default KeycapsDetail;
+export default ProductsDetail;

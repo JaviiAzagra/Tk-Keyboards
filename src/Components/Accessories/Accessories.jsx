@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Loader from "../Loader/Loader";
 import axios from "axios";
 
@@ -16,9 +16,15 @@ const Accessories = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://tkkeyboards-api.vercel.app/accessories?${searchCategory}=${searchTerm}`
+          `https://tkkeyboards-api.vercel.app/products?${searchCategory}=${searchTerm}`
         );
-        setData(response.data);
+
+        // Filter only the keyboards from the API response
+        const accessoriesData = response.data.filter(
+          (item) => item.type === "accessories"
+        );
+
+        setData(accessoriesData);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -54,6 +60,7 @@ const Accessories = () => {
   return (
     <div className="products">
       <h2>Accessories</h2>
+      <Link to="/products">All Products</Link>
       {loading ? (
         <Loader />
       ) : (

@@ -3,14 +3,14 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./KeyboardsDetail.scss";
 
-const KeyboardsDetail = () => {
+const KeyboardsDetail = ({ productos, agregarAlCarrito }) => {
   const [keyboard, setKeyboard] = useState();
   const { id } = useParams();
 
   useEffect(() => {
     const fetchKeyboard = async () => {
       const { data } = await axios.get(
-        `https://tkkeyboards-api.vercel.app/keyboards/${id}`
+        `https://tkkeyboards-api.vercel.app/products/${id}`
       );
       setKeyboard(data);
     };
@@ -40,7 +40,7 @@ const KeyboardsDetail = () => {
           <span>Switch: </span>
           {keyboard?.switch}
         </p>
-        <button>Add to Cart</button>
+        <button onClick={() => agregarAlCarrito(keyboard)}>Add To Cart</button>
       </div>
     </div>
   );

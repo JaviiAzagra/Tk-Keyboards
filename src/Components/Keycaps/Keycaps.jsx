@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Loader from "../Loader/Loader";
 import axios from "axios";
 
@@ -16,9 +16,13 @@ const Keycaps = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://tkkeyboards-api.vercel.app/keycaps?${searchCategory}=${searchTerm}`
+          `https://tkkeyboards-api.vercel.app/products?${searchCategory}=${searchTerm}`
         );
-        setData(response.data);
+        // Filter only the keyboards from the API response
+        const keycapsData = response.data.filter(
+          (item) => item.type === "keycaps"
+        );
+        setData(keycapsData);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -54,34 +58,7 @@ const Keycaps = () => {
   return (
     <div className="products">
       <h2>Keycaps</h2>
-      {/* <div>
-    <select
-      value={searchCategory}
-      onChange={(e) => setSearchCategory(e.target.value)}
-    >
-      <option value="name">Name</option>
-      <option value="brand">Brand</option>
-    </select>
-    <input
-      type="text"
-      placeholder={`Search by ${searchCategory}`}
-      value={searchTerm}
-      onChange={(e) => setSearchTerm(e.target.value)}
-    />
-    <input
-      type="number"
-      placeholder="Min Price"
-      value={minPrice}
-      onChange={(e) => setMinPrice(e.target.value)}
-    />
-    <input
-      type="number"
-      placeholder="Max Price"
-      value={maxPrice}
-      onChange={(e) => setMaxPrice(e.target.value)}
-    />
-    <button onClick={handleSearch}>Search</button>
-  </div> */}
+      <Link to="/products">All Products</Link>
       {loading ? (
         <Loader />
       ) : (

@@ -2,14 +2,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-const SwitchesDetail = () => {
+const SwitchesDetail = ({ productos, agregarAlCarrito }) => {
   const [switches, setSwitch] = useState();
   const { id } = useParams();
 
   useEffect(() => {
     const fetchKeyboard = async () => {
       const { data } = await axios.get(
-        `https://tkkeyboards-api.vercel.app/switches/${id}`
+        `https://tkkeyboards-api.vercel.app/products/${id}`
       );
       setSwitch(data);
     };
@@ -34,7 +34,7 @@ const SwitchesDetail = () => {
           50million; 5-pin and fits keycaps with standard MX structure;
           Material: POM/PA/PA; 45 pcs in a pack. Expected Shipment on 10th.
         </p>
-        <button>Add to Cart</button>
+        <button onClick={() => agregarAlCarrito(switches)}>Add To Cart</button>
       </div>
     </div>
   );

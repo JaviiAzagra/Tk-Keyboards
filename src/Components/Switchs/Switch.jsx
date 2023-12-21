@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Loader from "../Loader/Loader";
 
 const Switch = () => {
@@ -16,9 +16,15 @@ const Switch = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://tkkeyboards-api.vercel.app/switches?${searchCategory}=${searchTerm}`
+          `https://tkkeyboards-api.vercel.app/products?${searchCategory}=${searchTerm}`
         );
-        setData(response.data);
+
+        // Filter only the keyboards from the API response
+        const switchesData = response.data.filter(
+          (item) => item.type === "switches"
+        );
+
+        setData(switchesData);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -55,6 +61,7 @@ const Switch = () => {
   return (
     <div className="products">
       <h2>Switches</h2>
+      <Link to="/products">All Products</Link>
       {/* <div>
         <select
           value={searchCategory}

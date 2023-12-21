@@ -2,14 +2,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-const AccessoriesDetail = () => {
+const AccessoriesDetail = ({ productos, agregarAlCarrito }) => {
   const [accessories, setAccessory] = useState();
   const { id } = useParams();
 
   useEffect(() => {
     const fetchKeyboard = async () => {
       const { data } = await axios.get(
-        `https://tkkeyboards-api.vercel.app/accessories/${id}`
+        `https://tkkeyboards-api.vercel.app/products/${id}`
       );
       setAccessory(data);
     };
@@ -34,7 +34,9 @@ const AccessoriesDetail = () => {
           can be used for V2. Please drop your email on "Notify Me When
           Available" if the product model is out of stock.
         </p>
-        <button>Add to Cart</button>
+        <button onClick={() => agregarAlCarrito(accessories)}>
+          Add To Cart
+        </button>
       </div>
     </div>
   );
