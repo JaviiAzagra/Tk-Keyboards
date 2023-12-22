@@ -10,6 +10,7 @@ const Keycaps = () => {
   const [searchCategory, setSearchCategory] = useState("name");
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
+  const [selectedBrands, setSelectedBrands] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -55,16 +56,56 @@ const Keycaps = () => {
 
     setData(filteredData);
   };
+
+  const productBrand = ["Akko", "Keychron", "Gateron"];
+
+  const toggleBrandSelection = (brand) => {
+    const isSelected = selectedBrands.includes(brand);
+    if (isSelected) {
+      setSelectedBrands(
+        selectedBrands.filter((selectedBrand) => selectedBrand !== brand)
+      );
+    } else {
+      setSelectedBrands([...selectedBrands, brand]);
+    }
+  };
+
+  const filterProductsByBrands = () => {
+    if (selectedBrands.length === 0) {
+      return data; // Si no hay tipos ni marcas seleccionadas, mostrar todos los productos
+    } else {
+      return data.filter(
+        (product) =>
+          selectedBrands.length === 0 || selectedBrands.includes(product.brand)
+      );
+    }
+  };
+
+  const filteredProducts = data ? filterProductsByBrands() : [];
   return (
     <div className="products">
       <h2>Keycaps</h2>
-      <Link to="/products">All Products</Link>
       {loading ? (
         <Loader />
       ) : (
-        <div>
+        <div className="containerproducts">
+          <div className="product--filter">
+            <h2>BRAND</h2>
+            <div className="product--filter__inputs">
+              {productBrand.map((brand) => (
+                <label key={brand}>
+                  <input
+                    type="checkbox"
+                    checked={selectedBrands.includes(brand)}
+                    onChange={() => toggleBrandSelection(brand)}
+                  />
+                  {brand}
+                </label>
+              ))}
+            </div>
+          </div>
           <div className="keyboards">
-            {data.map((item, index) => (
+            {filteredProducts.map((item, index) => (
               <div
                 className="keyboards--cards"
                 onClick={() => navigate(`/products/keycaps/${item._id}`)}

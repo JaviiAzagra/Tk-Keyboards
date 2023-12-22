@@ -30,13 +30,15 @@ const Products = () => {
   }, []);
 
   const shuffleArray = (array) => {
-    const newArray = [...array];
-    for (let i = newArray.length - 1; i > 0; i--) {
+    // Función para desordenar un array utilizando el algoritmo de Fisher-Yates
+    for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+      [array[i], array[j]] = [array[j], array[i]];
     }
-    return newArray;
+    return array;
   };
+
+  const shuffledProducts = data ? shuffleArray([...data]) : [];
 
   const productTypes = ["keyboards", "switches", "keycaps", "accessories"];
   const productBrand = ["Akko", "Keychron", "Gateron"];
@@ -52,6 +54,17 @@ const Products = () => {
     }
   };
 
+  const toggleBrandSelection = (brand) => {
+    const isSelected = selectedBrands.includes(brand);
+    if (isSelected) {
+      setSelectedBrands(
+        selectedBrands.filter((selectedBrand) => selectedBrand !== brand)
+      );
+    } else {
+      setSelectedBrands([...selectedBrands, brand]);
+    }
+  };
+
   const filterProductsByTypesAndBrands = () => {
     if (selectedTypes.length === 0 && selectedBrands.length === 0) {
       return data; // Si no hay tipos ni marcas seleccionadas, mostrar todos los productos
@@ -63,17 +76,6 @@ const Products = () => {
           (selectedBrands.length === 0 ||
             selectedBrands.includes(product.brand))
       );
-    }
-  };
-
-  const toggleBrandSelection = (brand) => {
-    const isSelected = selectedBrands.includes(brand);
-    if (isSelected) {
-      setSelectedBrands(
-        selectedBrands.filter((selectedBrand) => selectedBrand !== brand)
-      );
-    } else {
-      setSelectedBrands([...selectedBrands, brand]);
     }
   };
 

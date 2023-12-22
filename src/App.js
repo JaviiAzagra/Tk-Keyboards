@@ -23,12 +23,14 @@ import Support from "./Pages/Support/Support";
 import History from "./Pages/History/History";
 import { Cart } from "./Components/Cart/Cart";
 import ProductsDetail from "./Components/ProductsDetail/ProductsDetail";
+import Popup from "./Components/Popup/Popup";
 
 function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [user, setUser] = useState({});
   const token = localStorage.getItem("token");
+  const [showPopup, setShowPopup] = useState(false);
   useEffect(() => {
     token && dispatch(checkSession(token, navigate));
   }, []);
@@ -73,10 +75,24 @@ function App() {
     const carritoActualizado = carrito.filter((item) => item.id !== productoId);
     setCarrito(carritoActualizado);
   };
+
+  useEffect(() => {
+    const popupClosed = localStorage.getItem("popupClosed");
+    if (!popupClosed) {
+      setShowPopup(true);
+      localStorage.setItem("popupClosed", "true");
+    }
+  }, []);
+
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
+
   return (
     <div className="App">
       <GoTop />
       <Navbar />
+      {showPopup && <Popup onClose={handleClosePopup} />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
