@@ -7,8 +7,6 @@ import { Link, useNavigate } from "react-router-dom";
 const Keyboards = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchCategory, setSearchCategory] = useState("name");
   const [selectedBrands, setSelectedBrands] = useState([]);
   const navigate = useNavigate();
 
@@ -16,7 +14,7 @@ const Keyboards = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://tkkeyboards-api.vercel.app/products?${searchCategory}=${searchTerm}`
+          `https://tkkeyboards-api.vercel.app/products`
         );
 
         // Filter only the keyboards from the API response
@@ -33,7 +31,7 @@ const Keyboards = () => {
     };
 
     fetchData();
-  }, [searchTerm, searchCategory]);
+  }, []);
 
   const productBrand = ["Akko", "Keychron", "Gateron"];
 

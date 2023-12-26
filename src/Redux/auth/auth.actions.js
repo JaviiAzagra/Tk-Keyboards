@@ -48,7 +48,7 @@ export const logoutUser = (navigate) => async (dispatch) => {
     });
 
     localStorage.removeItem("token");
-    navigate("/");
+    navigate("/profile");
   } catch (error) {
     dispatch({ type: "logout_user_error", payload: error.message });
   }
