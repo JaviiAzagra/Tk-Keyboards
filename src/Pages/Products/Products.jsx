@@ -3,6 +3,7 @@ import "./Products.scss";
 import axios from "axios";
 import Loader from "../../Components/Loader/Loader";
 import { useNavigate } from "react-router-dom";
+import Pagination from "./Pagination";
 
 const Products = () => {
   const [data, setData] = useState(null);
@@ -10,6 +11,8 @@ const Products = () => {
   const [selectedTypes, setSelectedTypes] = useState([]); // Nuevo estado para los tipos seleccionados
   const [selectedBrands, setSelectedBrands] = useState([]);
   const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 16; // Número de productos por página
 
   useEffect(() => {
     const fetchData = async () => {
@@ -83,9 +86,16 @@ const Products = () => {
     ? shuffleArray(filterProductsByTypesAndBrands())
     : [];
 
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = filteredProducts.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
+
   return (
     <div className="product">
-      <h1>All Products</h1>
+      {/* <h1>All Products</h1> */}
 
       {loading ? (
         <Loader />
@@ -126,11 +136,10 @@ const Products = () => {
           </div>
 
           <div className="keyboards">
-            {Array.isArray(filteredProducts) &&
-            filteredProducts.length === 0 ? (
+            {Array.isArray(currentProducts) && currentProducts.length === 0 ? (
               <p className="keyboards--nan">No products found.</p>
             ) : (
-              filteredProducts.map((item, index) => (
+              currentProducts.map((item, index) => (
                 <div
                   className="keyboards--cards"
                   onClick={() => navigate(`/products/${item._id}`)}
@@ -154,6 +163,11 @@ const Products = () => {
           </div>
         </div>
       )}
+      <Pagination
+        totalProducts={filteredProducts.length}
+        productsPerPage={productsPerPage}
+        paginate={setCurrentPage}
+      />
     </div>
   );
 };

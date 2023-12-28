@@ -1,7 +1,11 @@
 .product {
-  padding-top: 150px;
+  padding-top: 80px;
   text-align: center;
   padding-bottom: 100px;
+  background-color: rgb(245, 245, 245);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   h1 {
     font-size: 50px;
   }
@@ -135,7 +139,7 @@
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(4, 0fr);
-  gap: 20px;
+  gap: 30px;
 
   &--nan {
     width: 1400px;
@@ -145,31 +149,30 @@
     width: 350px;
     display: flex;
     flex-direction: column;
-    border: 1px solid rgb(241, 241, 241);
-    background-color: rgba(212, 212, 212, 0.13);
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 10px 80px 10px rgb(223, 223, 223);
+    border-radius: 10px;
 
-    &__img {
-      height: 350px;
+    /* &__img {
+      height: 300px;
+      width: 300px;
       img {
         width: 350px;
         filter: brightness(1.1);
         mix-blend-mode: multiply;
       }
-    }
+    } */
     &__text {
+      padding: 0px 10px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      line-height: 20px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-      background-color: rgb(230, 230, 230);
+      align-items: start;
+      z-index: 100;
 
-      &--name {
-        height: 40px;
-      }
       &--price {
-        height: 20px;
         color: rgb(223, 145, 2);
         font-weight: 600;
       }
@@ -184,11 +187,11 @@
 @media screen and (min-width: 1920px) {
   .keyboards {
     &--cards {
-      width: 500px;
+      width: 450px;
       &__img {
-        height: 400px;
+        height: 350px;
         img {
-          width: 400px;
+          width: 380px;
         }
       }
     }
@@ -198,7 +201,7 @@
 @media screen and (max-width: 1920px) {
   .keyboards {
     &--cards {
-      width: 350px;
+      width: 360px;
       &__img {
         height: 350px;
         img {

@@ -32,7 +32,7 @@ const Navbar = () => {
   return (
     <div>
       <div className="navbar">
-        <Navbar2 />
+        {/* <Navbar2 /> */}
         <nav>
           <div className="navbar--nav">
             <div className="navbar--nav--title">

@@ -1,9 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import FormOpinions from "../FormOpinions/FormOpinions";
+import { useSelector } from "react-redux";
 
 const ProductsDetail = ({ productos, agregarAlCarrito }) => {
   const [product, setProduct] = useState();
+  const [opinion, setOpinion] = useState();
   const { id } = useParams();
 
   useEffect(() => {
@@ -14,6 +17,16 @@ const ProductsDetail = ({ productos, agregarAlCarrito }) => {
       setProduct(data);
     };
     fetchProduct();
+  }, []);
+
+  useEffect(() => {
+    const fetchOpinion = async () => {
+      const { data } = await axios.get(
+        `https://tkkeyboards-api.vercel.app/opinions`
+      );
+      setOpinion(data);
+    };
+    fetchOpinion();
   }, []);
 
   return (
@@ -97,9 +110,87 @@ const ProductsDetail = ({ productos, agregarAlCarrito }) => {
                 adding a modern touch to your workstation.
               </li>
             </ol>
+            <p>
+              Choose a keyboard that not only meets your performance needs but
+              also elevates your typing experience. Discover the perfect balance
+              between form and function with our high-performance ergonomic
+              keyboard.
+            </p>
+            <img
+              src="/assets/descriptionkeyboard.png"
+              alt="descriptionkeyboard"
+            />
           </>
         )}
-        {product?.type === "keycaps" && <>Keycaps</>}
+        {product?.type === "keycaps" && (
+          <>
+            <p>
+              <span>Premium Keycaps for Ultimate Typing Experience</span>
+            </p>
+            <p>
+              Unleash your keyboard's potential with our premium keycaps,
+              meticulously crafted to elevate your typing experience. Designed
+              for durability, aesthetics, and customization, these keycaps are
+              the perfect addition to any keyboard enthusiast's setup.
+            </p>
+            <span>Key Features:</span>
+            <ol>
+              <li>
+                <span>High-Quality Material: </span>Crafted from top-grade
+                materials, our keycaps ensure durability and longevity,
+                providing a superior typing feel that withstands the test of
+                time.
+              </li>
+              <li>
+                <span>Stylish Profile Options: </span>Choose from various
+                profile options, including OEM, Cherry, and SA profiles, to
+                match your preferred typing style and aesthetics. Each profile
+                offers a unique feel and look to suit your individual taste.
+              </li>
+              <li>
+                <span>Customizable Colors and Designs: </span>Personalize your
+                keyboard with a wide array of colors and designs. Whether you
+                prefer a sleek monochrome look or a vibrant, multi-colored
+                palette, our keycaps allow you to express your style.
+              </li>
+              <li>
+                <span>Backlit Compatibility: </span>Illuminate your keyboard
+                with ease. Our keycaps are designed to be compatible with
+                backlighting, allowing you to showcase your keyboard's lighting
+                effects for an enhanced visual experience.
+              </li>
+              <li>
+                <span>Easy Installation: </span>Upgrade your keyboard
+                effortlessly with our keycaps, designed for simple installation
+                on a variety of mechanical keyboards. Transform your keyboard
+                into a personalized masterpiece in minutes.
+              </li>
+              <li>
+                <span>Versatile Keycap Sets: </span>Choose from full keycap sets
+                or individual keycaps to tailor your keyboard to your liking.
+                Whether you're replacing a single key or giving your entire
+                keyboard a facelift, our sets provide flexibility.
+              </li>
+              <li>
+                <span>Double-Shot Injection Molding: </span>Experience legends
+                and characters that won't fade away. Our double-shot injection
+                molding process creates keycaps with engraved legends for
+                long-lasting, clear visibility.
+              </li>
+            </ol>
+
+            <p>
+              Enhance your typing experience with our premium keycaps, where
+              quality meets customization. Elevate your keyboard aesthetics,
+              improve tactile feedback, and make each keystroke a delight with
+              our meticulously designed keycaps.
+            </p>
+            <img
+              src="/assets/keycapsdescription.png"
+              alt="keycapsdescripcion"
+            />
+          </>
+        )}
         {product?.type === "switches" && (
           <>
             <p>
@@ -158,6 +249,10 @@ const ProductsDetail = ({ productos, agregarAlCarrito }) => {
                 maintenance and extending the lifespan of your keyboard.
               </li>
             </ol>
+            <img
+              src="/assets/switchesdescripcion.png"
+              alt="switchesdescripcion"
+            />
           </>
         )}
         {product?.type === "accessories" && (
@@ -196,9 +291,21 @@ const ProductsDetail = ({ productos, agregarAlCarrito }) => {
                 compromising on the tactile feel of your keys.
               </li>
             </ol>
+            <img
+              src="/assets/descriptionkeyboard.png"
+              alt="descriptionkeyboard"
+            />
           </>
         )}
       </div>
+      {/* <div className="keyboardsdetail--opinions">
+        <div>
+          <FormOpinions />
+        </div>
+        <div>
+          <p>{opinion?.stars}</p>
+        </div>
+      </div> */}
     </div>
   );
 };

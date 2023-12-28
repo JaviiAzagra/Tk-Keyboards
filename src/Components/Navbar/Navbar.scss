@@ -2,13 +2,14 @@
   display: none;
 }
 .navbar {
-  background-color: rgba(255, 255, 255);
+  background-color: rgb(245, 245, 245);
   /* backdrop-filter: blur(10px); */
   position: fixed;
   width: 100%;
   z-index: 10;
   color: black;
   z-index: 500;
+  padding: 10px;
 
   .nav-link-wrapper {
     display: inline-block;
