@@ -41,7 +41,7 @@ const Products = () => {
     return array;
   };
 
-  const shuffledProducts = data ? shuffleArray([...data]) : [];
+  /* const shuffledProducts = data ? shuffleArray([...data]) : []; */
 
   const productTypes = ["keyboards", "switches", "keycaps", "accessories"];
   const productBrand = ["Akko", "Keychron", "Gateron"];
@@ -82,9 +82,7 @@ const Products = () => {
     }
   };
 
-  const filteredProducts = data
-    ? shuffleArray(filterProductsByTypesAndBrands())
-    : [];
+  const filteredProducts = data ? filterProductsByTypesAndBrands() : [];
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
