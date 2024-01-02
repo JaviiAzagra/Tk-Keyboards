@@ -6,10 +6,6 @@ import axios from "axios";
 const Keycaps = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchCategory, setSearchCategory] = useState("name");
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
   const [selectedBrands, setSelectedBrands] = useState([]);
   const navigate = useNavigate();
 
@@ -17,7 +13,7 @@ const Keycaps = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://tkkeyboards-api.vercel.app/products?${searchCategory}=${searchTerm}`
+          `https://tkkeyboards-api.vercel.app/products`
         );
         // Filter only the keyboards from the API response
         const keycapsData = response.data.filter(
@@ -32,30 +28,7 @@ const Keycaps = () => {
     };
 
     fetchData();
-  }, [searchTerm, searchCategory]);
-
-  const handleSearch = () => {
-    let filteredData = data;
-
-    // Filtrar por término de búsqueda
-    filteredData = filteredData.filter((item) =>
-      item[searchCategory].toLowerCase().includes(searchTerm.toLowerCase())
-    );
-
-    // Filtrar por rango de precios
-    if (minPrice !== "") {
-      filteredData = filteredData.filter(
-        (item) => item.price >= parseFloat(minPrice)
-      );
-    }
-    if (maxPrice !== "") {
-      filteredData = filteredData.filter(
-        (item) => item.price <= parseFloat(maxPrice)
-      );
-    }
-
-    setData(filteredData);
-  };
+  }, []);
 
   const productBrand = ["Akko", "Keychron", "Gateron"];
 
@@ -84,7 +57,6 @@ const Keycaps = () => {
   const filteredProducts = data ? filterProductsByBrands() : [];
   return (
     <div className="products">
-      <h2>Keycaps</h2>
       {loading ? (
         <Loader />
       ) : (
@@ -108,7 +80,7 @@ const Keycaps = () => {
             {filteredProducts.map((item, index) => (
               <div
                 className="keyboards--cards"
-                onClick={() => navigate(`/products/keycaps/${item._id}`)}
+                onClick={() => navigate(`/products/${item._id}`)}
                 key={index}
               >
                 <div className="keyboards--cards__img">

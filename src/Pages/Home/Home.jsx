@@ -25,10 +25,11 @@ const Home = () => {
               </div>
             </Link>
           </div>
-
-          <div className="home--mid__products--mid">
-            <img src="/assets/keyboardhomemid.jpg" alt="keycaps" />
-          </div>
+          <Link to="/products">
+            <div className="home--mid__products--mid">
+              <img src="/assets/keyboardhomemid.jpg" alt="keycaps" />
+            </div>
+          </Link>
           <div className="home--mid__products--right">
             <Link to="/products/keycaps">
               <div className="container">

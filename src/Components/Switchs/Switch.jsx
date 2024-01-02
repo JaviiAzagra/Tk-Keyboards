@@ -6,25 +6,22 @@ import Loader from "../Loader/Loader";
 const Switch = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchCategory, setSearchCategory] = useState("name");
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
+  const [selectedBrands, setSelectedBrands] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://tkkeyboards-api.vercel.app/products?${searchCategory}=${searchTerm}`
+          `https://tkkeyboards-api.vercel.app/products`
         );
 
         // Filter only the keyboards from the API response
-        const switchesData = response.data.filter(
+        const keyboardsData = response.data.filter(
           (item) => item.type === "switches"
         );
 
-        setData(switchesData);
+        setData(keyboardsData);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -33,72 +30,60 @@ const Switch = () => {
     };
 
     fetchData();
-  }, [searchTerm, searchCategory]);
+  }, []);
 
-  const handleSearch = () => {
-    let filteredData = data;
+  const productBrand = ["Akko", "Keychron", "Gateron"];
 
-    // Filtrar por término de búsqueda
-    filteredData = filteredData.filter((item) =>
-      item[searchCategory].toLowerCase().includes(searchTerm.toLowerCase())
-    );
-
-    // Filtrar por rango de precios
-    if (minPrice !== "") {
-      filteredData = filteredData.filter(
-        (item) => item.price >= parseFloat(minPrice)
+  const toggleBrandSelection = (brand) => {
+    const isSelected = selectedBrands.includes(brand);
+    if (isSelected) {
+      setSelectedBrands(
+        selectedBrands.filter((selectedBrand) => selectedBrand !== brand)
       );
+    } else {
+      setSelectedBrands([...selectedBrands, brand]);
     }
-    if (maxPrice !== "") {
-      filteredData = filteredData.filter(
-        (item) => item.price <= parseFloat(maxPrice)
-      );
-    }
-
-    setData(filteredData);
   };
+
+  const filterProductsByBrands = () => {
+    if (selectedBrands.length === 0) {
+      return data; // Si no hay tipos ni marcas seleccionadas, mostrar todos los productos
+    } else {
+      return data.filter(
+        (product) =>
+          selectedBrands.length === 0 || selectedBrands.includes(product.brand)
+      );
+    }
+  };
+
+  const filteredProducts = data ? filterProductsByBrands() : [];
 
   return (
     <div className="products">
-      <h2>Switches</h2>
-      <Link to="/products">All Products</Link>
-      {/* <div>
-        <select
-          value={searchCategory}
-          onChange={(e) => setSearchCategory(e.target.value)}
-        >
-          <option value="name">Name</option>
-          <option value="brand">Brand</option>
-        </select>
-        <input
-          type="text"
-          placeholder={`Search by ${searchCategory}`}
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-        <input
-          type="number"
-          placeholder="Min Price"
-          value={minPrice}
-          onChange={(e) => setMinPrice(e.target.value)}
-        />
-        <input
-          type="number"
-          placeholder="Max Price"
-          value={maxPrice}
-          onChange={(e) => setMaxPrice(e.target.value)}
-        />
-        <button onClick={handleSearch}>Search</button>
-      </div> */}
       {loading ? (
         <Loader />
       ) : (
-        <div>
+        <div className="containerproducts">
+          <div className="product--filter">
+            <h2>BRAND</h2>
+            <div className="product--filter__inputs">
+              {productBrand.map((brand) => (
+                <label key={brand}>
+                  <input
+                    type="checkbox"
+                    checked={selectedBrands.includes(brand)}
+                    onChange={() => toggleBrandSelection(brand)}
+                  />
+                  {brand}
+                </label>
+              ))}
+            </div>
+          </div>
           <div className="keyboards">
-            {data.map((item, index) => (
+            {filteredProducts.map((item, index) => (
               <div
                 className="keyboards--cards"
-                onClick={() => navigate(`/products/switches/${item._id}`)}
+                onClick={() => navigate(`/products/${item._id}`)}
                 key={index}
               >
                 <div className="keyboards--cards__img">

@@ -112,7 +112,7 @@ const Navbar = () => {
                     </g>
                   </svg>
                 </Link>
-                <Link>
+                <Link to="/cart">
                   <svg
                     className="cart"
                     xmlns="http://www.w3.org/2000/svg"

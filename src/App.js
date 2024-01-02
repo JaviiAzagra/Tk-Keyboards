@@ -5,10 +5,10 @@ import Home from "./Pages/Home/Home";
 import Footer from "./Components/Footer/Footer";
 import NotFound from "./Components/NotFound/NotFound";
 import Products from "./Pages/Products/Products";
-/* import Switch from "./Components/Switchs/Switch";
+import Switch from "./Components/Switchs/Switch";
 import Keycaps from "./Components/Keycaps/Keycaps";
 import Keyboards from "./Components/Keyboards/Keyboards";
-import Accessories from "./Components/Accessories/Accessories"; */
+import Accessories from "./Components/Accessories/Accessories";
 import Profile from "./Pages/Profile/Profile";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
@@ -110,10 +110,10 @@ function App() {
             />
           }
         />
-        {/* <Route path="/products/switches" element={<Switch />} />
+        <Route path="/products/switches" element={<Switch />} />
         <Route path="/products/keyboards" element={<Keyboards />} />
         <Route path="/products/keycaps" element={<Keycaps />} />
-        <Route path="/products/accessories" element={<Accessories />} /> */}
+        <Route path="/products/accessories" element={<Accessories />} />
         <Route path="/profile" element={<Profile />} />
         <Route
           path="/products/:id"

@@ -61,7 +61,7 @@ const Keyboards = () => {
 
   return (
     <div className="products">
-      <h2>Keyboards</h2>
+      {/* <h2>Keyboards</h2> */}
       {loading ? (
         <Loader />
       ) : (
@@ -85,7 +85,7 @@ const Keyboards = () => {
             {filteredProducts.map((item, index) => (
               <div
                 className="keyboards--cards"
-                onClick={() => navigate(`/products/keyboards/${item._id}`)}
+                onClick={() => navigate(`/products/${item._id}`)}
                 key={index}
               >
                 <div className="keyboards--cards__img">
