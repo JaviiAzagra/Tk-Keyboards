@@ -4,6 +4,7 @@ import axios from "axios";
 import Loader from "../../Components/Loader/Loader";
 import { useNavigate } from "react-router-dom";
 import Pagination from "./Pagination";
+import Shipping from "../../Components/Shipping/Shipping";
 
 const Products = () => {
   const [data, setData] = useState(null);
@@ -31,17 +32,6 @@ const Products = () => {
 
     fetchData();
   }, []);
-
-  const shuffleArray = (array) => {
-    // Función para desordenar un array utilizando el algoritmo de Fisher-Yates
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  };
-
-  /* const shuffledProducts = data ? shuffleArray([...data]) : []; */
 
   const productTypes = ["keyboards", "switches", "keycaps", "accessories"];
   const productBrand = ["Akko", "Keychron", "Gateron"];
@@ -166,6 +156,7 @@ const Products = () => {
         productsPerPage={productsPerPage}
         paginate={setCurrentPage}
       />
+      <Shipping />
     </div>
   );
 };

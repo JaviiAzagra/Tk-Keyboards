@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import FormOpinions from "../FormOpinions/FormOpinions";
 import { useSelector } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProductsDetail = ({ productos, agregarAlCarrito }) => {
   const [product, setProduct] = useState();
@@ -28,6 +30,23 @@ const ProductsDetail = ({ productos, agregarAlCarrito }) => {
     };
     fetchOpinion();
   }, []);
+
+  const notify = () =>
+    toast.success("Added to your cart!", {
+      position: "bottom-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
+  const handleAddToCart = (product) => {
+    agregarAlCarrito(product);
+    notify();
+  };
 
   return (
     <div className="keyboardsdetail">
@@ -55,9 +74,21 @@ const ProductsDetail = ({ productos, agregarAlCarrito }) => {
               </p>
             </>
           )}
-          <button onClick={() => agregarAlCarrito(product)}>Add To Cart</button>
+          <button onClick={() => handleAddToCart(product)}>Add To Cart</button>
         </div>
       </div>
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
 
       <div className="keyboardsdetail--description">
         <h1>Description</h1>
@@ -298,14 +329,6 @@ const ProductsDetail = ({ productos, agregarAlCarrito }) => {
           </>
         )}
       </div>
-      {/* <div className="keyboardsdetail--opinions">
-        <div>
-          <FormOpinions />
-        </div>
-        <div>
-          <p>{opinion?.stars}</p>
-        </div>
-      </div> */}
     </div>
   );
 };

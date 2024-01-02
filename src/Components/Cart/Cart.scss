@@ -1,3 +1,10 @@
+.carrito-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding-bottom: 100px;
+}
+
 .carrito {
   padding-top: 150px;
   padding-bottom: 120px;
@@ -5,11 +12,33 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  background-color: rgb(245, 245, 245);
 
-  &--total {
+  &--info {
     display: flex;
-    gap: 10px;
-    font-size: 25px;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding-bottom: 40px;
+
+    &__card {
+      border: 1px solid rgb(228, 228, 228);
+      border-radius: 20px;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 250px;
+      gap: 10px;
+      h1 {
+        font-size: 18px;
+      }
+
+      p {
+        font-size: 14px;
+      }
+    }
   }
 
   h2 {
@@ -24,36 +53,163 @@
   }
 
   &--container {
-    width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid rgb(145, 145, 145);
-    border-top: 1px solid rgb(145, 145, 145);
-    cursor: pointer;
-    &__name {
-      text-align: center;
-    }
+    justify-content: center;
+    gap: 200px;
+    margin-bottom: 100px;
+    margin-top: 50px;
 
-    &__price {
+    &__products {
       display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgb(218, 218, 218);
+      border-top: 1px solid rgb(218, 218, 218);
+
+      button {
+        background: none;
+        border: none;
+      }
+
+      img {
+        width: 20%;
+        filter: brightness(1.1);
+        mix-blend-mode: multiply;
+      }
+    }
+
+    &__total {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgb(218, 218, 218);
+      padding: 20px;
+      border-radius: 20px;
       gap: 10px;
-      justify-content: flex-end;
-    }
+      font-size: 18px;
 
-    img {
-      width: 15%;
-      filter: brightness(1.1);
-      mix-blend-mode: multiply;
-    }
+      p {
+        font-weight: 250;
+        font-size: 14px;
+      }
 
-    p {
-      text-align: center;
-    }
+      &__price {
+        padding-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        p {
+          font-weight: 600;
+          font-size: 20px;
+        }
+      }
 
-    button {
-      background: none;
-      border: none;
+      textarea {
+        border: 1px solid rgb(218, 218, 218);
+        border-radius: 20px;
+        padding: 10px;
+        resize: none;
+      }
+    }
+  }
+}
+.checkout {
+  padding: 15px;
+  background-color: chocolate;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.checkout:hover {
+  text-decoration: none;
+  background-color: rgb(228, 138, 73);
+}
+
+.paypal {
+  background-color: rgb(255, 196, 57);
+  border: none;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.googlepay {
+  background-color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+
+  img {
+    width: 50px;
+  }
+}
+
+.deletecart {
+  border: none;
+  background: none;
+  margin-top: 10px;
+}
+
+.deletecart:hover {
+  text-decoration: underline;
+}
+
+.accept {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  div {
+    display: flex;
+    gap: 10px;
+  }
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 100px;
+  button {
+    background-color: chocolate;
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    color: white;
+    font-weight: 600;
+  }
+  button:hover {
+    background-color: rgb(214, 136, 81);
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .carrito {
+    height: auto;
+    &--container {
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+      margin-bottom: 50px;
+      margin-top: 50px;
+      &__products {
+        padding-bottom: 10px;
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+        img {
+          width: 50%;
+        }
+      }
     }
   }
 }

@@ -24,6 +24,7 @@ import History from "./Pages/History/History";
 import { Cart } from "./Components/Cart/Cart";
 import ProductsDetail from "./Components/ProductsDetail/ProductsDetail";
 import Popup from "./Components/Popup/Popup";
+import Chat from "./Components/Chat/Chat";
 
 function App() {
   const dispatch = useDispatch();
@@ -43,6 +44,14 @@ function App() {
     }
   }, []);
 
+  useEffect(() => {
+    // Cargar carrito desde localStorage al inicio
+    const carritoGuardado = localStorage.getItem("carrito");
+    if (carritoGuardado) {
+      setCarrito(JSON.parse(carritoGuardado));
+    }
+  }, []);
+
   const [productos, setProductos] = useState([]);
   const [carrito, setCarrito] = useState([]);
 
@@ -54,8 +63,15 @@ function App() {
       .catch((error) => console.error("Error al obtener productos:", error));
   }, []);
 
-  const agregarAlCarrito = (producto) => {
+  /* const agregarAlCarrito = (producto) => {
     setCarrito([...carrito, producto]);
+  }; */
+  const agregarAlCarrito = (producto) => {
+    const nuevoCarrito = [...carrito, producto];
+    setCarrito(nuevoCarrito);
+
+    // Guardar en localStorage
+    localStorage.setItem("carrito", JSON.stringify(nuevoCarrito));
   };
 
   const calcularPrecioTotal = () => {
@@ -67,13 +83,25 @@ function App() {
     return parseFloat(total.toFixed(2));
   };
 
+  const limpiarLocalStorage = () => {
+    localStorage.removeItem("carrito");
+  };
+
   const borrarCarrito = () => {
     setCarrito([]);
+
+    // Limpiar localStorage
+    limpiarLocalStorage();
   };
 
   const borrarProducto = (productoId) => {
-    const carritoActualizado = carrito.filter((item) => item.id !== productoId);
+    const carritoActualizado = carrito.filter(
+      (item) => item._id !== productoId
+    );
     setCarrito(carritoActualizado);
+
+    // Actualizar el localStorage después de la eliminación
+    localStorage.setItem("carrito", JSON.stringify(carritoActualizado));
   };
 
   useEffect(() => {
@@ -162,6 +190,7 @@ function App() {
         /> */}
         <Route path="*" Component={NotFound} />
       </Routes>
+      <Chat />
       <Footer />
     </div>
   );

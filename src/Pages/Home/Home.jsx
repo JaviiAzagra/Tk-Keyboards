@@ -1,6 +1,7 @@
 import React from "react";
 import "./Home.scss";
 import { Link } from "react-router-dom";
+import Shipping from "../../Components/Shipping/Shipping";
 
 const Home = () => {
   return (
@@ -48,6 +49,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <Shipping />
     </div>
   );
 };
