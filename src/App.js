@@ -66,17 +66,45 @@ function App() {
   /* const agregarAlCarrito = (producto) => {
     setCarrito([...carrito, producto]);
   }; */
-  const agregarAlCarrito = (producto) => {
-    const nuevoCarrito = [...carrito, producto];
-    setCarrito(nuevoCarrito);
+  const agregarAlCarrito = (producto, cantidad = 1) => {
+    const productoExistente = carrito.find((item) => item._id === producto._id);
 
-    // Guardar en localStorage
-    localStorage.setItem("carrito", JSON.stringify(nuevoCarrito));
+    if (productoExistente) {
+      // Si el producto ya está en el carrito, actualizar cantidad y precio total
+      const carritoActualizado = carrito.map((item) =>
+        item._id === producto._id
+          ? {
+              ...item,
+              cantidad: item.cantidad + cantidad,
+              precioTotal: (item.cantidad + cantidad) * item.price,
+            }
+          : item
+      );
+      setCarrito(carritoActualizado);
+      localStorage.setItem("carrito", JSON.stringify(carritoActualizado));
+    } else {
+      // Si el producto no está en el carrito, agregarlo con la cantidad proporcionada
+      const nuevoCarrito = [
+        ...carrito,
+        { ...producto, cantidad, precioTotal: cantidad * producto.price },
+      ];
+      setCarrito(nuevoCarrito);
+      localStorage.setItem("carrito", JSON.stringify(nuevoCarrito));
+    }
+  };
+
+  const modificarcantidadencarrito = (productId, newQuantity) => {
+    const nuevoCarrito = carrito.map((item) =>
+      item._id === productId
+        ? { ...item, cantidad: parseInt(newQuantity, 10) }
+        : item
+    );
+    setCarrito(nuevoCarrito);
   };
 
   const calcularPrecioTotal = () => {
     const total = carrito.reduce(
-      (totalAcumulado, producto) => totalAcumulado + producto.price,
+      (totalAcumulado, producto) => totalAcumulado + producto.precioTotal,
       0
     );
     // Utiliza toFixed para redondear a dos decimales

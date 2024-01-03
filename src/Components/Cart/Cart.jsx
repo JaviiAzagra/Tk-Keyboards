@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Cart.scss";
 import { Link, useNavigate } from "react-router-dom";
 import Shipping from "../Shipping/Shipping";
@@ -29,6 +29,7 @@ export const Cart = ({
     borrarProducto(product);
     notify();
   };
+
   return (
     <div className="carrito">
       <h2>Cart</h2>
@@ -42,8 +43,9 @@ export const Cart = ({
                   src={item.img}
                 />
                 <p className="carrito--container__name">{item.name}</p>
+                <p>Amount: {item.cantidad}</p>
                 <p className="carrito--container__price">
-                  $ {item.price.toFixed(2)}{" "}
+                  $ {item.price.toFixed(2)}
                   <button onClick={() => handleDelete(item._id)}>❌</button>
                 </p>
               </div>
