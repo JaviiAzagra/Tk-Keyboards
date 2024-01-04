@@ -33,10 +33,9 @@ export const Cart = ({
   };
 
   const handleCheckout = () => {
-    // Simula una tarea asíncrona, puedes reemplazar esto con tu lógica real
-    setLoading(true); // Inicia el loader
+    setLoading(true);
     setTimeout(() => {
-      setLoading(false); // Detiene el loader después de completar la tarea
+      setLoading(false);
       navigate("/checkout");
     }, 2000);
   };

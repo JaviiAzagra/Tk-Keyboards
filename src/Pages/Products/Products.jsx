@@ -14,6 +14,7 @@ const Products = () => {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 16; // Número de productos por página
+  const [isFiltersMobileVisible, setIsFiltersMobileVisible] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -81,6 +82,10 @@ const Products = () => {
     indexOfLastProduct
   );
 
+  const toggleFiltersMobile = () => {
+    setIsFiltersMobileVisible(!isFiltersMobileVisible);
+  };
+
   return (
     <div className="product">
       {/* <h1>All Products</h1> */}
@@ -90,6 +95,7 @@ const Products = () => {
       ) : (
         <div className="containerproducts">
           {/* Usar checkboxes con opciones fijas */}
+
           <div className="containerproducts--filters">
             <div className="product--filter">
               <h2>PRODUCT TYPE</h2>
@@ -121,6 +127,54 @@ const Products = () => {
                 ))}
               </div>
             </div>
+          </div>
+
+          <div className="containerproducts--filtersmobile">
+            <button onClick={toggleFiltersMobile}>REFINE</button>
+            {isFiltersMobileVisible && (
+              <div className="popup-container">
+                <div className="popup-content">
+                  <button onClick={toggleFiltersMobile}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 256 256"
+                    >
+                      <path d="M208.49 191.51a12 12 0 0 1-17 17L128 145l-63.51 63.49a12 12 0 0 1-17-17L111 128L47.51 64.49a12 12 0 0 1 17-17L128 111l63.51-63.52a12 12 0 0 1 17 17L145 128Z" />
+                    </svg>
+                  </button>
+                  <div className="product--filter">
+                    <h2>PRODUCT TYPE</h2>
+                    <div className="product--filter__inputs">
+                      {productTypes.map((type) => (
+                        <label key={type}>
+                          <input
+                            type="checkbox"
+                            checked={selectedTypes.includes(type)}
+                            onChange={() => toggleTypeSelection(type)}
+                          />
+                          {type}
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="product--filter">
+                    <h2>BRAND</h2>
+                    <div className="product--filter__inputs">
+                      {productBrand.map((brand) => (
+                        <label key={brand}>
+                          <input
+                            type="checkbox"
+                            checked={selectedBrands.includes(brand)}
+                            onChange={() => toggleBrandSelection(brand)}
+                          />
+                          {brand}
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="keyboards">

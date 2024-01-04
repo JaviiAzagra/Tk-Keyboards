@@ -35,17 +35,6 @@
         width: 20px;
         cursor: pointer;
       }
-      /* Estilo para los checkboxes */
-      input[type="checkbox"] {
-        margin-right: 5px; /* Ajusta el margen derecho según sea necesario */
-      }
-
-      /* Estilo para los checkboxes checked */
-      input[type="checkbox"]:checked {
-        background-color: #4caf50; /* Cambia el color de fondo según tus preferencias */
-        border-color: #4caf50; /* Cambia el color del borde según tus preferencias */
-        color: #fff; /* Cambia el color del texto según tus preferencias */
-      }
 
       /* Estilo para los textos junto a los checkboxes */
       label {
@@ -81,6 +70,10 @@
     display: flex;
     flex-direction: column;
     gap: 50px;
+  }
+
+  &--filtersmobile {
+    display: none;
   }
 }
 
@@ -255,24 +248,104 @@
     padding-top: 100px;
     &--filter {
       flex-direction: column;
-      align-items: center;
       justify-content: center;
       flex-wrap: wrap;
 
       &__inputs {
-        flex-wrap: wrap;
-        align-items: center;
-        flex-direction: row;
+        flex-direction: column;
+        align-items: start;
       }
     }
   }
   .containerproducts {
+    padding-top: 20px;
     gap: 40px;
     &--filters {
+      display: none;
+    }
+
+    &--filtersmobile {
+      display: flex;
+      flex-direction: column;
       align-items: center;
+      gap: 50px;
+      width: 100%;
+
+      button {
+        width: 360px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: chocolate;
+        color: white;
+        font-weight: 700;
+        font-size: 16px;
+      }
     }
   }
   .keyboards {
     grid-template-columns: repeat(1, 0fr);
+  }
+
+  .filters {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+    width: 80%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    background-color: white;
+    border-radius: 20px;
+  }
+  .product {
+    position: relative;
+  }
+
+  .popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Ajusta según sea necesario para que el popup aparezca encima de otros elementos */
+  }
+
+  .popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 400px; /* Ajusta según sea necesario */
+    width: 80%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    button {
+      svg {
+        width: 25px;
+      }
+    }
+  }
+
+  /* Estilos adicionales para el botón de cierre */
+  .popup-content button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    padding: 5px 10px;
+    position: absolute;
+    right: -130px;
   }
 }
