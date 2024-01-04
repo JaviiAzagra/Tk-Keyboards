@@ -14,17 +14,15 @@ import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { checkSession } from "./Redux/auth/auth.actions";
 import KeyboardsDetail from "./Components/KeyboardsDetail/KeyboardsDetail";
-import SwitchesDetail from "./Components/SwitchesDetails/SwitchesDetail";
 import Contact from "./Pages/Contact/Contact";
 import GoTop from "./Components/GoTop/GoTop";
-import KeycapsDetail from "./Components/KeycapsDetail/KeycapsDetail";
-import AccessoriesDetail from "./Components/AccessoriesDetail/AccessoriesDetail";
 import Support from "./Pages/Support/Support";
 import History from "./Pages/History/History";
 import { Cart } from "./Components/Cart/Cart";
 import ProductsDetail from "./Components/ProductsDetail/ProductsDetail";
 import Popup from "./Components/Popup/Popup";
 import Chat from "./Components/Chat/Chat";
+import Order from "./Components/Order/Order";
 
 function App() {
   const dispatch = useDispatch();
@@ -180,42 +178,16 @@ function App() {
             />
           }
         />
-        {/* <Route
-          path="/products/keyboards/:id"
+        <Route
+          path="/checkout"
           element={
-            <KeyboardsDetail
-              productos={productos}
-              agregarAlCarrito={agregarAlCarrito}
+            <Order
+              carrito={carrito}
+              calcularPrecioTotal={calcularPrecioTotal}
+              borrarCarrito={borrarCarrito}
             />
           }
         />
-        <Route
-          path="/products/switches/:id"
-          element={
-            <SwitchesDetail
-              productos={productos}
-              agregarAlCarrito={agregarAlCarrito}
-            />
-          }
-        />
-        <Route
-          path="/products/keycaps/:id"
-          element={
-            <KeycapsDetail
-              productos={productos}
-              agregarAlCarrito={agregarAlCarrito}
-            />
-          }
-        />
-        <Route
-          path="/products/accessories/:id"
-          element={
-            <AccessoriesDetail
-              productos={productos}
-              agregarAlCarrito={agregarAlCarrito}
-            />
-          }
-        /> */}
         <Route path="*" Component={NotFound} />
       </Routes>
       <Chat />

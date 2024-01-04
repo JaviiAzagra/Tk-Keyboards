@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Shipping from "../Shipping/Shipping";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Loader from "../Loader/Loader";
 
 export const Cart = ({
   carrito,
@@ -12,6 +13,7 @@ export const Cart = ({
   borrarProducto,
 }) => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const notify = () =>
     toast.success("Product removed from the cart!", {
@@ -30,6 +32,14 @@ export const Cart = ({
     notify();
   };
 
+  const handleCheckout = () => {
+    // Simula una tarea asíncrona, puedes reemplazar esto con tu lógica real
+    setLoading(true); // Inicia el loader
+    setTimeout(() => {
+      setLoading(false); // Detiene el loader después de completar la tarea
+      navigate("/checkout");
+    }, 2000);
+  };
   return (
     <div className="carrito">
       <h2>Cart</h2>
@@ -42,12 +52,40 @@ export const Cart = ({
                   onClick={() => navigate(`/products/${item._id}`)}
                   src={item.img}
                 />
-                <p className="carrito--container__name">{item.name}</p>
-                <p>Amount: {item.cantidad}</p>
-                <p className="carrito--container__price">
-                  $ {item.price.toFixed(2)}
-                  <button onClick={() => handleDelete(item._id)}>❌</button>
-                </p>
+                <div style={{ maxWidth: "300px", minWidth: "300px" }}>
+                  <p>{item.name}</p>
+                  <span
+                    style={{
+                      fontWeight: "600",
+                    }}
+                  >
+                    Price: <span>${item.price.toFixed(2)}</span>
+                  </span>
+                </div>
+                <div>
+                  <span
+                  /* style={{
+                      fontWeight: "600",
+                      display: "flex",
+                      justifyContent: "space-between",
+                    }} */
+                  >
+                    Quantity: <span>{item.cantidad}</span>
+                  </span>
+                </div>
+                <div>
+                  <p
+                    style={{
+                      fontWeight: "600",
+                      display: "flex",
+                      gap: "1rem",
+                    }}
+                    className="carrito--container__price"
+                  >
+                    Total: ${(item.price * item.cantidad).toFixed(2)}
+                    <button onClick={() => handleDelete(item._id)}>❌</button>
+                  </p>
+                </div>
               </div>
             ))}
           </ul>
@@ -68,14 +106,99 @@ export const Cart = ({
                   placeholder="Order note"
                 ></textarea>
               </div>
-              <button className="checkout">Checkout</button>
-              <button className="paypal">
-                <img src="/assets/paypal.svg" alt="paypal" />
-                <img src="/assets/paypal2.svg" alt="paypal" />
-              </button>
-              <button className="googlepay">
-                <img src="/assets/googlepay.webp" alt="googlepay" />
-              </button>
+              <Link>
+                <button className="checkout" onClick={handleCheckout}>
+                  {loading ? (
+                    <svg
+                      width="80"
+                      height="8"
+                      viewBox="0 0 120 30"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="#fff"
+                    >
+                      <circle cx="15" cy="15" r="15">
+                        <animate
+                          attributeName="r"
+                          from="15"
+                          to="15"
+                          begin="0s"
+                          dur="0.8s"
+                          values="15;9;15"
+                          calcMode="linear"
+                          repeatCount="indefinite"
+                        />
+                        <animate
+                          attributeName="fill-opacity"
+                          from="1"
+                          to="1"
+                          begin="0s"
+                          dur="0.8s"
+                          values="1;.5;1"
+                          calcMode="linear"
+                          repeatCount="indefinite"
+                        />
+                      </circle>
+                      <circle cx="60" cy="15" r="9" fill-opacity="0.3">
+                        <animate
+                          attributeName="r"
+                          from="9"
+                          to="9"
+                          begin="0s"
+                          dur="0.8s"
+                          values="9;15;9"
+                          calcMode="linear"
+                          repeatCount="indefinite"
+                        />
+                        <animate
+                          attributeName="fill-opacity"
+                          from="0.5"
+                          to="0.5"
+                          begin="0s"
+                          dur="0.8s"
+                          values=".5;1;.5"
+                          calcMode="linear"
+                          repeatCount="indefinite"
+                        />
+                      </circle>
+                      <circle cx="105" cy="15" r="15">
+                        <animate
+                          attributeName="r"
+                          from="15"
+                          to="15"
+                          begin="0s"
+                          dur="0.8s"
+                          values="15;9;15"
+                          calcMode="linear"
+                          repeatCount="indefinite"
+                        />
+                        <animate
+                          attributeName="fill-opacity"
+                          from="1"
+                          to="1"
+                          begin="0s"
+                          dur="0.8s"
+                          values="1;.5;1"
+                          calcMode="linear"
+                          repeatCount="indefinite"
+                        />
+                      </circle>
+                    </svg>
+                  ) : (
+                    "Checkout"
+                  )}
+                </button>
+              </Link>
+              <Link to="/checkout">
+                <button className="paypal">
+                  <img src="/assets/paypal.svg" alt="paypal" />
+                  <img src="/assets/paypal2.svg" alt="paypal" />
+                </button>
+              </Link>
+              <Link to="/checkout">
+                <button className="googlepay">
+                  <img src="/assets/googlepay.webp" alt="googlepay" />
+                </button>
+              </Link>
               <button className="deletecart" onClick={() => borrarCarrito()}>
                 Delete All the Cart
               </button>
