@@ -20,7 +20,7 @@ const Chat = () => {
     width: "300px",
     height: "500px",
     floating: true,
-    placeholder: "Escribe el mensaje...",
+    placeholder: "Message",
     zIndex: 9999,
   };
   const steps = [
