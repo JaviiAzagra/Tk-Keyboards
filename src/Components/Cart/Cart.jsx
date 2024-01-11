@@ -36,7 +36,7 @@ export const Cart = ({
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      navigate("/checkout");
+      navigate("/order-confirmation");
     }, 2000);
   };
   return (
@@ -62,13 +62,7 @@ export const Cart = ({
                   </span>
                 </div>
                 <div>
-                  <span
-                  /* style={{
-                      fontWeight: "600",
-                      display: "flex",
-                      justifyContent: "space-between",
-                    }} */
-                  >
+                  <span>
                     Quantity: <span>{item.cantidad}</span>
                   </span>
                 </div>

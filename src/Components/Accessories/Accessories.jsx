@@ -83,7 +83,7 @@ const Accessories = () => {
             {filteredProducts.map((item, index) => (
               <div
                 className="keyboards--cards"
-                onClick={() => navigate(`/products/accessories/${item._id}`)}
+                onClick={() => navigate(`/products/${item._id}`)}
                 key={index}
               >
                 <div className="keyboards--cards__img">

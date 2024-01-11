@@ -61,9 +61,6 @@ function App() {
       .catch((error) => console.error("Error al obtener productos:", error));
   }, []);
 
-  /* const agregarAlCarrito = (producto) => {
-    setCarrito([...carrito, producto]);
-  }; */
   const agregarAlCarrito = (producto, cantidad = 1) => {
     const productoExistente = carrito.find((item) => item._id === producto._id);
 
@@ -179,7 +176,7 @@ function App() {
           }
         />
         <Route
-          path="/checkout"
+          path="/order-confirmation"
           element={
             <Order
               carrito={carrito}

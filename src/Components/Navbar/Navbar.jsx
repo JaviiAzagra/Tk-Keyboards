@@ -15,11 +15,17 @@ const Navbar = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+  const handleLinkClick = () => {
+    // Close the dropdown when a link is clicked
+    setDropdownOpen(false);
+  };
+
   const navLinks = [
     {
       to: "/products",
       text: "Products",
-      /* subMenu: ["keyboards", "switches", "keycaps", "accessories"], */
     },
     { to: "/support", text: "Support" },
     { to: "/about", text: "Our Story" },
@@ -41,33 +47,72 @@ const Navbar = () => {
               </NavLink>
             </div>
             <div className="navbar--nav--links">
-              {navLinks.map((link, index) => (
-                <div key={index} className="nav-link-wrapper">
-                  {link.subMenu ? (
-                    <div className="dropdown">
-                      <NavLink to={link.to} activeClassName="active">
-                        {link.text}
-                      </NavLink>
-                      <div className="dropdown-content">
-                        {link.subMenu.map((item, subIndex) => (
-                          <NavLink
-                            key={subIndex}
-                            to={`/products/${item}`}
-                            activeClassName="active"
-                          >
-                            {item}
-                          </NavLink>
-                        ))}
+              <div className="nav-link-with-dropdown">
+                <NavLink to="/products">
+                  Products
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-chevron-down"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    stroke-width="2"
+                    stroke="currentColor"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M6 9l6 6l6 -6" />
+                  </svg>
+                </NavLink>
+                <div className="dropdown">
+                  <div className="dropdown--links">
+                    <Link to="/products/keyboards">
+                      <h3>Keyboards</h3>
+                      <ul>
+                        <li>Akko</li>
+                        <li>Keychrom</li>
+                      </ul>
+                    </Link>
+                    <Link to="/products/keycaps">
+                      <h3>Keycaps</h3>
+                      <ul>
+                        <li>Akko</li>
+                        <li>Keychrom</li>
+                      </ul>
+                    </Link>
+                    <Link to="/products/switches">
+                      <h3>Switches</h3>
+                      <ul>
+                        <li>Akko</li>
+                        <li>Keychrom</li>
+                        <li>Gateron</li>
+                      </ul>
+                    </Link>
+                    <Link to="/products/accessories">
+                      <h3>Accessories</h3>
+                      <ul>
+                        <li>Akko</li>
+                        <li>Keychrom</li>
+                      </ul>
+                    </Link>
+                  </div>
+                  <Link to="/products">
+                    <div className="dropdown--img">
+                      <p className="dropdown--img__text">All Products</p>
+                      <div className="image-container enlarge-on-hover">
+                        <img src="/assets/tecladodrop.jpg" alt="tecladohome" />
                       </div>
                     </div>
-                  ) : (
-                    <NavLink to={link.to} activeClassName="active">
-                      {link.text}
-                    </NavLink>
-                  )}
+                  </Link>
                 </div>
-              ))}
+              </div>
+              <NavLink to="/support">Support</NavLink>
+              <NavLink to="/about">Our Story</NavLink>
+              <NavLink to="/contact">Contact</NavLink>
             </div>
+
             <div className="navbar--nav--svg">
               <Link to="/profile">
                 <svg

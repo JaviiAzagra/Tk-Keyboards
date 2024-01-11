@@ -2,8 +2,9 @@
   display: none;
 }
 .navbar {
-  background-color: rgba(245, 245, 245, 0.76);
-  backdrop-filter: blur(10px);
+  /* background-color: rgba(245, 245, 245, 0.76);
+  backdrop-filter: blur(10px); */
+  background-color: rgb(245, 245, 245);
   position: fixed;
   width: 100%;
   z-index: 10;
@@ -14,48 +15,6 @@
   .nav-link-wrapper {
     display: inline-block;
     margin-right: 20px;
-
-    .dropdown {
-      position: relative;
-
-      a {
-        display: block;
-        text-decoration: none;
-        color: rgb(0, 0, 0);
-        cursor: pointer;
-        text-transform: capitalize;
-      }
-
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #ffffff;
-        min-width: 160px;
-        /* width: 100vw; */
-        top: 100%;
-        z-index: 99999;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-
-        a {
-          color: black;
-          padding: 12px 16px;
-          text-decoration: none;
-          display: block;
-          text-align: center;
-
-          &:hover {
-            background-color: #ddd;
-          }
-        }
-      }
-
-      &:hover .dropdown-content {
-        display: grid;
-        justify-content: center;
-        grid-template-columns: repeat(2, 0fr);
-        gap: 10px;
-      }
-    }
   }
 
   &--nav {
@@ -85,19 +44,23 @@
     &--links {
       display: flex;
       align-items: center;
-      gap: 50px;
+      gap: 30px;
 
-      /* .active {
+      .active {
         font-weight: 700;
-        text-decoration: underline #a1004e;
+        text-decoration: underline #fd8904;
         text-underline-offset: 0.4em;
-      } */
+      }
 
       a {
+        height: 70px;
+        padding: 0px 20px 0px 20px;
         text-decoration: none;
         color: black;
         font-size: 18px;
         font-weight: 600;
+        display: flex;
+        align-items: center;
       }
       a:hover {
         text-decoration: underline;
@@ -188,6 +151,127 @@
       text-underline-offset: 0.4em;
     }
   }
+}
+/* Estilo para el contenedor de la opción con menú desplegable */
+.nav-link-with-dropdown {
+  position: relative;
+  display: inline-block;
+
+  a {
+    display: flex;
+    gap: 4px;
+
+    svg {
+      stroke: black;
+    }
+  }
+}
+
+/* Estilos del contenido del menú desplegable */
+
+.dropdown {
+  border-top: 1px solid rgb(216, 216, 216);
+  width: 100vw;
+  left: 0;
+  margin-top: 10px;
+  display: none;
+  position: fixed;
+  background-color: rgb(245, 245, 245);
+  box-shadow: 0 40px 20px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  &--links {
+    display: flex;
+    /* justify-content: center; */
+    gap: 60px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    h3 {
+      padding-bottom: 30px;
+      font-size: 22px;
+    }
+
+    h3:hover {
+      text-decoration: underline;
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      font-weight: 400;
+      color: rgb(126, 126, 126);
+      font-size: 16px;
+    }
+    li:hover {
+      color: black;
+    }
+  }
+
+  &--img {
+    position: relative;
+    display: inline-block;
+    height: 230px;
+    overflow: hidden;
+
+    img {
+      width: 230px;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+    p {
+      line-height: 25px;
+      font-weight: 800;
+      color: rgb(255, 255, 255);
+    }
+    &__text {
+      font-size: 30px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-80%, 80%);
+      z-index: 1;
+    }
+  }
+}
+
+.image-container {
+  border-radius: 18px;
+  overflow: hidden;
+  height: 230px;
+}
+
+.enlarge-on-hover img {
+  transition: transform 0.3s ease; /* Agrega una transición suave al cambio de tamaño */
+}
+
+.enlarge-on-hover:hover img {
+  transform: scale(1.1); /* Ajusta el valor de escala según tus preferencias */
+}
+/* Estilo de los enlaces dentro del menú desplegable */
+.dropdown a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  height: auto;
+}
+
+/* Muestra el menú desplegable cuando el mouse pasa sobre el contenedor */
+.nav-link-with-dropdown:hover .dropdown {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  /* gap: 200px; */
+  align-items: center;
 }
 
 .mobile-menu {

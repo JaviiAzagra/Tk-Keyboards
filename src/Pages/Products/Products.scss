@@ -31,8 +31,8 @@
       cursor: pointer;
 
       input {
-        height: 20px;
-        width: 20px;
+        height: 18px;
+        width: 18px;
         cursor: pointer;
       }
 
@@ -129,7 +129,6 @@
 
 .keyboards {
   display: grid;
-  justify-content: center;
   grid-template-columns: repeat(4, 0fr);
   gap: 30px;
 
@@ -226,6 +225,7 @@
       }
     }
   }
+
   .containerproducts {
     flex-direction: column;
     align-items: center;
@@ -237,13 +237,7 @@
   }
 }
 
-@media screen and (max-width: 1180px) {
-  .keyboards {
-    grid-template-columns: repeat(2, 0fr);
-  }
-}
-
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 1450px) {
   .product {
     padding-top: 100px;
     &--filter {
@@ -288,7 +282,7 @@
     }
   }
   .keyboards {
-    grid-template-columns: repeat(1, 0fr);
+    grid-template-columns: repeat(3, 0fr);
   }
 
   .filters {
@@ -321,10 +315,11 @@
   }
 
   .popup-content {
+    position: fixed;
     background: white;
     padding: 20px;
     border-radius: 5px;
-    max-width: 400px; /* Ajusta según sea necesario */
+    max-width: 400px;
     width: 80%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     display: flex;
@@ -332,20 +327,31 @@
     gap: 20px;
 
     button {
+      position: absolute;
+      right: -150px;
+      background: none;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 5px;
       svg {
         width: 25px;
       }
     }
   }
+}
 
-  /* Estilos adicionales para el botón de cierre */
-  .popup-content button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #333;
-    padding: 5px 10px;
-    position: absolute;
-    right: -130px;
+@media screen and (max-width: 1180px) {
+  .keyboards {
+    grid-template-columns: repeat(2, 0fr);
+  }
+}
+
+@media screen and (max-width: 785px) {
+  .keyboards {
+    grid-template-columns: repeat(1, 0fr);
   }
 }

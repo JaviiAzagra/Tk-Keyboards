@@ -143,7 +143,7 @@ const Products = () => {
                     </svg>
                   </button>
                   <div className="product--filter">
-                    <h2>PRODUCT TYPE</h2>
+                    <h2>PRODUCT TYPE </h2>
                     <div className="product--filter__inputs">
                       {productTypes.map((type) => (
                         <label key={type}>
@@ -172,6 +172,14 @@ const Products = () => {
                       ))}
                     </div>
                   </div>
+                  {/* <button onClick={toggleFiltersMobile}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 256 256"
+                    >
+                      <path d="M208.49 191.51a12 12 0 0 1-17 17L128 145l-63.51 63.49a12 12 0 0 1-17-17L111 128L47.51 64.49a12 12 0 0 1 17-17L128 111l63.51-63.52a12 12 0 0 1 17 17L145 128Z" />
+                    </svg>
+                  </button> */}
                 </div>
               </div>
             )}
