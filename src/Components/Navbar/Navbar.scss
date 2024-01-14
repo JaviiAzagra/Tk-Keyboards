@@ -1,6 +1,7 @@
 .menu {
   display: none;
 }
+
 .navbar {
   /* background-color: rgba(245, 245, 245, 0.76);
   backdrop-filter: blur(10px); */
@@ -117,6 +118,24 @@
   align-items: start;
   justify-content: start;
   transition: all 0.3s ease-in-out;
+
+  .mobile-dropdown {
+    width: 100%;
+    /* display: grid;
+    grid-template-columns: repeat(1, 1fr); */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: start;
+    margin-left: 60px;
+
+    a {
+      display: flex;
+      justify-content: initial;
+      gap: 10px;
+      font-weight: 400;
+    }
+  }
 
   ul {
     list-style-type: none;

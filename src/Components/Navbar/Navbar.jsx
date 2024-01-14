@@ -35,6 +35,12 @@ const Navbar = () => {
   /* const { user, token } = useSelector((state) => state.auth);
   const { profiles } = useSelector((state) => state.profiles); */
 
+  const [showProductDropdown, setShowProductDropdown] = useState(false);
+
+  const toggleProductDropdown = () => {
+    setShowProductDropdown(!showProductDropdown);
+  };
+
   return (
     <div>
       <div className="navbar">
@@ -207,8 +213,10 @@ const Navbar = () => {
           </span>
 
           <ul /* onClick={hamburgerMenu} */>
-            <li>
-              <NavLink to="/products" onClick={hamburgerMenu}>
+            <li
+              style={{ display: "flex", flexDirection: "column", gap: "20px" }}
+            >
+              <NavLink to="/products" onClick={toggleProductDropdown}>
                 Products
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -226,6 +234,124 @@ const Navbar = () => {
                   <path d="M13 7h-6l4 5l-4 5h6l4 -5z" />
                 </svg>
               </NavLink>
+              {showProductDropdown && (
+                <div className="mobile-dropdown">
+                  <NavLink
+                    style={{ display: "flex" }}
+                    to="/products/keyboards"
+                    onClick={hamburgerMenu}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="icon icon-tabler icon-tabler-point-filled"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      stroke-width="2"
+                      stroke="currentColor"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path
+                        d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z"
+                        stroke-width="0"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    Keyboards
+                  </NavLink>
+                  <NavLink to="/products/keycaps" onClick={hamburgerMenu}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="icon icon-tabler icon-tabler-point-filled"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      stroke-width="2"
+                      stroke="currentColor"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path
+                        d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z"
+                        stroke-width="0"
+                        fill="currentColor"
+                      />
+                    </svg>{" "}
+                    Keycaps
+                  </NavLink>
+                  <NavLink to="/products/switches" onClick={hamburgerMenu}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="icon icon-tabler icon-tabler-point-filled"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      stroke-width="2"
+                      stroke="currentColor"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path
+                        d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z"
+                        stroke-width="0"
+                        fill="currentColor"
+                      />
+                    </svg>{" "}
+                    Switches
+                  </NavLink>
+                  <NavLink to="/products/accessories" onClick={hamburgerMenu}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="icon icon-tabler icon-tabler-point-filled"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      stroke-width="2"
+                      stroke="currentColor"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path
+                        d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z"
+                        stroke-width="0"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    Accessories
+                  </NavLink>
+                  <NavLink to="/products" onClick={hamburgerMenu}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      class="icon icon-tabler icon-tabler-point-filled"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      stroke-width="2"
+                      stroke="currentColor"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path
+                        d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z"
+                        stroke-width="0"
+                        fill="currentColor"
+                      />
+                    </svg>
+                    All Products
+                  </NavLink>
+                </div>
+              )}
             </li>
             <li>
               <NavLink to="/support" onClick={hamburgerMenu}>
