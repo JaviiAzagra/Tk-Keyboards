@@ -2,8 +2,16 @@
   padding-bottom: 100px;
 }
 
+.cart--mobile {
+  display: none;
+}
+
+.cartmobile {
+  display: none;
+}
+
 .carrito {
-  padding-top: 150px;
+  padding-top: 120px;
   padding-bottom: 120px;
   display: flex;
   flex-direction: column;
@@ -215,14 +223,12 @@
 
 @media screen and (max-width: 1300px) {
   .carrito {
-    height: auto;
+    padding-top: 90px;
 
-    ul {
-      width: 80%;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+    h2 {
+      font-size: 40px;
     }
+
     &--container {
       flex-direction: column;
       align-items: center;
@@ -237,6 +243,80 @@
         gap: 10px;
         img {
           width: 60%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .carrito--container__table {
+    display: none;
+  }
+
+  .cartmobile {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+    padding: 20px 0;
+  }
+
+  .cart--mobile {
+    /* padding: 8px; */
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    /* justify-content: center; */
+
+    &__img {
+      img {
+        width: 90px;
+        filter: brightness(1.1);
+        mix-blend-mode: multiply;
+      }
+    }
+    &__data {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+
+      h1 {
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      p {
+        color: rgb(112, 112, 112);
+        font-weight: 400;
+        text-transform: capitalize;
+      }
+
+      &--quantity {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        p {
+          text-align: center;
+          width: 20px;
+          padding: 2px 10px 2px 10px;
+          border: 1px solid #b3b3b3;
+          border-radius: 10px;
+          font-size: 12px;
+        }
+
+        button {
+          font-size: 12px;
+          border: none;
+          background: none;
+          color: rgb(112, 112, 112);
+          text-decoration: underline;
+          text-underline-offset: 0.4em;
+        }
+        button:hover {
+          color: black;
         }
       }
     }

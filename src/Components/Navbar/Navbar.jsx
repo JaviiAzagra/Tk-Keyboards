@@ -208,7 +208,7 @@ const Navbar = () => {
 
           <ul /* onClick={hamburgerMenu} */>
             <li>
-              <NavLink to="/products">
+              <NavLink to="/products" onClick={hamburgerMenu}>
                 Products
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

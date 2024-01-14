@@ -109,6 +109,27 @@ const Order = ({ carrito, calcularPrecioTotal, borrarCarrito }) => {
                 ))}
               </tbody>
             </table>
+            <div className="cartmobile">
+              {carrito.map((item, index) => (
+                <div className="cart--mobile" key={index}>
+                  <div className="cart--mobile__img">
+                    <img
+                      onClick={() => Navigate(`/products/${item._id}`)}
+                      src={item.img}
+                      alt={item.name}
+                    />
+                  </div>
+                  <div className="cart--mobile__data">
+                    <h1>{item.name}</h1>
+                    <p>${(item.price * item.cantidad).toFixed(2)}</p>
+                    <p>{item.type}</p>
+                    <div className="cart--mobile__data--quantity">
+                      <p>{item.cantidad} </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
             <p style={{ textAlign: "right", fontSize: "20px" }}>
               Total: ${calcularPrecioTotal()}
             </p>

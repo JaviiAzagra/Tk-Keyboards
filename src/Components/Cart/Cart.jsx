@@ -87,7 +87,6 @@ export const Cart = ({
                         fontWeight: "900px",
                         display: "flex",
                         gap: "10px",
-                        justifyContent: "space-between",
                       }}
                     >
                       <p
@@ -98,13 +97,55 @@ export const Cart = ({
                         ${(item.price * item.cantidad).toFixed(2)}
                       </p>
 
-                      <button onClick={() => handleDelete(item._id)}>❌</button>
+                      <button onClick={() => handleDelete(item._id)}>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="icon icon-tabler icon-tabler-x"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          stroke-width="2"
+                          stroke="currentColor"
+                          fill="none"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                          <path d="M18 6l-12 12" />
+                          <path d="M6 6l12 12" />
+                        </svg>
+                      </button>
                     </div>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
+
+          <div className="cartmobile">
+            {carrito.map((item, index) => (
+              <div className="cart--mobile" key={index}>
+                <div className="cart--mobile__img">
+                  <img
+                    onClick={() => navigate(`/products/${item._id}`)}
+                    src={item.img}
+                    alt={item.name}
+                  />
+                </div>
+                <div className="cart--mobile__data">
+                  <h1>{item.name}</h1>
+                  <p>${(item.price * item.cantidad).toFixed(2)}</p>
+                  <p>{item.type}</p>
+                  <div className="cart--mobile__data--quantity">
+                    <p>{item.cantidad} </p>
+                    <button onClick={() => handleDelete(item._id)}>
+                      Remove
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
 
           <div>
             <div className="carrito--container__total">
