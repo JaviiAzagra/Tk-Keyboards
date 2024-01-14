@@ -43,12 +43,13 @@ const Navbar = () => {
           <div className="navbar--nav">
             <div className="navbar--nav--title">
               <NavLink to="/">
-                <img src="/assets/logotk.png" alt="logotk" />
+                {/* <img src="/assets/logotk1.png" alt="logotk" /> */}
+                <img src="/assets/logo.png" alt="logotk" />
               </NavLink>
             </div>
             <div className="navbar--nav--links">
               <div className="nav-link-with-dropdown">
-                <NavLink to="/products">
+                <NavLink>
                   Products
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -71,30 +72,44 @@ const Navbar = () => {
                     <Link to="/products/keyboards">
                       <h3>Keyboards</h3>
                       <ul>
-                        <li>Akko</li>
-                        <li>Keychrom</li>
+                        <li>60%</li>
+                        <li>65%</li>
+                        <li>75%</li>
+                        <li>80% | TKL</li>
+                        <li>100% | Full Size</li>
+                        <li>View All</li>
                       </ul>
                     </Link>
                     <Link to="/products/keycaps">
                       <h3>Keycaps</h3>
                       <ul>
-                        <li>Akko</li>
-                        <li>Keychrom</li>
+                        <li>Cherry</li>
+                        <li>ASA</li>
+                        <li>JDA</li>
+                        <li>OSA</li>
+                        <li>SAL</li>
+                        <li>OPI</li>
+                        <li>OEM</li>
+                        <li>View All</li>
                       </ul>
                     </Link>
                     <Link to="/products/switches">
                       <h3>Switches</h3>
                       <ul>
-                        <li>Akko</li>
-                        <li>Keychrom</li>
-                        <li>Gateron</li>
+                        <li>Linear</li>
+                        <li>Tactile</li>
+                        <li>Click</li>
+                        <li>View All</li>
                       </ul>
                     </Link>
                     <Link to="/products/accessories">
                       <h3>Accessories</h3>
                       <ul>
-                        <li>Akko</li>
-                        <li>Keychrom</li>
+                        <li>Mouse Pad</li>
+                        <li>Coiled Cable</li>
+                        <li>Wrist Rest</li>
+                        <li>Stabilizer</li>
+                        <li>View All</li>
                       </ul>
                     </Link>
                   </div>
@@ -191,16 +206,87 @@ const Navbar = () => {
             </div>
           </span>
 
-          <ul onClick={hamburgerMenu}>
-            {navLinks.map((link, index) => (
-              <div>
-                <li key={index}>
-                  <NavLink to={link.to} activeClassName="active">
-                    {link.text}
-                  </NavLink>
-                </li>
-              </div>
-            ))}
+          <ul /* onClick={hamburgerMenu} */>
+            <li>
+              <NavLink to="/products">
+                Products
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon icon-tabler icon-tabler-arrow-badge-right"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M13 7h-6l4 5l-4 5h6l4 -5z" />
+                </svg>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/support" onClick={hamburgerMenu}>
+                Support{" "}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon icon-tabler icon-tabler-arrow-badge-right"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M13 7h-6l4 5l-4 5h6l4 -5z" />
+                </svg>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/about" onClick={hamburgerMenu}>
+                Our Story{" "}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon icon-tabler icon-tabler-arrow-badge-right"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M13 7h-6l4 5l-4 5h6l4 -5z" />
+                </svg>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/contact" onClick={hamburgerMenu}>
+                Contact{" "}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon icon-tabler icon-tabler-arrow-badge-right"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M13 7h-6l4 5l-4 5h6l4 -5z" />
+                </svg>
+              </NavLink>
+            </li>
           </ul>
         </div>
       </div>

@@ -100,7 +100,7 @@ const Chat = () => {
     },
     {
       id: "9",
-      message: "You can also visit our history in the following linkk",
+      message: "You can also visit our history in the following link",
       trigger: "10",
     },
     {

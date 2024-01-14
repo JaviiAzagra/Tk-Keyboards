@@ -6,7 +6,6 @@ import { BrowserRouter } from "react-router-dom";
 import ScrollToTop from "./Helpers/ScrollToTop";
 import store from "./Redux/store";
 import { Provider } from "react-redux";
-/* import { ToastContainer } from "react-toastify"; */
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -15,17 +14,5 @@ root.render(
       <ScrollToTop />
       <App />
     </BrowserRouter>
-    {/* <ToastContainer
-      position="bottom-right"
-      autoClose={5000}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-      theme="dark"
-    /> */}
   </Provider>
 );

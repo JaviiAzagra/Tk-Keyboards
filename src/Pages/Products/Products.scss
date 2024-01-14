@@ -1,5 +1,4 @@
 .product {
-  padding-top: 80px;
   text-align: center;
   padding-bottom: 100px;
   background-color: rgb(245, 245, 245);
@@ -12,6 +11,9 @@
     flex-direction: column;
     align-items: start;
     gap: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgb(179, 179, 179);
 
     &__inputs {
       display: flex;
@@ -19,10 +21,10 @@
       gap: 10px;
     }
 
-    h2 {
+    /* h2 {
       border-bottom: 1px solid black;
     }
-
+ */
     label {
       display: flex;
       align-items: center;
@@ -57,19 +59,33 @@
 }
 
 .containerproducts {
+  padding-bottom: 100px;
   padding-top: 50px;
   display: flex;
   justify-content: center;
-  gap: 100px;
+  gap: 60px;
 
   div h2 {
     font-size: 24px;
   }
 
   &--filters {
+    width: 300px;
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    /* gap: 50px; */
+
+    &__title {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 20px;
+      /* border-bottom: 1px solid black; */
+      p {
+        font-size: 20px;
+      }
+    }
   }
 
   &--filtersmobile {
@@ -78,10 +94,90 @@
 }
 
 .products {
-  padding-top: 80px;
   text-align: center;
   padding-bottom: 150px;
   background-color: rgb(245, 245, 245);
+
+  &__backgroundkeyboards {
+    background-image: url("../../../public/assets/tecladotitle.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h2 {
+      color: white;
+      font-size: 100px;
+    }
+  }
+
+  &__backgroundkeycaps {
+    background-image: url("../../../public/assets/keycapstitle.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* filter: blur(2px); */
+
+    h2 {
+      color: white;
+      font-size: 100px;
+    }
+  }
+
+  &__backgroundswitches {
+    background-image: url("../../../public/assets/switchestitle");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h2 {
+      color: white;
+      font-size: 100px;
+    }
+  }
+
+  &__backgroundallproducts {
+    background-image: url("../../../public/assets/allproductstitle.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h2 {
+      color: white;
+      font-size: 100px;
+    }
+  }
+
+  &__backgroundaccessories {
+    background-image: url("../../../public/assets/accessoriestitle.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h2 {
+      color: white;
+      font-size: 100px;
+    }
+  }
 
   a {
     color: black;
@@ -98,9 +194,9 @@
     fill: black;
   }
 
-  h2 {
+  /* h2 {
     font-size: 50px;
-  }
+  } */
 
   input {
     border: 1px solid rgb(192, 192, 192);
@@ -129,62 +225,70 @@
 
 .keyboards {
   display: grid;
-  grid-template-columns: repeat(4, 0fr);
+  grid-template-columns: repeat(4, 4fr);
   gap: 30px;
 
   &--nan {
-    width: 1400px;
+    /* width: 1400px; */
+    grid-template-columns: repeat(4, 4fr);
   }
 
   &--cards {
-    width: 350px;
+    padding: 10px;
+    width: 260px;
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
     background-color: rgb(255, 255, 255);
-    box-shadow: 0px 10px 80px 10px rgb(223, 223, 223);
+    /* box-shadow: 0px 10px 80px 10px rgb(223, 223, 223); */
     border-radius: 10px;
 
-    /* &__img {
-      height: 300px;
-      width: 300px;
+    &__img {
+      height: 230px;
       img {
-        width: 350px;
+        width: 260px;
         filter: brightness(1.1);
         mix-blend-mode: multiply;
       }
-    } */
+    }
     &__text {
+      /* height: 150px; */
       padding: 0px 10px;
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;
-      line-height: 20px;
       display: flex;
+      justify-items: flex-end;
       flex-direction: column;
-      align-items: start;
       z-index: 100;
+      gap: 5px;
+      background-color: white;
+
+      &--brand {
+        color: rgb(126, 126, 126);
+      }
+
+      p {
+        text-align: start;
+      }
 
       &--price {
         color: rgb(223, 145, 2);
         font-weight: 600;
       }
-      p {
-        text-align: center;
-        padding: 10px;
-      }
     }
   }
 }
 
-@media screen and (min-width: 1920px) {
+/* @media screen and (min-width: 1920px) {
   .keyboards {
     &--cards {
-      width: 450px;
+      width: 260px;
       &__img {
-        height: 350px;
-        filter: brightness(1.1);
-        mix-blend-mode: multiply;
+        height: 260px;
         img {
-          width: 380px;
+          width: 260px;
+          filter: brightness(1.1);
+          mix-blend-mode: multiply;
         }
       }
     }
@@ -194,22 +298,22 @@
 @media screen and (max-width: 1920px) {
   .keyboards {
     &--cards {
-      width: 360px;
+      width: 260px;
       &__img {
-        height: 350px;
+        height: 230px;
         img {
-          width: 350px;
+          width: 260px;
           filter: brightness(1.1);
           mix-blend-mode: multiply;
         }
       }
     }
   }
-}
+} */
 
 @media screen and (max-width: 1685px) {
   .keyboards {
-    grid-template-columns: repeat(3, 0fr);
+    grid-template-columns: repeat(3, 3fr);
   }
 }
 
@@ -239,7 +343,6 @@
 
 @media screen and (max-width: 1450px) {
   .product {
-    padding-top: 100px;
     &--filter {
       flex-direction: column;
       justify-content: center;
@@ -266,7 +369,7 @@
       width: 100%;
 
       button {
-        width: 360px;
+        width: 280px;
         height: 40px;
         display: flex;
         justify-content: center;
@@ -328,7 +431,8 @@
 
     button {
       position: absolute;
-      right: -150px;
+      right: -110px;
+      top: 10px;
       background: none;
       color: white;
       border: none;
@@ -346,12 +450,42 @@
 
 @media screen and (max-width: 1180px) {
   .keyboards {
-    grid-template-columns: repeat(2, 0fr);
+    grid-template-columns: repeat(2, 2fr);
   }
 }
 
 @media screen and (max-width: 785px) {
   .keyboards {
-    grid-template-columns: repeat(1, 0fr);
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media screen and (max-width: 785px) {
+  .products {
+    &__backgroundkeyboards {
+      h2 {
+        font-size: 70px;
+      }
+    }
+    &__backgroundaccessories {
+      h2 {
+        font-size: 68px;
+      }
+    }
+    &__backgroundkeycaps {
+      h2 {
+        font-size: 90px;
+      }
+    }
+    &__backgroundallproducts {
+      h2 {
+        font-size: 80px;
+      }
+    }
+    &__backgroundswitches {
+      h2 {
+        font-size: 70px;
+      }
+    }
   }
 }

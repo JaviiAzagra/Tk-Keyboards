@@ -42,52 +42,75 @@ export const Cart = ({
   return (
     <div className="carrito">
       <h2>Cart</h2>
+
       {carrito.length > 0 ? (
         <div className="carrito--container">
-          <ul>
-            {carrito.map((item, index) => (
-              <div className="carrito--container__products" key={index}>
-                <img
-                  onClick={() => navigate(`/products/${item._id}`)}
-                  src={item.img}
-                />
-                <div style={{ maxWidth: "300px", minWidth: "300px" }}>
-                  <p>{item.name}</p>
-                  <span
+          <table className="carrito--container__table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {carrito.map((item, index) => (
+                <tr className="tr" key={index}>
+                  <td>
+                    <div className="carrito--container__product-info">
+                      <img
+                        onClick={() => navigate(`/products/${item._id}`)}
+                        src={item.img}
+                        alt={item.name}
+                      />
+                      <div>
+                        <p>{item.name}</p>
+                        <span style={{ fontWeight: "600" }}>
+                          <span>${item.price.toFixed(2)}</span>
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+                  <td
                     style={{
-                      fontWeight: "600",
+                      textAlign: "center",
                     }}
                   >
-                    Price: <span>${item.price.toFixed(2)}</span>
-                  </span>
-                </div>
-                <div>
-                  <span>
-                    Quantity: <span>{item.cantidad}</span>
-                  </span>
-                </div>
-                <div>
-                  <p
-                    style={{
-                      fontWeight: "600",
-                      display: "flex",
-                      gap: "1rem",
-                    }}
-                    className="carrito--container__price"
-                  >
-                    Total: ${(item.price * item.cantidad).toFixed(2)}
-                    <button onClick={() => handleDelete(item._id)}>❌</button>
-                  </p>
-                </div>
-              </div>
-            ))}
-          </ul>
+                    <div className="carrito--container__table__quantity">
+                      <p>{item.cantidad}</p>
+                    </div>
+                  </td>
+                  <td style={{ textAlign: "center" }}>
+                    <div
+                      className="carrito--container__table__total"
+                      style={{
+                        fontWeight: "900px",
+                        display: "flex",
+                        gap: "10px",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <p
+                        style={{
+                          fontWeight: "600",
+                        }}
+                      >
+                        ${(item.price * item.cantidad).toFixed(2)}
+                      </p>
+
+                      <button onClick={() => handleDelete(item._id)}>❌</button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
 
           <div>
             <div className="carrito--container__total">
               <div className="carrito--container__total__price">
                 <p>Total:</p>
-                <p>${calcularPrecioTotal()}</p>
+                <p>${calcularPrecioTotal().toFixed(2)}</p>
               </div>
               <p>Taxes and shipping calculated at checkout</p>
               <div>
