@@ -16,8 +16,8 @@ const Chatgotop = () => {
   };
 
   return (
-    <div className="chatgotop">
-      <button onClick={handleButtonClick}>
+    <div className="chatgotop" onClick={handleButtonClick}>
+      <button>
         {buttonIcon === "menu" ? (
           <svg
             xmlns="http://www.w3.org/2000/svg"
