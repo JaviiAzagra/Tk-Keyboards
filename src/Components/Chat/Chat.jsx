@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import ChatBot from "react-simple-chatbot";
 import { ThemeProvider } from "styled-components";
+import "./Chat.scss";
 
 const Chat = () => {
   const theme = {
@@ -13,6 +14,7 @@ const Chat = () => {
     botFontColor: "#fff",
     userBubbleColor: "#fff",
     userFontColor: "#4a4a4a",
+    zIndex: 9999,
   };
 
   const config = {
@@ -20,6 +22,7 @@ const Chat = () => {
     height: "500px",
     floating: true,
     placeholder: "Message",
+    zIndex: 9999,
   };
   const steps = [
     {
@@ -111,7 +114,7 @@ const Chat = () => {
     },
   ];
   return (
-    <div>
+    <div className="chat">
       <ThemeProvider theme={theme}>
         <ChatBot style={{ zIndex: 9999 }} steps={steps} {...config} />
       </ThemeProvider>

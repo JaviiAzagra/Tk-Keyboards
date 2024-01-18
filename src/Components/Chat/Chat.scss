@@ -1,0 +1,16 @@
+.rsc a {
+  bottom: 155px;
+  width: 46px;
+  height: 46px;
+}
+
+.rsc-header-close-button {
+  width: 46px;
+  height: 46px;
+  background-color: rgb(223, 145, 2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease-in-out;
+}

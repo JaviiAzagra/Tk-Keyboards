@@ -23,6 +23,7 @@ import ProductsDetail from "./Components/ProductsDetail/ProductsDetail";
 import Popup from "./Components/Popup/Popup";
 import Chat from "./Components/Chat/Chat";
 import Order from "./Components/Order/Order";
+import Chatgotop from "./Components/ChatGotop/Chatgotop";
 
 function App() {
   const dispatch = useDispatch();
@@ -141,7 +142,6 @@ function App() {
 
   return (
     <div className="App">
-      <GoTop />
       <Navbar />
       {showPopup && <Popup onClose={handleClosePopup} />}
       <Routes>
@@ -187,7 +187,9 @@ function App() {
         />
         <Route path="*" Component={NotFound} />
       </Routes>
-      <Chat />
+      {/* <Chat />
+      <GoTop /> */}
+      <Chatgotop />
       <Footer />
     </div>
   );
