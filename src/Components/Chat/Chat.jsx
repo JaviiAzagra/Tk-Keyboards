@@ -13,7 +13,6 @@ const Chat = () => {
     botFontColor: "#fff",
     userBubbleColor: "#fff",
     userFontColor: "#4a4a4a",
-    zIndex: 9999,
   };
 
   const config = {
@@ -21,7 +20,6 @@ const Chat = () => {
     height: "500px",
     floating: true,
     placeholder: "Message",
-    zIndex: 9999,
   };
   const steps = [
     {
@@ -115,7 +113,7 @@ const Chat = () => {
   return (
     <div>
       <ThemeProvider theme={theme}>
-        <ChatBot steps={steps} {...config} />
+        <ChatBot style={{ zIndex: 9999 }} steps={steps} {...config} />
       </ThemeProvider>
     </div>
   );

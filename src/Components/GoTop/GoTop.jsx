@@ -25,9 +25,8 @@ const GoTop = () => {
   return (
     <>
       {isVisible && (
-        <div className="gotop">
+        <div className="gotop" onClick={pageUp}>
           <svg
-            onClick={pageUp}
             className="gotop--svg"
             xmlns="http://www.w3.org/2000/svg"
             class="icon icon-tabler icon-tabler-circle-arrow-up-filled"
