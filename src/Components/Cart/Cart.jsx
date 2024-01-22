@@ -39,6 +39,7 @@ export const Cart = ({
       navigate("/order-confirmation");
     }, 2000);
   };
+
   return (
     <div className="carrito">
       <h2>Cart</h2>

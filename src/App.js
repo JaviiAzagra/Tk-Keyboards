@@ -187,8 +187,6 @@ function App() {
         />
         <Route path="*" Component={NotFound} />
       </Routes>
-      {/* <Chat />
-      <GoTop /> */}
       <Chatgotop />
       <Footer />
     </div>

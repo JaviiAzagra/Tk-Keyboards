@@ -14,7 +14,6 @@ const Chat = () => {
     botFontColor: "#fff",
     userBubbleColor: "#fff",
     userFontColor: "#4a4a4a",
-    zIndex: 9999,
   };
 
   const config = {
@@ -22,7 +21,6 @@ const Chat = () => {
     height: "500px",
     floating: true,
     placeholder: "Message",
-    zIndex: 9999,
   };
   const steps = [
     {
