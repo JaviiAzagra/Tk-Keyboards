@@ -1,5 +1,6 @@
 .home {
   color: black;
+  background-color: rgb(245, 245, 245);
 
   &--top {
     background-image: url("../../../public/assets/keyboardshome.jpg");
@@ -44,6 +45,10 @@
       &--mid {
         display: flex;
         align-items: center;
+
+        img {
+          border-radius: 16px;
+        }
       }
       &--right {
         display: flex;
@@ -59,6 +64,13 @@
   transition: width 0.3s ease;
   overflow: hidden;
   transition: transform 0.2s;
+  border-radius: 16px;
+  height: 249px;
+
+  img {
+    height: 100%;
+    object-fit: cover;
+  }
 
   h4 {
     font-size: 40px;
@@ -78,13 +90,6 @@
   background: rgba(0, 0, 0, 0.356);
 }
 
-.img {
-  width: 100%;
-  height: auto;
-  display: block;
-  height: 249px;
-}
-
 .superpuesto {
   position: absolute;
   top: 50%;
@@ -96,58 +101,87 @@
   font-weight: bold; /* Puedes ajustar el peso de la fuente según tu diseño */
 }
 
-@media screen and (max-width: 1300px) {
-  .home--mid__products {
-    img {
-      width: 267px;
+.featurekeyboards {
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 90px;
+
+  &--title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 50px;
+    padding-right: 50px;
+    h1 {
+      margin-bottom: 30px;
+      font-size: 46px;
     }
-    &--left {
-      img {
-        width: 300px;
-        height: 160px;
-        transition: transform 0.2s;
-      }
+    a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      color: black;
+      text-decoration: none;
     }
-    &--right {
-      img {
-        width: 300px;
-        height: 160px;
-        transition: transform 0.2s;
-      }
+
+    a:hover {
+      text-decoration: underline;
     }
+  }
+
+  &--container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
   }
 }
 
-@media screen and (max-width: 950px) {
-  .home--mid__products {
-    /* text-align: center;
-    display: grid;
-    grid-template-columns: repeat(1, 0fr); */
-    img {
-      width: 267px;
-    }
-    &--left {
-      img {
-        width: 300px;
-        height: 160px;
-        transition: transform 0.2s;
+div::-webkit-scrollbar {
+  /* width: 12px; */
+  height: 8px;
+  border-radius: 20px;
+  cursor: pointer; /* width of the entire scrollbar */
+}
+
+div::-webkit-scrollbar-track {
+  background: white;
+  border-radius: 20px;
+  cursor: pointer; /* color of the tracking area */
+}
+
+div::-webkit-scrollbar-thumb {
+  background-color: rgb(130, 130, 130);
+  border-radius: 20px;
+  border: 1px solid rgb(130, 130, 130);
+  cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+  .featurekeyboards {
+    padding: 20px;
+    margin-bottom: 50px;
+    &--title {
+      padding: 0;
+      width: 100%;
+      flex-direction: column;
+      align-items: start;
+      margin-bottom: 40px;
+      gap: 10px;
+      h1 {
+        font-size: 30px;
+        margin-bottom: 0;
       }
     }
-    &--right {
-      img {
-        width: 300px;
-        height: 160px;
-        transition: transform 0.2s;
-      }
+    &--container {
+      width: 100%;
+      gap: 10px;
     }
   }
 }
 
 @media screen and (max-width: 616px) {
   .home--mid__products {
-    /* text-align: center;
-    display: grid;
-    grid-template-columns: repeat(1, 0fr); */
     img {
       width: 360px;
       height: 100%;

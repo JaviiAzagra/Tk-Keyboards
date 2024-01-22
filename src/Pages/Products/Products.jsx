@@ -93,7 +93,10 @@ const Products = () => {
       </div>
 
       {loading ? (
-        <Loader />
+        <>
+          <Loader />
+          <h1 style={{ marginBottom: "50px" }}>Loading products...</h1>
+        </>
       ) : (
         <div className="containerproducts">
           <div className="containerproducts--filters">
