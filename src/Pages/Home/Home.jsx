@@ -40,6 +40,15 @@ const Home = () => {
         <h3>Building Your First Mechanical Keyboard is Easier Than Ever</h3>
         <div className="home--mid__products">
           <div className="home--mid__products--left">
+            <Link to="/products">
+              <div className="home--mid__products--mid">
+                <img src="/assets/allproductstitle.png" alt="keycaps" />
+                <div class="capa-oscura"></div>
+                <h4 className="superpuesto">All Products</h4>
+              </div>
+            </Link>
+          </div>
+          <div className="home--mid__products--right">
             <Link to="/products/keyboards">
               <div className="container">
                 <img
@@ -62,13 +71,6 @@ const Home = () => {
                 <h4 className="superpuesto">Accesories</h4>
               </div>
             </Link>
-          </div>
-          <Link to="/products">
-            <div className="home--mid__products--mid">
-              <img src="/assets/keyboardhomemid.jpg" alt="keycaps" />
-            </div>
-          </Link>
-          <div className="home--mid__products--right">
             <Link to="/products/keycaps">
               <div className="container">
                 <img
