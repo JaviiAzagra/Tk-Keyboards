@@ -6,6 +6,7 @@ import Navbar2 from "../Navbar2/Navbar2";
 const Navbar = () => {
   const [hamburger, setHamburger] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [colorChange, setColorChange] = useState(false);
 
   const hamburgerMenu = () => {
     setHamburger(!hamburger);
@@ -32,19 +33,28 @@ const Navbar = () => {
     { to: "/contact", text: "Contact" },
   ];
 
-  /* const { user, token } = useSelector((state) => state.auth);
-  const { profiles } = useSelector((state) => state.profiles); */
-
   const [showProductDropdown, setShowProductDropdown] = useState(false);
 
   const toggleProductDropdown = () => {
     setShowProductDropdown(!showProductDropdown);
   };
 
+  const changeNavbarColor = () => {
+    setColorChange(window.scrollY >= 300);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", changeNavbarColor);
+    return () => {
+      window.removeEventListener("scroll", changeNavbarColor);
+    };
+  }, []);
+
   return (
     <div>
-      <div className="navbar">
-        {/* <Navbar2 /> */}
+      <div
+        /* className={`navbar ${colorChange ? "colorChange" : ""}`} */ className="navbar"
+      >
         <nav>
           <div className="navbar--nav">
             <div className="navbar--nav--title">
@@ -188,10 +198,11 @@ const Navbar = () => {
                   </svg>
                 </Link>
                 <svg
+                  className="hamburger"
                   onClick={hamburgerMenu}
                   xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
+                  width="22"
+                  height="22"
                   viewBox="0 0 16 16"
                 >
                   <path d="M1 2.75A.75.75 0 0 1 1.75 2h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 2.75Zm0 5A.75.75 0 0 1 1.75 7h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 7.75ZM1.75 12h12.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Z" />

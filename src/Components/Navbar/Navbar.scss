@@ -5,10 +5,10 @@
 .navbar {
   /* background-color: rgba(245, 245, 245, 0.76);
   backdrop-filter: blur(10px); */
-  background-color: rgb(245, 245, 245);
+  /* background-color: rgb(245, 245, 245); */
+  background-color: rgb(53, 58, 61);
   position: fixed;
   width: 100%;
-  color: black;
   z-index: 300;
   padding: 5px 0px 5px 0px;
 
@@ -56,7 +56,7 @@
         height: 70px;
         padding: 0px 20px 0px 20px;
         text-decoration: none;
-        color: black;
+        color: rgb(255, 255, 255);
         font-size: 18px;
         font-weight: 600;
         display: flex;
@@ -79,19 +79,71 @@
   }
 }
 
+.navbar.colorChange {
+  color: white;
+  background-color: white;
+
+  a {
+    color: black;
+  }
+
+  .cart {
+    fill: black;
+  }
+  .profile {
+    stroke: black;
+  }
+  .hamburger {
+    fill: black;
+  }
+  .nav-link-with-dropdown {
+    svg {
+      stroke: black;
+    }
+  }
+}
+
+/* .navbar:hover {
+  color: white;
+  background-color: white;
+
+  a {
+    color: black;
+  }
+
+  .cart {
+    fill: black;
+  }
+  .profile {
+    stroke: black;
+  }
+  .hamburger {
+    fill: black;
+  }
+  .nav-link-with-dropdown {
+    svg {
+      stroke: black;
+    }
+  }
+} */
+
 .profile {
-  stroke: black;
+  stroke: rgb(255, 255, 255);
 }
 .profile:hover {
-  stroke: rgb(73, 73, 73);
+  stroke: rgb(220, 220, 220);
+}
+
+.cart {
+  fill: rgb(255, 255, 255);
 }
 
 .cart:hover {
-  fill: rgb(73, 73, 73);
+  fill: rgb(220, 220, 220);
 }
 
-.navbar.colorChange {
-  background-color: #000;
+.hamburger {
+  fill: white;
 }
 
 .closed-menu {
@@ -200,12 +252,13 @@
     gap: 4px;
 
     svg {
-      stroke: black;
+      stroke: rgb(255, 255, 255);
     }
   }
 }
-
-/* Estilos del contenido del menú desplegable */
+/* .nav-link-with-dropdown:hover {
+  background-color: white;
+} */
 
 .dropdown {
   border-top: 1px solid rgb(216, 216, 216);
@@ -316,7 +369,6 @@
 
   svg {
     width: 30px;
-    fill: rgb(0, 0, 0);
   }
 
   @media (max-width: 1200px) {
@@ -334,10 +386,6 @@
   .menu {
     display: flex;
     align-items: center;
-
-    svg {
-      fill: rgb(0, 0, 0);
-    }
   }
   .mobile-menu {
     display: flex;
@@ -357,10 +405,6 @@
 @media screen and (max-width: 430px) {
   .menu {
     display: flex;
-
-    svg {
-      fill: rgb(0, 0, 0);
-    }
   }
 
   .navbar--nav--links {
@@ -371,10 +415,6 @@
 @media screen and (max-width: 290px) {
   .menu {
     display: flex;
-
-    svg {
-      fill: rgb(0, 0, 0);
-    }
   }
 
   .navbar--nav--links {

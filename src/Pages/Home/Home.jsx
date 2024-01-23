@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./Home.scss";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import Shipping from "../../Components/Shipping/Shipping";
 import axios from "axios";
 import Loader from "../../Components/Loader/Loader";
@@ -33,9 +36,54 @@ const Home = () => {
     fetchData();
   }, []);
 
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    centerMode: true,
+    centerPadding: "0",
+    autoplay: true,
+    speed: 2000,
+    autoplaySpeed: 5000,
+    arrows: false,
+  };
+
   return (
     <div className="home">
-      <section className="home--top"></section>
+      <section className="slider">
+        <Slider {...sliderSettings}>
+          <div className="home--top">
+            <img src="/assets/homeimg1.jpg" alt="img1" />
+            <div className="textsuperpuesto">
+              <h1>Tanjirou 5108B Plus</h1>
+              <Link to="/products/65a1410afcb51052ccbb93ef">Shop Now</Link>
+            </div>
+          </div>
+          <div className="home--top">
+            <img src="/assets/homeimg2.jpg" alt="img2" />
+            <div className="textsuperpuesto">
+              <h1>Taiko no Tatsujin 5108S</h1>
+              <Link to="/products/65a1410afcb51052ccbb9401">Shop Now</Link>
+            </div>
+          </div>
+          <div className="home--top">
+            <img src="/assets/homeimg3.jpg" alt="img3" />
+            <div className="textsuperpuesto">
+              <h1>Akko V3 Silver Pro Switch</h1>
+              <Link to="/products/65a1410afcb51052ccbb93f0">Shop Now</Link>
+            </div>
+          </div>
+          <div className="home--top">
+            <img src="/assets/homeimg4.jpg" alt="img4" />
+            <div className="textsuperpuesto">
+              <h1>Wavez Keycap Set</h1>
+              <Link to="/products/65a1410afcb51052ccbb93f2">Shop Now</Link>
+            </div>
+          </div>
+        </Slider>
+      </section>
       <section className="home--mid">
         <h3>Building Your First Mechanical Keyboard is Easier Than Ever</h3>
         <div className="home--mid__products">
