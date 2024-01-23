@@ -48,6 +48,18 @@ const ProductsDetail = ({ productos, agregarAlCarrito }) => {
     notify();
   };
 
+  const [quantity, setQuantity] = useState(1);
+
+  const handleIncrement = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const handleDecrement = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
   return (
     <div className="keyboardsdetail">
       <div className="keyboardsdetail--container">
@@ -56,25 +68,166 @@ const ProductsDetail = ({ productos, agregarAlCarrito }) => {
         </div>
         <div className="keyboardsdetail--container__text">
           <div className="keyboardsdetail--container__text--top">
+            <p style={{ fontWeight: "300" }}>{product?.brand}</p>
             <h1>{product?.name}</h1>
+            <div style={{ display: "flex", gap: "6px" }}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon icon-tabler icon-tabler-star"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon icon-tabler icon-tabler-star"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon icon-tabler icon-tabler-star"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon icon-tabler icon-tabler-star"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon icon-tabler icon-tabler-star"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
+              </svg>
+              8 Reviews
+            </div>
+
             <p>${product?.price.toFixed(2)}</p>
-            <p>{product?.brand}</p>
+            <p style={{ fontWeight: "300", fontSize: "16px" }}>
+              Tax excluded. Shipping and VAT calculated at checkout.
+            </p>
           </div>
+          {product?.switchType && (
+            <div className="type">
+              <p>
+                Type: <span>{product?.switchType}</span>
+              </p>
+
+              <p className="type--p">{product?.switchType}</p>
+            </div>
+          )}
+          {product?.switch && (
+            <div className="type">
+              <p>
+                Switch: <span>{product?.switch}</span>
+              </p>
+              <p className="type--p">{product?.switch}</p>
+            </div>
+          )}
+          {product?.layout && (
+            <div className="type">
+              <p>
+                Layout: <span>{product?.layout}</span>
+              </p>
+              <p className="type--p">{product?.layout}</p>
+            </div>
+          )}
+          <div className="quantity-container">
+            <p>Quantity: </p>
+            <div className="quantity-input-container">
+              <button className="quantity-button" onClick={handleDecrement}>
+                -
+              </button>
+              <input
+                type="number"
+                min="1"
+                value={quantity}
+                readOnly
+                className="quantity-input"
+              />
+              <button className="quantity-button" onClick={handleIncrement}>
+                +
+              </button>
+            </div>
+          </div>
+          <div className="stock">
+            <p style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+              <svg
+                role="presentation"
+                focusable="false"
+                stroke-width="2"
+                width="18"
+                height="18"
+                class="icon icon-success"
+                viewBox="0 0 18 18"
+              >
+                <path
+                  d="M0 9C0 4.02944 4.02944 0 9 0C13.9706 0 18 4.02944 18 9C18 13.9706 13.9706 18 9 18C4.02944 18 0 13.9706 0 9Z"
+                  fill="currentColor"
+                ></path>
+                <path
+                  d="M5 8.8L7.62937 11.6L13 6"
+                  stroke="#ffffff"
+                  fill="none"
+                ></path>
+              </svg>{" "}
+              In Stock
+            </p>
+          </div>
+          <button onClick={() => handleAddToCart(product)}>Add to cart</button>
           <p>
             Akko x Designer EnjoyInMySec official Wavez keycap set; The
             comprehensive 226-key is designed to fit all keyboard layouts;
             Featuring PBT material and ASA profile for enhanced durability and a
             comfortable typing experience.
           </p>
-          {product?.switch && (
-            <>
-              <p>
-                <span>Switch: </span>
-                {product?.switch}
-              </p>
-            </>
-          )}
-          <button onClick={() => handleAddToCart(product)}>Add To Cart</button>
         </div>
       </div>
       <ToastContainer

@@ -56,6 +56,13 @@ const Keycaps = () => {
     }
   };
 
+  const countProductsByBrand = (brand) => {
+    return filteredProducts.reduce(
+      (count, product) => (product.brand === brand ? count + 1 : count),
+      0
+    );
+  };
+
   const filteredProducts = data ? filterProductsByBrands() : [];
 
   const [isFiltersMobileVisible, setIsFiltersMobileVisible] = useState(false);
@@ -119,7 +126,7 @@ const Keycaps = () => {
                       checked={selectedBrands.includes(brand)}
                       onChange={() => toggleBrandSelection(brand)}
                     />
-                    {brand}
+                    {brand} ({countProductsByBrand(brand)})
                   </label>
                 ))}
               </div>

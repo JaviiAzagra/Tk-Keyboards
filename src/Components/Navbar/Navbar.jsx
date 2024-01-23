@@ -53,7 +53,9 @@ const Navbar = () => {
   return (
     <div>
       <div
-        /* className={`navbar ${colorChange ? "colorChange" : ""}`} */ className="navbar"
+        /*  className={`navbar ${
+          colorChange ? "colorChange" : ""
+        }`} */ className="navbar"
       >
         <nav>
           <div className="navbar--nav">

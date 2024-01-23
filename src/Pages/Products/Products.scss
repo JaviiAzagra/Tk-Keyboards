@@ -93,6 +93,11 @@
   }
 }
 
+.product--filter__inputs {
+  color: #505050;
+  font-weight: 400;
+}
+
 .products {
   text-align: center;
   padding-bottom: 150px;
@@ -236,18 +241,17 @@
   &--cards {
     padding: 10px;
     width: 260px;
+    max-height: 380px;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     background-color: rgb(255, 255, 255);
-    /* box-shadow: 0px 10px 80px 10px rgb(223, 223, 223); */
-    border-radius: 10px;
+    border-radius: 20px;
 
     &__img {
       height: 230px;
       img {
-        width: 260px;
-
+        width: 240px;
         filter: brightness(1.1);
         mix-blend-mode: multiply;
         transition: transform 0.3s ease;

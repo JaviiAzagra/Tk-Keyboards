@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Shipping from "../../Components/Shipping/Shipping";
 import axios from "axios";
 import Loader from "../../Components/Loader/Loader";
+import { t } from "i18next";
 
 const Home = () => {
   const [data, setData] = useState(null);
@@ -45,7 +46,7 @@ const Home = () => {
     centerMode: true,
     centerPadding: "0",
     autoplay: true,
-    speed: 2000,
+    speed: 1000,
     autoplaySpeed: 5000,
     arrows: false,
   };
@@ -58,28 +59,28 @@ const Home = () => {
             <img src="/assets/homeimg1.jpg" alt="img1" />
             <div className="textsuperpuesto">
               <h1>Tanjirou 5108B Plus</h1>
-              <Link to="/products/65a1410afcb51052ccbb93ef">Shop Now</Link>
+              <Link to="/products/65aff0c73246aa775184b3c3">Shop Now</Link>
             </div>
           </div>
           <div className="home--top">
             <img src="/assets/homeimg2.jpg" alt="img2" />
             <div className="textsuperpuesto">
               <h1>Taiko no Tatsujin 5108S</h1>
-              <Link to="/products/65a1410afcb51052ccbb9401">Shop Now</Link>
+              <Link to="/products/65aff0c73246aa775184b3c0">Shop Now</Link>
             </div>
           </div>
           <div className="home--top">
             <img src="/assets/homeimg3.jpg" alt="img3" />
             <div className="textsuperpuesto">
               <h1>Akko V3 Silver Pro Switch</h1>
-              <Link to="/products/65a1410afcb51052ccbb93f0">Shop Now</Link>
+              <Link to="/products/65aff0c73246aa775184b3c7">Shop Now</Link>
             </div>
           </div>
           <div className="home--top">
             <img src="/assets/homeimg4.jpg" alt="img4" />
             <div className="textsuperpuesto">
               <h1>Wavez Keycap Set</h1>
-              <Link to="/products/65a1410afcb51052ccbb93f2">Shop Now</Link>
+              <Link to="/products/65aff0c73246aa775184b3bd">Shop Now</Link>
             </div>
           </div>
         </Slider>

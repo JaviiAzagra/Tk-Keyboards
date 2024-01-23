@@ -33,7 +33,7 @@ const Accessories = () => {
     fetchData();
   }, []);
 
-  const productBrand = ["Akko", "Keychron", "Gateron"];
+  const productBrand = ["Akko", "Keychron"];
   const productType = ["Mousepad", "Coiled Cable", "Wrist Rest", "Stabilizer"];
 
   const toggleBrandSelection = (brand) => {
@@ -45,6 +45,13 @@ const Accessories = () => {
     } else {
       setSelectedBrands([...selectedBrands, brand]);
     }
+  };
+
+  const countProductsByBrand = (brand) => {
+    return filteredProducts.reduce(
+      (count, product) => (product.brand === brand ? count + 1 : count),
+      0
+    );
   };
 
   const filterProductsByBrands = () => {
@@ -121,7 +128,7 @@ const Accessories = () => {
                       checked={selectedBrands.includes(brand)}
                       onChange={() => toggleBrandSelection(brand)}
                     />
-                    {brand}
+                    {brand} ({countProductsByBrand(brand)})
                   </label>
                 ))}
               </div>
@@ -207,7 +214,7 @@ const Accessories = () => {
                             checked={selectedBrands.includes(brand)}
                             onChange={() => toggleBrandSelection(brand)}
                           />
-                          {brand}
+                          {brand} ({countProductsByBrand(brand)})
                         </label>
                       ))}
                     </div>

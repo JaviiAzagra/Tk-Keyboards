@@ -8,6 +8,7 @@ const Switch = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedBrands, setSelectedBrands] = useState([]);
+  const [selectedType, setSelectedType] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,7 +34,7 @@ const Switch = () => {
     fetchData();
   }, []);
 
-  const productBrand = ["Akko", "Keychron", "Gateron"];
+  const productBrand = ["Akko", "Gateron"];
   const productType = ["Linear", "Tactile", "Clicky"];
 
   const toggleBrandSelection = (brand) => {
@@ -47,18 +48,46 @@ const Switch = () => {
     }
   };
 
-  const filterProductsByBrands = () => {
-    if (selectedBrands.length === 0) {
+  const toggleTypeSelection = (type) => {
+    const isSelected = selectedType.includes(type);
+    if (isSelected) {
+      setSelectedType(
+        selectedType.filter((selectedType) => selectedType !== type)
+      );
+    } else {
+      setSelectedType([...selectedType, type]);
+    }
+  };
+
+  const countProductsByBrand = (brand) => {
+    return filteredProducts.reduce(
+      (count, product) => (product.brand === brand ? count + 1 : count),
+      0
+    );
+  };
+
+  const countProductsByType = (type) => {
+    return filteredProducts.reduce(
+      (count, product) => (product.switchType === type ? count + 1 : count),
+      0
+    );
+  };
+
+  const filterProductsByTypesAndBrands = () => {
+    if (selectedType.length === 0 && selectedBrands.length === 0) {
       return data; // Si no hay tipos ni marcas seleccionadas, mostrar todos los productos
     } else {
       return data.filter(
         (product) =>
-          selectedBrands.length === 0 || selectedBrands.includes(product.brand)
+          (selectedBrands.length === 0 ||
+            selectedBrands.includes(product.brand)) &&
+          (selectedType.length === 0 ||
+            selectedType.includes(product.switchType))
       );
     }
   };
 
-  const filteredProducts = data ? filterProductsByBrands() : [];
+  const filteredProducts = data ? filterProductsByTypesAndBrands() : [];
 
   const [isFiltersMobileVisible, setIsFiltersMobileVisible] = useState(false);
 
@@ -121,7 +150,7 @@ const Switch = () => {
                       checked={selectedBrands.includes(brand)}
                       onChange={() => toggleBrandSelection(brand)}
                     />
-                    {brand}
+                    {brand} ({countProductsByBrand(brand)})
                   </label>
                 ))}
               </div>
@@ -129,14 +158,14 @@ const Switch = () => {
             <div className="product--filter">
               <h2>Switch Type</h2>
               <div className="product--filter__inputs">
-                {productType.map((brand) => (
-                  <label key={brand}>
+                {productType.map((type) => (
+                  <label key={type}>
                     <input
                       type="checkbox"
-                      checked={selectedBrands.includes(brand)}
-                      onChange={() => toggleBrandSelection(brand)}
+                      checked={selectedType.includes(type)}
+                      onChange={() => toggleTypeSelection(type)}
                     />
-                    {brand}
+                    {type} ({countProductsByType(type)})
                   </label>
                 ))}
               </div>
@@ -207,7 +236,7 @@ const Switch = () => {
                             checked={selectedBrands.includes(brand)}
                             onChange={() => toggleBrandSelection(brand)}
                           />
-                          {brand}
+                          {brand} ({countProductsByBrand(brand)})
                         </label>
                       ))}
                     </div>
@@ -215,14 +244,14 @@ const Switch = () => {
                   <div className="product--filter">
                     <h2>Switch Type</h2>
                     <div className="product--filter__inputs">
-                      {productType.map((brand) => (
-                        <label key={brand}>
+                      {productType.map((type) => (
+                        <label key={type}>
                           <input
                             type="checkbox"
-                            checked={selectedBrands.includes(brand)}
-                            onChange={() => toggleBrandSelection(brand)}
+                            checked={selectedType.includes(type)}
+                            onChange={() => toggleTypeSelection(type)}
                           />
-                          {brand}
+                          {type} ({countProductsByType(type)})
                         </label>
                       ))}
                     </div>

@@ -62,6 +62,20 @@ const Keyboards = () => {
     }
   };
 
+  const countProductsByBrand = (brand) => {
+    return filteredProducts.reduce(
+      (count, product) => (product.brand === brand ? count + 1 : count),
+      0
+    );
+  };
+
+  const countProductsByLayout = (layout) => {
+    return filteredProducts.reduce(
+      (count, product) => (product.layout === layout ? count + 1 : count),
+      0
+    );
+  };
+
   const filterProductsByTypesAndBrands = () => {
     if (selectedLayout.length === 0 && selectedBrands.length === 0) {
       return data; // Si no hay tipos ni marcas seleccionadas, mostrar todos los productos
@@ -137,7 +151,7 @@ const Keyboards = () => {
                       checked={selectedBrands.includes(brand)}
                       onChange={() => toggleBrandSelection(brand)}
                     />
-                    {brand}
+                    {brand} ({countProductsByBrand(brand)})
                   </label>
                 ))}
               </div>
@@ -152,7 +166,7 @@ const Keyboards = () => {
                       checked={selectedLayout.includes(layout)}
                       onChange={() => toggleLayoutSelection(layout)}
                     />
-                    {layout}
+                    {layout} ({countProductsByLayout(layout)})
                   </label>
                 ))}
               </div>
@@ -223,7 +237,7 @@ const Keyboards = () => {
                             checked={selectedBrands.includes(brand)}
                             onChange={() => toggleBrandSelection(brand)}
                           />
-                          {brand}
+                          {brand} ({countProductsByBrand(brand)})
                         </label>
                       ))}
                     </div>
@@ -231,14 +245,14 @@ const Keyboards = () => {
                   <div className="product--filter">
                     <h2>Layout Size</h2>
                     <div className="product--filter__inputs">
-                      {productLayout.map((brand) => (
-                        <label key={brand}>
+                      {productLayout.map((layout) => (
+                        <label key={layout}>
                           <input
                             type="checkbox"
-                            checked={selectedBrands.includes(brand)}
-                            onChange={() => toggleBrandSelection(brand)}
+                            checked={selectedLayout.includes(layout)}
+                            onChange={() => toggleLayoutSelection(layout)}
                           />
-                          {brand}
+                          {layout} ({countProductsByLayout(layout)})
                         </label>
                       ))}
                     </div>

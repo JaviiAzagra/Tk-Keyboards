@@ -76,6 +76,14 @@
   }
 }
 
+.slick-next {
+  position: absolute;
+  top: 50%;
+  left: 97%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
 .textsuperpuesto {
   position: absolute;
   top: 50%; /* Ajusta según sea necesario */
@@ -228,6 +236,13 @@ div::-webkit-scrollbar-thumb {
 }
 
 @media screen and (max-width: 850px) {
+  .slick-next {
+    position: absolute;
+    top: 50%;
+    left: 95%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
   .home--top {
     img {
       width: 700px;
@@ -274,6 +289,9 @@ div::-webkit-scrollbar-thumb {
 }
 
 @media screen and (max-width: 616px) {
+  .slick-next {
+    display: none;
+  }
   .home--top {
     padding-top: 100px;
     img {
