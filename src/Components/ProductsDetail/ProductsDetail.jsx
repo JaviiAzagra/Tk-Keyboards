@@ -1,28 +1,75 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import FormOpinions from "../FormOpinions/FormOpinions";
 import { useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import RecentlyProducts from "../RecentlyProducts/RecentlyProducts";
+import Shipping from "../Shipping/Shipping";
 
 const ProductsDetail = ({ productos, agregarAlCarrito }) => {
   const [product, setProduct] = useState();
   const [opinion, setOpinion] = useState();
   const { id } = useParams();
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [randomProducts, setRandomProducts] = useState([]);
+  const navigate = useNavigate();
+  const { productId } = useParams();
 
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const { data } = await axios.get(
+        const response = await axios.get(
           `https://tkkeyboards-api.vercel.app/products/${id}`
         );
-        setProduct(data);
+        setProduct(response.data);
+
+        // Guardar el producto en localStorage si no está duplicado
+        const viewedProducts =
+          JSON.parse(localStorage.getItem("viewedProducts")) || [];
+        if (!viewedProducts.some((p) => p._id === response.data._id)) {
+          const updatedViewedProducts = [
+            response.data,
+            ...viewedProducts.slice(0, 9),
+          ];
+          localStorage.setItem(
+            "viewedProducts",
+            JSON.stringify(updatedViewedProducts)
+          );
+        }
       } catch (error) {
         console.error("Error fetching product:", error);
       }
     };
+
     fetchProduct();
+  }, [productId]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://tkkeyboards-api.vercel.app/products`
+        );
+        setData(response.data);
+
+        // Shuffle the array to get random products
+        const shuffledProducts = response.data.sort(() => 0.5 - Math.random());
+
+        // Get only the first 6 products
+        const selectedProducts = shuffledProducts.slice(0, 9);
+
+        setRandomProducts(selectedProducts);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
   }, []);
 
   const notify = () =>
@@ -58,9 +105,9 @@ const ProductsDetail = ({ productos, agregarAlCarrito }) => {
     try {
       if (navigator.share) {
         await navigator.share({
-          title: "Título de tu contenido",
-          text: "Descripción de tu contenido",
-          url: "URL de tu contenido",
+          title: "Tk Keyboards",
+          text: "Tk Keyboards",
+          url: window.location.href,
         });
       } else {
         throw new Error(
@@ -525,6 +572,40 @@ const ProductsDetail = ({ productos, agregarAlCarrito }) => {
           </>
         )}
       </div>
+
+      <RecentlyProducts />
+
+      <div className="keyboardsdetail--alsolike">
+        <h1>You may also like</h1>
+        <div className="keyboardsdetail--alsolike__products">
+          {randomProducts.map((randomProduct) => (
+            <div
+              className="keyboards--cards"
+              onClick={() => {
+                navigate(`/products/${randomProduct?._id}`);
+                window.location.reload();
+              }}
+              key={randomProduct.id}
+            >
+              <div className="keyboards--cards__img">
+                <img src={randomProduct?.img} alt={randomProduct?.name} />
+              </div>
+              <div className="keyboards--cards__text">
+                <p className="keyboards--cards__text--name">
+                  {randomProduct?.name}
+                </p>
+                <p className="keyboards--cards__text--brand">
+                  {randomProduct?.brand}
+                </p>
+                <p className="keyboards--cards__text--price">
+                  {randomProduct?.price.toFixed(2)} $
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <Shipping />
     </div>
   );
 };

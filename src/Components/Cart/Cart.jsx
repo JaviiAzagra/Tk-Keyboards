@@ -57,7 +57,9 @@ export const Cart = ({
     <div className="carrito">
       <h2>Cart</h2>
       <h1 style={{ fontSize: "20px", fontWeight: "300" }}>
-        Free Shipping Over $50.00
+        {freeShipping
+          ? "You are eligible for free shipping."
+          : "Free Shipping Over $50.00"}
       </h1>
       <div className="carrito--line"></div>
 
