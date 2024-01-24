@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Order.scss";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Shipping from "../Shipping/Shipping";
 import { useSelector } from "react-redux";
 import Login2 from "../Login2/Login2";
@@ -8,11 +8,21 @@ import Login2 from "../Login2/Login2";
 const Order = ({ carrito, calcularPrecioTotal, borrarCarrito }) => {
   const [numeroAleatorio, setNumeroAleatorio] = useState(null);
   const { user, token } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const nuevoNumero = Math.floor(Math.random() * 1e20); // Número aleatorio con 20 cifras
     setNumeroAleatorio(nuevoNumero);
   }, []);
+
+  const [freeShipping, setFreeShipping] = useState(false); // Nuevo estado para el envío gratuito
+
+  // ... (resto del código)
+
+  useEffect(() => {
+    // Verifica si el precio total es menor a $50 para habilitar el envío gratuito
+    setFreeShipping(calcularPrecioTotal() > 50);
+  }, [carrito]);
   return (
     <div className="order">
       {!user && <Login2 type="login" />}
@@ -65,7 +75,7 @@ const Order = ({ carrito, calcularPrecioTotal, borrarCarrito }) => {
                     <td>
                       <div className="carrito--container__product-info">
                         <img
-                          onClick={() => Navigate(`/products/${item._id}`)}
+                          onClick={() => navigate(`/products/${item._id}`)}
                           src={item.img}
                           alt={item.name}
                         />
@@ -114,7 +124,7 @@ const Order = ({ carrito, calcularPrecioTotal, borrarCarrito }) => {
                 <div className="cart--mobile" key={index}>
                   <div className="cart--mobile__img">
                     <img
-                      onClick={() => Navigate(`/products/${item._id}`)}
+                      onClick={() => navigate(`/products/${item._id}`)}
                       src={item.img}
                       alt={item.name}
                     />
@@ -130,8 +140,13 @@ const Order = ({ carrito, calcularPrecioTotal, borrarCarrito }) => {
                 </div>
               ))}
             </div>
+            <p style={{ fontWeight: "400", paddingTop: "20px" }}>
+              Shipping: {freeShipping ? "Free" : "$10.00"}
+            </p>
+
             <p style={{ textAlign: "right", fontSize: "20px" }}>
-              Total: ${calcularPrecioTotal()}
+              Total: $
+              {(calcularPrecioTotal() + (freeShipping ? 0 : 10)).toFixed(2)}
             </p>
             <div className="order--cart__button">
               <Link to="/cart">

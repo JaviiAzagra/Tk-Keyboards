@@ -8,6 +8,7 @@ const Keycaps = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedBrands, setSelectedBrands] = useState([]);
+  const [selectedProfile, setSelectedProfile] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -56,6 +57,31 @@ const Keycaps = () => {
     }
   };
 
+  const toggleProfileSelection = (profile) => {
+    const isSelected = selectedProfile.includes(profile);
+    if (isSelected) {
+      setSelectedProfile(
+        selectedProfile.filter((selectedProfile) => selectedProfile !== profile)
+      );
+    } else {
+      setSelectedProfile([...selectedProfile, profile]);
+    }
+  };
+
+  const filterProductsByTypesAndProfile = () => {
+    if (selectedProfile.length === 0 && selectedBrands.length === 0) {
+      return data; // Si no hay tipos ni marcas seleccionadas, mostrar todos los productos
+    } else {
+      return data.filter(
+        (product) =>
+          (selectedBrands.length === 0 ||
+            selectedBrands.includes(product.brand)) &&
+          (selectedProfile.length === 0 ||
+            selectedProfile.includes(product.profile))
+      );
+    }
+  };
+
   const countProductsByBrand = (brand) => {
     return filteredProducts.reduce(
       (count, product) => (product.brand === brand ? count + 1 : count),
@@ -63,7 +89,14 @@ const Keycaps = () => {
     );
   };
 
-  const filteredProducts = data ? filterProductsByBrands() : [];
+  const countProductsByProfile = (profile) => {
+    return filteredProducts.reduce(
+      (count, product) => (product.profile === profile ? count + 1 : count),
+      0
+    );
+  };
+
+  const filteredProducts = data ? filterProductsByTypesAndProfile() : [];
 
   const [isFiltersMobileVisible, setIsFiltersMobileVisible] = useState(false);
 
@@ -134,14 +167,14 @@ const Keycaps = () => {
             <div className="product--filter">
               <h2>Keycaps Profile</h2>
               <div className="product--filter__inputs">
-                {productProfile.map((brand) => (
-                  <label key={brand}>
+                {productProfile.map((profile) => (
+                  <label key={profile}>
                     <input
                       type="checkbox"
-                      checked={selectedBrands.includes(brand)}
-                      onChange={() => toggleBrandSelection(brand)}
+                      checked={selectedProfile.includes(profile)}
+                      onChange={() => toggleProfileSelection(profile)}
                     />
-                    {brand}
+                    {profile} ({countProductsByProfile(profile)})
                   </label>
                 ))}
               </div>
@@ -212,7 +245,7 @@ const Keycaps = () => {
                             checked={selectedBrands.includes(brand)}
                             onChange={() => toggleBrandSelection(brand)}
                           />
-                          {brand}
+                          {brand} ({countProductsByBrand(brand)})
                         </label>
                       ))}
                     </div>
@@ -220,14 +253,14 @@ const Keycaps = () => {
                   <div className="product--filter">
                     <h2>Keycaps Profile</h2>
                     <div className="product--filter__inputs">
-                      {productProfile.map((brand) => (
-                        <label key={brand}>
+                      {productProfile.map((profile) => (
+                        <label key={profile}>
                           <input
                             type="checkbox"
-                            checked={selectedBrands.includes(brand)}
-                            onChange={() => toggleBrandSelection(brand)}
+                            checked={selectedProfile.includes(profile)}
+                            onChange={() => toggleProfileSelection(profile)}
                           />
-                          {brand}
+                          {profile} ({countProductsByProfile(profile)})
                         </label>
                       ))}
                     </div>

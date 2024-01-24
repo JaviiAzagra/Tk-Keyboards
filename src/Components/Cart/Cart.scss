@@ -19,6 +19,12 @@
   gap: 20px;
   background-color: rgb(245, 245, 245);
 
+  &--line {
+    width: 20%;
+    border: 3px solid rgb(53, 58, 61);
+    border-radius: 20px;
+  }
+
   &--info {
     display: flex;
     justify-content: center;
@@ -34,22 +40,24 @@
   &--container {
     display: flex;
     justify-content: center;
-    gap: 100px;
+    gap: 180px;
     margin-bottom: 100px;
     margin-top: 50px;
 
     &__total {
+      width: 290px;
       display: flex;
       flex-direction: column;
       border: 1px solid rgb(218, 218, 218);
-      padding: 20px;
+      padding: 40px;
       border-radius: 20px;
       gap: 10px;
       font-size: 18px;
 
       p {
-        font-weight: 250;
-        font-size: 14px;
+        font-weight: 400;
+        font-size: 18px;
+        color: #1a1a1ab3;
       }
 
       &__price {
@@ -58,7 +66,19 @@
         justify-content: space-between;
         p {
           font-weight: 600;
-          font-size: 20px;
+          font-size: 22px;
+          color: black;
+        }
+      }
+
+      &__price2 {
+        display: flex;
+        justify-content: space-between;
+
+        p {
+          font-size: 18px;
+          font-weight: 400;
+          color: #1a1a1ab3;
         }
       }
 
@@ -67,6 +87,7 @@
         border-radius: 20px;
         padding: 10px;
         resize: none;
+        background: none;
       }
     }
   }
@@ -91,10 +112,9 @@
   text-align: left;
 }
 
-/* .carrito--container__table td {
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-} */
+.carrito--container__table th {
+  padding-bottom: 24px;
+}
 
 .carrito--container__table td img {
   margin-right: 15px;
@@ -106,14 +126,20 @@
 .carrito--container__product-info {
   display: flex;
   align-items: center;
+
+  h1 {
+    font-size: 18px;
+    color: black;
+  }
+
+  p {
+    color: #3a3a3ab3;
+    font-weight: 400;
+  }
 }
 
 .carrito--container__product-info > div {
   margin-right: 80px;
-}
-
-.carrito--container__table td span {
-  font-weight: 600;
 }
 
 .carrito--container__table__price {
@@ -124,6 +150,18 @@
 
 .carrito--container__table .carrito--container__table__quantity {
   margin-right: 100px;
+
+  p {
+    color: #3a3a3ab3;
+    font-weight: 400;
+    padding: 8px 20px;
+    border-radius: 0.5rem;
+    border: 1px solid #9e9e9eb3;
+
+    button {
+      color: #9e9e9eb3;
+    }
+  }
 }
 
 .carrito--container__table button {
@@ -131,27 +169,38 @@
   border: none;
   cursor: pointer;
   font-size: 16px;
-  color: #ff5555;
+  color: #606060b3;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  font-size: 14px;
 }
 
 .carrito--container__table button:hover {
-  color: #ff0000;
+  color: black;
+}
+
+.carrito--container__table__total {
+  p {
+    color: #3a3a3ab3;
+    font-weight: 400;
+  }
 }
 
 .checkout {
   width: 100%;
-  padding: 15px;
-  background-color: chocolate;
+  padding: 23px;
+  background-color: rgb(53, 58, 61);
   border: none;
   border-radius: 30px;
   color: white;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
+  margin-bottom: 30px;
 }
 
 .checkout:hover {
   text-decoration: none;
-  background-color: rgb(228, 138, 73);
+  background-color: rgb(89, 93, 95);
 }
 
 .paypal {
@@ -209,7 +258,7 @@
   gap: 20px;
   padding-bottom: 100px;
   button {
-    background-color: chocolate;
+    background-color: #353a3d;
     border: none;
     padding: 10px;
     border-radius: 20px;
@@ -217,7 +266,7 @@
     font-weight: 600;
   }
   button:hover {
-    background-color: rgb(214, 136, 81);
+    background-color: #5a5e61;
   }
 }
 

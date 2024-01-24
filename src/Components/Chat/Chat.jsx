@@ -7,10 +7,10 @@ import "./Chat.scss";
 const Chat = () => {
   const theme = {
     background: "#f5f5f5",
-    headerBgColor: "#df9102",
+    headerBgColor: "#353A3D",
     headerFontColor: "#fff",
     headerFontSize: "16px",
-    botBubbleColor: "#df9102",
+    botBubbleColor: "#353A3D",
     botFontColor: "#fff",
     userBubbleColor: "#fff",
     userFontColor: "#4a4a4a",

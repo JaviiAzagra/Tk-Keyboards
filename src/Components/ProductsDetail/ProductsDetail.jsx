@@ -13,22 +13,16 @@ const ProductsDetail = ({ productos, agregarAlCarrito }) => {
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const { data } = await axios.get(
-        `https://tkkeyboards-api.vercel.app/products/${id}`
-      );
-      setProduct(data);
+      try {
+        const { data } = await axios.get(
+          `https://tkkeyboards-api.vercel.app/products/${id}`
+        );
+        setProduct(data);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      }
     };
     fetchProduct();
-  }, []);
-
-  useEffect(() => {
-    const fetchOpinion = async () => {
-      const { data } = await axios.get(
-        `https://tkkeyboards-api.vercel.app/opinions`
-      );
-      setOpinion(data);
-    };
-    fetchOpinion();
   }, []);
 
   const notify = () =>
@@ -57,6 +51,24 @@ const ProductsDetail = ({ productos, agregarAlCarrito }) => {
   const handleDecrement = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
+    }
+  };
+
+  const handleShare = async () => {
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: "Título de tu contenido",
+          text: "Descripción de tu contenido",
+          url: "URL de tu contenido",
+        });
+      } else {
+        throw new Error(
+          "La función de compartir no está soportada en este navegador."
+        );
+      }
+    } catch (error) {
+      console.error("Error al intentar compartir:", error.message);
     }
   };
 
@@ -179,6 +191,14 @@ const ProductsDetail = ({ productos, agregarAlCarrito }) => {
               <p className="type--p">{product?.layout}</p>
             </div>
           )}
+          {product?.profile && (
+            <div className="type">
+              <p>
+                Profile: <span>{product?.profile}</span>
+              </p>
+              <p className="type--p">{product?.profile}</p>
+            </div>
+          )}
           <div className="quantity-container">
             <p>Quantity: </p>
             <div className="quantity-input-container">
@@ -221,13 +241,36 @@ const ProductsDetail = ({ productos, agregarAlCarrito }) => {
               In Stock
             </p>
           </div>
+          <div></div>
           <button onClick={() => handleAddToCart(product)}>Add to cart</button>
           <p>
-            Akko x Designer EnjoyInMySec official Wavez keycap set; The
-            comprehensive 226-key is designed to fit all keyboard layouts;
-            Featuring PBT material and ASA profile for enhanced durability and a
-            comfortable typing experience.
+            Restocking soon means that the item be pre-purchased only, or the
+            dispatch will occur at the specified time for another reason.
           </p>
+          <div className="share">
+            <button onClick={handleShare}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="icon icon-tabler icon-tabler-share"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M6 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                <path d="M18 6m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                <path d="M18 18m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                <path d="M8.7 10.7l6.6 -3.4" />
+                <path d="M8.7 13.3l6.6 3.4" />
+              </svg>
+              Share
+            </button>
+          </div>
         </div>
       </div>
       <ToastContainer

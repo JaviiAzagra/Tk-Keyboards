@@ -86,6 +86,20 @@ const Products = () => {
     setIsFiltersMobileVisible(!isFiltersMobileVisible);
   };
 
+  const countProductsByBrand = (brand) => {
+    return filteredProducts.reduce(
+      (count, product) => (product.brand === brand ? count + 1 : count),
+      0
+    );
+  };
+
+  const countProductsByType = (type) => {
+    return filteredProducts.reduce(
+      (count, product) => (product.type === type ? count + 1 : count),
+      0
+    );
+  };
+
   return (
     <div className="product">
       <div className="products__backgroundallproducts">
@@ -142,7 +156,7 @@ const Products = () => {
                       checked={selectedTypes.includes(type)}
                       onChange={() => toggleTypeSelection(type)}
                     />
-                    {type}
+                    {type} ({countProductsByType(type)})
                   </label>
                 ))}
               </div>
@@ -157,7 +171,7 @@ const Products = () => {
                       checked={selectedBrands.includes(brand)}
                       onChange={() => toggleBrandSelection(brand)}
                     />
-                    {brand}
+                    {brand} ({countProductsByBrand(brand)})
                   </label>
                 ))}
               </div>
@@ -228,7 +242,7 @@ const Products = () => {
                             checked={selectedTypes.includes(type)}
                             onChange={() => toggleTypeSelection(type)}
                           />
-                          {type}
+                          {type} ({countProductsByType(type)})
                         </label>
                       ))}
                     </div>
@@ -243,7 +257,7 @@ const Products = () => {
                             checked={selectedBrands.includes(brand)}
                             onChange={() => toggleBrandSelection(brand)}
                           />
-                          {brand}
+                          {brand} ({countProductsByBrand(brand)})
                         </label>
                       ))}
                     </div>
@@ -267,7 +281,7 @@ const Products = () => {
               currentProducts.map((item, index) => (
                 <div
                   className="keyboards--cards"
-                  onClick={() => navigate(`/products/${item._id}`)}
+                  onClick={() => navigate(`/products/${item?._id}`)}
                   key={index}
                 >
                   <div className="keyboards--cards__img">

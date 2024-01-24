@@ -15,6 +15,15 @@ export const Cart = ({
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
+  const [freeShipping, setFreeShipping] = useState(false); // Nuevo estado para el envío gratuito
+
+  // ... (resto del código)
+
+  useEffect(() => {
+    // Verifica si el precio total es menor a $50 para habilitar el envío gratuito
+    setFreeShipping(calcularPrecioTotal() > 50);
+  }, [carrito]);
+
   const notify = () =>
     toast.success("Product removed from the cart!", {
       position: "bottom-center",
@@ -40,9 +49,17 @@ export const Cart = ({
     }, 2000);
   };
 
+  const precioTotal = calcularPrecioTotal();
+  const costoEnvio = precioTotal < 50 ? 10.0 : 0.0;
+  const totalConEnvio = precioTotal + costoEnvio;
+
   return (
     <div className="carrito">
       <h2>Cart</h2>
+      <h1 style={{ fontSize: "20px", fontWeight: "300" }}>
+        Free Shipping Over $50.00
+      </h1>
+      <div className="carrito--line"></div>
 
       {carrito.length > 0 ? (
         <div className="carrito--container">
@@ -65,10 +82,9 @@ export const Cart = ({
                         alt={item.name}
                       />
                       <div>
-                        <p>{item.name}</p>
-                        <span style={{ fontWeight: "600" }}>
-                          <span>${item.price.toFixed(2)}</span>
-                        </span>
+                        <h1 style={{ fontWeight: "600" }}>{item.name}</h1>
+                        <p>${item.price.toFixed(2)}</p>
+                        <p>{item?.switchType}</p>
                       </div>
                     </div>
                   </td>
@@ -79,6 +95,9 @@ export const Cart = ({
                   >
                     <div className="carrito--container__table__quantity">
                       <p>{item.cantidad}</p>
+                      <button onClick={() => handleDelete(item._id)}>
+                        Remove
+                      </button>
                     </div>
                   </td>
                   <td style={{ textAlign: "center" }}>
@@ -90,32 +109,7 @@ export const Cart = ({
                         gap: "10px",
                       }}
                     >
-                      <p
-                        style={{
-                          fontWeight: "600",
-                        }}
-                      >
-                        ${(item.price * item.cantidad).toFixed(2)}
-                      </p>
-
-                      <button onClick={() => handleDelete(item._id)}>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="icon icon-tabler icon-tabler-x"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          stroke-width="2"
-                          stroke="currentColor"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                          <path d="M18 6l-12 12" />
-                          <path d="M6 6l12 12" />
-                        </svg>
-                      </button>
+                      <p>${(item.price * item.cantidad).toFixed(2)}</p>
                     </div>
                   </td>
                 </tr>
@@ -147,12 +141,22 @@ export const Cart = ({
               </div>
             ))}
           </div>
-
           <div>
             <div className="carrito--container__total">
-              <div className="carrito--container__total__price">
-                <p>Total:</p>
+              <div className="carrito--container__total__price2">
+                <p>Subtotal</p>
                 <p>${calcularPrecioTotal().toFixed(2)}</p>
+              </div>
+              <div className="carrito--container__total__price2">
+                <p>Shipping</p>
+                <p>{freeShipping ? "Free" : "$10.00"}</p>
+              </div>
+              <div className="carrito--container__total__price">
+                <p>Total</p>
+                <p>
+                  $
+                  {(calcularPrecioTotal() + (freeShipping ? 0 : 10)).toFixed(2)}
+                </p>
               </div>
               <p>Taxes and shipping calculated at checkout</p>
               <div>
