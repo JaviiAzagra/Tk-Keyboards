@@ -1,4 +1,5 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
 import Home from "./Pages/Home/Home";
@@ -144,6 +145,7 @@ function App() {
 
   return (
     <div className="App">
+      <Analytics />
       <Navbar
         carrito={carrito}
         calcularPrecioTotal={calcularPrecioTotal}
