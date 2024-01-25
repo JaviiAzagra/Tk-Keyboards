@@ -641,6 +641,11 @@
   .navbar--nav--svg {
     display: none;
   }
+
+  .popupcart-content {
+    width: 45%;
+    z-index: 9999;
+  }
 }
 
 @media screen and (max-width: 700px) {
@@ -652,7 +657,7 @@
     height: 100%;
   }
   .popupcart-content__top__cart {
-    height: 380px;
+    height: 320px;
     overflow-x: auto;
   }
 }
