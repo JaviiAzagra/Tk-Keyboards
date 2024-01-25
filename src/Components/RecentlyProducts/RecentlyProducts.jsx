@@ -44,7 +44,12 @@ const RecentlyProducts = () => {
                     {product?.brand}
                   </p>
                   <p className="keyboards--cards__text--price">
-                    {product?.price.toFixed(2)} $
+                    {product?.price.toLocaleString("es-ES", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                      style: "currency",
+                      currency: "EUR",
+                    })}{" "}
                   </p>
                 </div>
               </div>

@@ -80,10 +80,15 @@ const Order = ({ carrito, calcularPrecioTotal, borrarCarrito }) => {
                           alt={item.name}
                         />
                         <div>
-                          <p>{item.name}</p>
-                          <span style={{ fontWeight: "600" }}>
-                            <span>${item.price.toFixed(2)}</span>
-                          </span>
+                          <h1 style={{ fontWeight: "600" }}>{item.name}</h1>
+                          <p style={{ fontWeight: "380" }}>
+                            {item.price.toLocaleString("es-ES", {
+                              minimumFractionDigits: 2,
+                              maximumFractionDigits: 2,
+                              style: "currency",
+                              currency: "EUR",
+                            })}
+                          </p>
                         </div>
                       </div>
                     </td>
@@ -100,7 +105,6 @@ const Order = ({ carrito, calcularPrecioTotal, borrarCarrito }) => {
                       <div
                         className="carrito--container__table__total"
                         style={{
-                          fontWeight: "900px",
                           display: "flex",
                           gap: "10px",
                           justifyContent: "space-between",
@@ -108,10 +112,17 @@ const Order = ({ carrito, calcularPrecioTotal, borrarCarrito }) => {
                       >
                         <p
                           style={{
-                            fontWeight: "600",
+                            fontWeight: "380",
                           }}
                         >
-                          ${(item.price * item.cantidad).toFixed(2)}
+                          {(item.price * item.cantidad)
+                            .toLocaleString("es-ES", {
+                              minimumFractionDigits: 2,
+                              maximumFractionDigits: 2,
+                              style: "currency",
+                              currency: "EUR",
+                            })
+                            .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
                         </p>
                       </div>
                     </td>
@@ -131,7 +142,16 @@ const Order = ({ carrito, calcularPrecioTotal, borrarCarrito }) => {
                   </div>
                   <div className="cart--mobile__data">
                     <h1>{item.name}</h1>
-                    <p>${(item.price * item.cantidad).toFixed(2)}</p>
+                    <p>
+                      {(item.price * item.cantidad)
+                        .toLocaleString("es-ES", {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                          style: "currency",
+                          currency: "EUR",
+                        })
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                    </p>
                     <p>{item.type}</p>
                     <div className="cart--mobile__data--quantity">
                       <p>{item.cantidad} </p>
@@ -141,12 +161,19 @@ const Order = ({ carrito, calcularPrecioTotal, borrarCarrito }) => {
               ))}
             </div>
             <p style={{ fontWeight: "400", paddingTop: "20px" }}>
-              Shipping: {freeShipping ? "Free" : "$10.00"}
+              Shipping: {freeShipping ? "Free" : "10,00 €"}
             </p>
 
             <p style={{ textAlign: "right", fontSize: "20px" }}>
-              Total: $
-              {(calcularPrecioTotal() + (freeShipping ? 0 : 10)).toFixed(2)}
+              Total:{" "}
+              {(calcularPrecioTotal() + (freeShipping ? 0 : 10))
+                .toLocaleString("es-ES", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                  style: "currency",
+                  currency: "EUR",
+                })
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
             </p>
             <div className="order--cart__button">
               <Link to="/cart">

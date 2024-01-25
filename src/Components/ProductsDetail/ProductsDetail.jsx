@@ -91,7 +91,9 @@ const ProductsDetail = ({ productos, agregarAlCarrito }) => {
   const [quantity, setQuantity] = useState(1);
 
   const handleIncrement = () => {
-    setQuantity(quantity + 1);
+    if (quantity < 10) {
+      setQuantity(quantity + 1);
+    }
   };
 
   const handleDecrement = () => {
@@ -207,7 +209,14 @@ const ProductsDetail = ({ productos, agregarAlCarrito }) => {
               8 Reviews
             </div>
 
-            <p>${product?.price.toFixed(2)}</p>
+            <p>
+              {product?.price.toLocaleString("es-ES", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+                style: "currency",
+                currency: "EUR",
+              })}
+            </p>
             <p style={{ fontWeight: "300", fontSize: "16px" }}>
               Tax excluded. Shipping and VAT calculated at checkout.
             </p>
@@ -254,6 +263,7 @@ const ProductsDetail = ({ productos, agregarAlCarrito }) => {
               <input
                 type="number"
                 min="1"
+                max="10"
                 value={quantity}
                 onChange={(e) => setQuantity(e.target.value)}
                 className="quantity-input"
@@ -597,7 +607,12 @@ const ProductsDetail = ({ productos, agregarAlCarrito }) => {
                   {randomProduct?.brand}
                 </p>
                 <p className="keyboards--cards__text--price">
-                  {randomProduct?.price.toFixed(2)} $
+                  {randomProduct?.price.toLocaleString("es-ES", {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                    style: "currency",
+                    currency: "EUR",
+                  })}
                 </p>
               </div>
             </div>

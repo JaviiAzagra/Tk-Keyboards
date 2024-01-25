@@ -262,7 +262,12 @@ const Accessories = () => {
                       {item?.brand}
                     </p>
                     <p className="keyboards--cards__text--price">
-                      {item?.price.toFixed(2)} $
+                      {item?.price.toLocaleString("es-ES", {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                        style: "currency",
+                        currency: "EUR",
+                      })}
                     </p>
                   </div>
                 </div>

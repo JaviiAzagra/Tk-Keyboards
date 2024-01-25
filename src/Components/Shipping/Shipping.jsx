@@ -26,7 +26,7 @@ const Shipping = () => {
           <path d="M7 15h-1" />
         </svg>
         <h1>Free Shipping</h1>
-        <p>Free worldwide shopping on al orders over 50$.</p>
+        <p>Free worldwide shopping on al orders over 50€.</p>
       </div>
       <div className="infoshipping__card">
         <svg

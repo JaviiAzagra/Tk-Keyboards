@@ -239,9 +239,9 @@
   }
 
   &--cards {
-    padding: 10px;
+    padding: 8px;
     width: 260px;
-    height: 360px;
+    height: auto;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -249,7 +249,6 @@
     border-radius: 10px;
 
     &__img {
-      height: 230px;
       img {
         width: 240px;
         filter: brightness(1.1);

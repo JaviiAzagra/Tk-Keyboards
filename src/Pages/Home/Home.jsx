@@ -196,7 +196,12 @@ const Home = () => {
                     {keyboard?.brand}
                   </p>
                   <p className="keyboards--cards__text--price">
-                    {keyboard?.price.toFixed(2)} $
+                    {keyboard?.price.toLocaleString("es-ES", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                      style: "currency",
+                      currency: "EUR",
+                    })}{" "}
                   </p>
                 </div>
               </div>

@@ -329,12 +329,26 @@ const OrderForm = ({ carrito, calcularPrecioTotal }) => {
                 </div>
                 <div>
                   <h1>{item.name}</h1>
-                  <p>${item.price.toFixed(2)}</p>
+                  <p>
+                    {item.price.toLocaleString("es-ES", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                      style: "currency",
+                      currency: "EUR",
+                    })}
+                  </p>
                   <p></p>
                   <p>{item.type}</p>
                   <p>
-                    Qty: {item.cantidad} | $
-                    {(item.price * item.cantidad).toFixed(2)}
+                    Qty: {item.cantidad} |{" "}
+                    {(item.price * item.cantidad)
+                      .toLocaleString("es-ES", {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                        style: "currency",
+                        currency: "EUR",
+                      })
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
                   </p>
                 </div>
               </div>
@@ -342,15 +356,32 @@ const OrderForm = ({ carrito, calcularPrecioTotal }) => {
           </div>
           <div className="orderform--left__price">
             <p>
-              Subtotal <span>${calcularPrecioTotal().toFixed(2)}</span>
+              Subtotal{" "}
+              <span>
+                {calcularPrecioTotal()
+                  .toLocaleString("es-ES", {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                    style: "currency",
+                    currency: "EUR",
+                  })
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+              </span>
             </p>
             <p>
-              Shipping <span>{freeShipping ? "Free" : "$10.00"}</span>
+              Shipping <span>{freeShipping ? "Free" : "10,00 €"}</span>
             </p>
             <p className="orderform--left__price__total">
               Total{" "}
               <span>
-                ${(calcularPrecioTotal() + (freeShipping ? 0 : 10)).toFixed(2)}
+                {(calcularPrecioTotal() + (freeShipping ? 0 : 10))
+                  .toLocaleString("es-ES", {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                    style: "currency",
+                    currency: "EUR",
+                  })
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
               </span>
             </p>
           </div>

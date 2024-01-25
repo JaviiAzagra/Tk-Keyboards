@@ -77,16 +77,24 @@ export const Cart = ({
               {carrito.map((item, index) => (
                 <tr className="tr" key={index}>
                   <td>
-                    <div className="carrito--container__product-info">
-                      <img
-                        onClick={() => navigate(`/products/${item._id}`)}
-                        src={item.img}
-                        alt={item.name}
-                      />
+                    <div
+                      className="carrito--container__product-info"
+                      onClick={() => navigate(`/products/${item._id}`)}
+                    >
+                      <img src={item.img} alt={item.name} />
                       <div>
                         <h1 style={{ fontWeight: "600" }}>{item.name}</h1>
-                        <p>${item.price.toFixed(2)}</p>
+                        <p>
+                          {item.price.toLocaleString("es-ES", {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                            style: "currency",
+                            currency: "EUR",
+                          })}
+                        </p>
                         <p>{item?.switchType}</p>
+                        <p>{item?.switch}</p>
+                        <p>{item?.profile}</p>
                       </div>
                     </div>
                   </td>
@@ -111,7 +119,16 @@ export const Cart = ({
                         gap: "10px",
                       }}
                     >
-                      <p>${(item.price * item.cantidad).toFixed(2)}</p>
+                      <p>
+                        {(item.price * item.cantidad)
+                          .toLocaleString("es-ES", {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                            style: "currency",
+                            currency: "EUR",
+                          })
+                          .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                      </p>
                     </div>
                   </td>
                 </tr>
@@ -131,7 +148,16 @@ export const Cart = ({
                 </div>
                 <div className="cart--mobile__data">
                   <h1>{item.name}</h1>
-                  <p>${(item.price * item.cantidad).toFixed(2)}</p>
+                  <p>
+                    {(item.price * item.cantidad)
+                      .toLocaleString("es-ES", {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                        style: "currency",
+                        currency: "EUR",
+                      })
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                  </p>
                   <p>{item.type}</p>
                   <div className="cart--mobile__data--quantity">
                     <p>{item.cantidad} </p>
@@ -147,29 +173,44 @@ export const Cart = ({
             <div className="carrito--container__total">
               <div className="carrito--container__total__price2">
                 <p>Subtotal</p>
-                <p>${calcularPrecioTotal().toFixed(2)}</p>
+                <p>
+                  {calcularPrecioTotal()
+                    .toLocaleString("es-ES", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                      style: "currency",
+                      currency: "EUR",
+                    })
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                </p>
               </div>
               <div className="carrito--container__total__price2">
                 <p>Shipping</p>
-                <p>{freeShipping ? "Free" : "$10.00"}</p>
+                <p>{freeShipping ? "Free" : "10,00 €"}</p>
               </div>
               <div className="carrito--container__total__price">
                 <p>Total</p>
                 <p>
-                  $
-                  {(calcularPrecioTotal() + (freeShipping ? 0 : 10)).toFixed(2)}
+                  {(calcularPrecioTotal() + (freeShipping ? 0 : 10))
+                    .toLocaleString("es-ES", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                      style: "currency",
+                      currency: "EUR",
+                    })
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}{" "}
                 </p>
               </div>
               <p>Taxes and shipping calculated at checkout</p>
-              <div>
-                <textarea
-                  name=""
-                  id=""
-                  cols="30"
-                  rows="10"
-                  placeholder="Order note"
-                ></textarea>
-              </div>
+
+              <textarea
+                name=""
+                id=""
+                cols="30"
+                rows="10"
+                placeholder="Order note"
+              ></textarea>
+
               <Link>
                 <button className="checkout" onClick={handleCheckout}>
                   {loading ? (
