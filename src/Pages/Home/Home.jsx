@@ -59,28 +59,28 @@ const Home = () => {
             <img src="/assets/homeimg1.jpg" alt="img1" />
             <div className="textsuperpuesto">
               <h1>Tanjirou 5108B Plus</h1>
-              <Link to="/products/65aff0c73246aa775184b3c3">Shop Now</Link>
+              <Link to="/products/65b0327437c67320a5a74303">Shop Now</Link>
             </div>
           </div>
           <div className="home--top">
             <img src="/assets/homeimg2.jpg" alt="img2" />
             <div className="textsuperpuesto">
               <h1>Taiko no Tatsujin 5108S</h1>
-              <Link to="/products/65aff0c73246aa775184b3c0">Shop Now</Link>
+              <Link to="/products/65b0327537c67320a5a74309">Shop Now</Link>
             </div>
           </div>
           <div className="home--top">
             <img src="/assets/homeimg3.jpg" alt="img3" />
             <div className="textsuperpuesto">
               <h1>Akko V3 Silver Pro Switch</h1>
-              <Link to="/products/65aff0c73246aa775184b3c7">Shop Now</Link>
+              <Link to="/products/65b0327437c67320a5a74302">Shop Now</Link>
             </div>
           </div>
           <div className="home--top">
             <img src="/assets/homeimg4.jpg" alt="img4" />
             <div className="textsuperpuesto">
               <h1>Wavez Keycap Set</h1>
-              <Link to="/products/65aff0c73246aa775184b3bd">Shop Now</Link>
+              <Link to="/products/65b0327437c67320a5a74306">Shop Now</Link>
             </div>
           </div>
         </Slider>
