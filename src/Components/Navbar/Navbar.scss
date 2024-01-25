@@ -641,25 +641,6 @@
   .navbar--nav--svg {
     display: none;
   }
-
-  .popupcart-content {
-    width: 45%;
-    z-index: 9999;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .popupcart-content {
-    width: 85%;
-    z-index: 9999;
-  }
-  .popupcart-content__top {
-    height: 100%;
-  }
-  .popupcart-content__top__cart {
-    height: 320px;
-    overflow-x: auto;
-  }
 }
 
 @media screen and (max-width: 430px) {
