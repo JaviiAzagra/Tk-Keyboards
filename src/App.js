@@ -24,6 +24,7 @@ import Popup from "./Components/Popup/Popup";
 import Chat from "./Components/Chat/Chat";
 import Order from "./Components/Order/Order";
 import Chatgotop from "./Components/ChatGotop/Chatgotop";
+import OrderForm from "./Pages/OrderForm/OrderForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -182,6 +183,15 @@ function App() {
               carrito={carrito}
               calcularPrecioTotal={calcularPrecioTotal}
               borrarCarrito={borrarCarrito}
+            />
+          }
+        />
+        <Route
+          path="/checkout"
+          element={
+            <OrderForm
+              carrito={carrito}
+              calcularPrecioTotal={calcularPrecioTotal}
             />
           }
         />

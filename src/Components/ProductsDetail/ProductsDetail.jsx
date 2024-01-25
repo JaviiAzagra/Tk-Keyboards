@@ -10,7 +10,6 @@ import Shipping from "../Shipping/Shipping";
 
 const ProductsDetail = ({ productos, agregarAlCarrito }) => {
   const [product, setProduct] = useState();
-  const [opinion, setOpinion] = useState();
   const { id } = useParams();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);

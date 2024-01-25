@@ -8,8 +8,8 @@ const Shipping = () => {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="icon icon-tabler icon-tabler-cube-send"
-          width="30"
-          height="30"
+          width="32"
+          height="32"
           viewBox="0 0 24 24"
           stroke-width="2"
           stroke="currentColor"
@@ -26,14 +26,14 @@ const Shipping = () => {
           <path d="M7 15h-1" />
         </svg>
         <h1>Free Shipping</h1>
-        <p>Free worldwide shopping on al orders over 30$.</p>
+        <p>Free worldwide shopping on al orders over 50$.</p>
       </div>
       <div className="infoshipping__card">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="icon icon-tabler icon-tabler-headphones-filled"
-          width="25"
-          height="25"
+          class="icon icon-tabler icon-tabler-headset"
+          width="28"
+          height="28"
           viewBox="0 0 24 24"
           stroke-width="2"
           stroke="currentColor"
@@ -42,11 +42,10 @@ const Shipping = () => {
           stroke-linejoin="round"
         >
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-          <path
-            d="M21 18a3 3 0 0 1 -2.824 2.995l-.176 .005h-1a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-3a3 3 0 0 1 2.824 -2.995l.176 -.005h1c.351 0 .688 .06 1 .171v-.171a7 7 0 0 0 -13.996 -.24l-.004 .24v.17c.25 -.088 .516 -.144 .791 -.163l.209 -.007h1a3 3 0 0 1 2.995 2.824l.005 .176v3a3 3 0 0 1 -2.824 2.995l-.176 .005h-1a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-6a9 9 0 0 1 17.996 -.265l.004 .265v6z"
-            stroke-width="0"
-            fill="currentColor"
-          />
+          <path d="M4 14v-3a8 8 0 1 1 16 0v3" />
+          <path d="M18 19c0 1.657 -2.686 3 -6 3" />
+          <path d="M4 14a2 2 0 0 1 2 -2h1a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-1a2 2 0 0 1 -2 -2v-3z" />
+          <path d="M15 14a2 2 0 0 1 2 -2h1a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-1a2 2 0 0 1 -2 -2v-3z" />
         </svg>
         <h1>Customer Services</h1>
         <p>Our support team is available to help you within 24 hours.</p>
@@ -79,8 +78,8 @@ const Shipping = () => {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="icon icon-tabler icon-tabler-shield-lock"
-          width="24"
-          height="24"
+          width="26"
+          height="26"
           viewBox="0 0 24 24"
           stroke-width="2"
           stroke="currentColor"

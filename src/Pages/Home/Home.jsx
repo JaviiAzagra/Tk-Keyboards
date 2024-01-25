@@ -206,6 +206,52 @@ const Home = () => {
           )}
         </div>
       </div>
+      <div className="features">
+        <h1>Signature Features</h1>
+        <div className="features--container">
+          <div className="features--container__section">
+            <div className="features--container__section--img">
+              <img src="/assets/featuresimg.jpg" alt="featuresimg" />
+            </div>
+            <div className="features--container__section--text">
+              <h2>Wireless & Wired</h2>
+              <p>
+                Connect the keyboard with up to 3 devices via Bluetooth or to a
+                single device with the USB Type-C wired option. Pair it up with
+                your smartphone, laptop and iPad, and switch amongst the devices
+                swiftly, that is best for home, office and light gaming uses.{" "}
+              </p>
+            </div>
+          </div>
+
+          <div className="features--container__sectionreverse">
+            <div className="features--container__sectionreverse--img">
+              <img src="/assets/featuresimg3.jpg" alt="featuresimg" />
+            </div>
+            <div className="features--container__sectionreverse--text">
+              <h2>Customization</h2>
+              <p>
+                Customization options for users, such as interchangeable keys,
+                customizable LED lighting, or the ability to laser engrave the
+                keyboard with a unique design.
+              </p>
+            </div>
+          </div>
+
+          <div className="features--container__section">
+            <div className="features--container__section--img">
+              <img src="/assets/featuresimg2.jpg" alt="featuresimg" />
+            </div>
+            <div className="features--container__section--text">
+              <h2>Compatible With All Devices</h2>
+              <p>
+                Keyboards are 100% compatible with multiple operating systems.
+                Perfectly suitable for macOS, Windows, iOS, as well as Android.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <Shipping />
     </div>

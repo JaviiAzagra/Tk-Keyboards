@@ -45,7 +45,7 @@ export const Cart = ({
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      navigate("/order-confirmation");
+      navigate("/checkout");
     }, 2000);
   };
 
