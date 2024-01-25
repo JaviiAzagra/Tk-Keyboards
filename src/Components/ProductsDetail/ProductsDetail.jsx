@@ -83,8 +83,8 @@ const ProductsDetail = ({ productos, agregarAlCarrito }) => {
       theme: "light",
     });
 
-  const handleAddToCart = (product) => {
-    agregarAlCarrito(product);
+  const handleAddToCart = () => {
+    agregarAlCarrito(product, quantity);
     notify();
   };
 
@@ -255,7 +255,7 @@ const ProductsDetail = ({ productos, agregarAlCarrito }) => {
                 type="number"
                 min="1"
                 value={quantity}
-                readOnly
+                onChange={(e) => setQuantity(e.target.value)}
                 className="quantity-input"
               />
               <button className="quantity-button" onClick={handleIncrement}>
