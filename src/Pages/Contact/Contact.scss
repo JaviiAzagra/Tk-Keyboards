@@ -58,6 +58,7 @@
         border-right: none;
         outline: none;
         font-size: 16px;
+        border-radius: 10px;
       }
 
       select {
@@ -69,6 +70,7 @@
         border-right: none;
         outline: none;
         font-size: 16px;
+        border-radius: 10px;
       }
 
       textarea {
@@ -80,6 +82,8 @@
         border: 1px solid rgb(53, 58, 61) !important;
         outline: none;
         font-size: 16px;
+        resize: none;
+        border-radius: 10px;
       }
     }
     button {
@@ -89,7 +93,7 @@
       color: white;
       font-weight: 600;
       border: none;
-      border-radius: 14px;
+      border-radius: 40px;
       font-size: 16px;
     }
 

@@ -14,7 +14,7 @@ export const Cart = ({
 }) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-
+  const numeroDeArticulos = carrito.length;
   const [freeShipping, setFreeShipping] = useState(false); // Nuevo estado para el envío gratuito
 
   // ... (resto del código)

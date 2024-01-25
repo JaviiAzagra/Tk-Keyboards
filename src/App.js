@@ -25,6 +25,7 @@ import Chat from "./Components/Chat/Chat";
 import Order from "./Components/Order/Order";
 import Chatgotop from "./Components/ChatGotop/Chatgotop";
 import OrderForm from "./Pages/OrderForm/OrderForm";
+import Shipping from "./Components/Shipping/Shipping";
 
 function App() {
   const dispatch = useDispatch();
@@ -143,7 +144,11 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
+      <Navbar
+        carrito={carrito}
+        calcularPrecioTotal={calcularPrecioTotal}
+        borrarProducto={borrarProducto}
+      />
       {showPopup && <Popup onClose={handleClosePopup} />}
       <Routes>
         <Route path="/" element={<Home />} />

@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import RecentlyProducts from "../RecentlyProducts/RecentlyProducts";
 import Shipping from "../Shipping/Shipping";
 
-const ProductsDetail = ({ productos, agregarAlCarrito }) => {
+const ProductsDetail = ({ productos, agregarAlCarrito, toggleCart }) => {
   const [product, setProduct] = useState();
   const { id } = useParams();
   const [data, setData] = useState(null);

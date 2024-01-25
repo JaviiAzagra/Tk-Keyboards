@@ -1,16 +1,66 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./Navbar.scss";
 import Navbar2 from "../Navbar2/Navbar2";
+import { toast } from "react-toastify";
 
-const Navbar = () => {
+const Navbar = ({ carrito, calcularPrecioTotal, borrarProducto }) => {
   const [hamburger, setHamburger] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const [colorChange, setColorChange] = useState(false);
+  const [isCartVisible, setIsCartVisible] = useState(false);
+  const [freeShipping, setFreeShipping] = useState(false);
+  const [isBackgroundBlocked, setIsBackgroundBlocked] = useState(false);
+  const navigate = useNavigate();
 
+  const numeroDeArticulos = carrito.length;
   const hamburgerMenu = () => {
     setHamburger(!hamburger);
   };
+
+  const notify = () =>
+    toast.success("Product removed from the cart!", {
+      position: "bottom-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
+  const handleDelete = (product) => {
+    borrarProducto(product);
+    notify();
+  };
+
+  useEffect(() => {
+    // Verifica si el precio total es menor a $50 para habilitar el envío gratuito
+    setFreeShipping(calcularPrecioTotal() > 50);
+  }, [carrito]);
+
+  const toggleCart = () => {
+    setIsCartVisible(!isCartVisible);
+    setIsBackgroundBlocked(!isBackgroundBlocked);
+  };
+
+  useEffect(() => {
+    if (isBackgroundBlocked) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isBackgroundBlocked]);
+
+  useEffect(() => {
+    window.addEventListener("scroll", changeNavbarColor);
+    return () => {
+      window.removeEventListener("scroll", changeNavbarColor);
+      // Limpia el bloqueo del fondo cuando se desmonta el componente
+      document.body.style.overflow = "auto";
+    };
+  }, []);
 
   const pageUp = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -147,7 +197,7 @@ const Navbar = () => {
             </div>
 
             <div className="navbar--nav--svg">
-              <Link to="/profile">
+              <Link className="linkcart" to="/profile">
                 <svg
                   className="profile"
                   xmlns="http://www.w3.org/2000/svg"
@@ -162,20 +212,179 @@ const Navbar = () => {
                   </g>
                 </svg>
               </Link>
-              <Link to="/cart">
-                <svg
-                  className="cart"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M2.5 2a.5.5 0 0 0 0 1h.246a.5.5 0 0 1 .48.363l1.586 5.55A1.5 1.5 0 0 0 6.254 10h4.569a1.5 1.5 0 0 0 1.393-.943l1.474-3.686A1 1 0 0 0 12.762 4H4.448l-.261-.912A1.5 1.5 0 0 0 2.746 2H2.5Zm3.274 6.637L4.734 5h8.027l-1.474 3.686a.5.5 0 0 1-.464.314H6.254a.5.5 0 0 1-.48-.363ZM6.5 14a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3Zm0-1a.5.5 0 1 1 0-1a.5.5 0 0 1 0 1Zm4 1a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3Zm0-1a.5.5 0 1 1 0-1a.5.5 0 0 1 0 1Z" />
-                </svg>
+              <Link onClick={toggleCart} className="linkcart" /* to="/cart" */>
+                <div className="cart-container">
+                  <svg
+                    className="cart"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M2.5 2a.5.5 0 0 0 0 1h.246a.5.5 0 0 1 .48.363l1.586 5.55A1.5 1.5 0 0 0 6.254 10h4.569a1.5 1.5 0 0 0 1.393-.943l1.474-3.686A1 1 0 0 0 12.762 4H4.448l-.261-.912A1.5 1.5 0 0 0 2.746 2H2.5Zm3.274 6.637L4.734 5h8.027l-1.474 3.686a.5.5 0 0 1-.464.314H6.254a.5.5 0 0 1-.48-.363ZM6.5 14a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3Zm0-1a.5.5 0 1 1 0-1a.5.5 0 0 1 0 1Zm4 1a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3Zm0-1a.5.5 0 1 1 0-1a.5.5 0 0 1 0 1Z" />
+                  </svg>
+                  {carrito.length > 0 && (
+                    <p className="superponer">{numeroDeArticulos}</p>
+                  )}
+                </div>
               </Link>
+              {isCartVisible && (
+                <div className="popupcart-container">
+                  <div className="popupcart-content">
+                    {carrito.length > 0 ? (
+                      <>
+                        <div className="popupcart-content__top">
+                          <div className="popupcart-content__top--title">
+                            <h1>Cart</h1>
+                            <p>{numeroDeArticulos}</p>
+                          </div>
+                          <button onClick={toggleCart}>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 256 256"
+                            >
+                              <path d="M208.49 191.51a12 12 0 0 1-17 17L128 145l-63.51 63.49a12 12 0 0 1-17-17L111 128L47.51 64.49a12 12 0 0 1 17-17L128 111l63.51-63.52a12 12 0 0 1 17 17L145 128Z" />
+                            </svg>
+                          </button>
+                          <div className="popupcart-content__top__cart">
+                            {carrito.map((item, index) => (
+                              <div
+                                className="popupcart-content__top__cart__container"
+                                key={index}
+                              >
+                                <div className="popupcart-content__top__cart__container--info">
+                                  <img
+                                    onClick={() =>
+                                      navigate(`/products/${item._id}`)
+                                    }
+                                    src={item.img}
+                                    alt={item.name}
+                                  />
+                                  <div className="popupcart-content__top__cart__container--info__data">
+                                    <h1>{item.name}</h1>
+                                    <p>
+                                      {item.price
+                                        .toLocaleString("es-ES", {
+                                          minimumFractionDigits: 2,
+                                          maximumFractionDigits: 2,
+                                          style: "currency",
+                                          currency: "EUR",
+                                        })
+                                        .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                                    </p>
+                                    <p>{item?.switchType}</p>
+                                    <p>{item?.switch}</p>
+                                    <p>{item?.profile}</p>
+                                    <p>
+                                      Qty: {item?.cantidad} |{" "}
+                                      {(item.price * item.cantidad)
+                                        .toLocaleString("es-ES", {
+                                          minimumFractionDigits: 2,
+                                          maximumFractionDigits: 2,
+                                          style: "currency",
+                                          currency: "EUR",
+                                        })
+                                        .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                                    </p>
+                                  </div>
+                                </div>
+                                <div className="popupcart-content__top__cart__container--delete">
+                                  <button
+                                    onClick={() => handleDelete(item._id)}
+                                  >
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      class="icon icon-tabler icon-tabler-x"
+                                      width="24"
+                                      height="24"
+                                      viewBox="0 0 24 24"
+                                      stroke-width="2"
+                                      stroke="currentColor"
+                                      fill="none"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"
+                                    >
+                                      <path
+                                        stroke="none"
+                                        d="M0 0h24v24H0z"
+                                        fill="none"
+                                      />
+                                      <path d="M18 6l-12 12" />
+                                      <path d="M6 6l12 12" />
+                                    </svg>
+                                  </button>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                        <div className="popupcart-content__botton">
+                          <div className="popupcart-content__botton__price2">
+                            <p>Subtotal</p>
+                            <p>
+                              {calcularPrecioTotal()
+                                .toLocaleString("es-ES", {
+                                  minimumFractionDigits: 2,
+                                  maximumFractionDigits: 2,
+                                  style: "currency",
+                                  currency: "EUR",
+                                })
+                                .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                            </p>
+                          </div>
+                          <div className="popupcart-content__botton__price2">
+                            <p>Shipping</p>
+                            <p>{freeShipping ? "Free" : "10,00 €"}</p>
+                          </div>
+                          <div className="popupcart-content__botton__price">
+                            <p>Total</p>
+                            <p>
+                              {(calcularPrecioTotal() + (freeShipping ? 0 : 10))
+                                .toLocaleString("es-ES", {
+                                  minimumFractionDigits: 2,
+                                  maximumFractionDigits: 2,
+                                  style: "currency",
+                                  currency: "EUR",
+                                })
+                                .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}{" "}
+                            </p>
+                          </div>
+                          <p>Taxes and shipping calculated at checkout</p>
+                          <div className="popupcart-content__botton--buttons">
+                            <Link to="/checkout" onClick={toggleCart}>
+                              Checkout
+                            </Link>
+                            <Link to="/cart" onClick={toggleCart}>
+                              View cart
+                            </Link>
+                          </div>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <button onClick={toggleCart}>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 256 256"
+                          >
+                            <path d="M208.49 191.51a12 12 0 0 1-17 17L128 145l-63.51 63.49a12 12 0 0 1-17-17L111 128L47.51 64.49a12 12 0 0 1 17-17L128 111l63.51-63.52a12 12 0 0 1 17 17L145 128Z" />
+                          </svg>
+                        </button>
+                        <div className="popupcart-content__empty">
+                          <h1>Your cart is empty</h1>
+                          <p>Looks like you haven't added anything yet</p>
+                          <Link to="/products" onClick={toggleCart}>
+                            Continue Shopping
+                          </Link>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="menu">
               <div className="mobile-menu">
-                <Link to="/profile">
+                <Link className="linkcart" to="/profile">
                   <svg
                     className="profile"
                     xmlns="http://www.w3.org/2000/svg"
@@ -190,14 +399,19 @@ const Navbar = () => {
                     </g>
                   </svg>
                 </Link>
-                <Link to="/cart">
-                  <svg
-                    className="cart"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M2.5 2a.5.5 0 0 0 0 1h.246a.5.5 0 0 1 .48.363l1.586 5.55A1.5 1.5 0 0 0 6.254 10h4.569a1.5 1.5 0 0 0 1.393-.943l1.474-3.686A1 1 0 0 0 12.762 4H4.448l-.261-.912A1.5 1.5 0 0 0 2.746 2H2.5Zm3.274 6.637L4.734 5h8.027l-1.474 3.686a.5.5 0 0 1-.464.314H6.254a.5.5 0 0 1-.48-.363ZM6.5 14a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3Zm0-1a.5.5 0 1 1 0-1a.5.5 0 0 1 0 1Zm4 1a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3Zm0-1a.5.5 0 1 1 0-1a.5.5 0 0 1 0 1Z" />
-                  </svg>
+                <Link className="linkcart" to="/cart">
+                  <div className="cart-container">
+                    <svg
+                      className="cart"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M2.5 2a.5.5 0 0 0 0 1h.246a.5.5 0 0 1 .48.363l1.586 5.55A1.5 1.5 0 0 0 6.254 10h4.569a1.5 1.5 0 0 0 1.393-.943l1.474-3.686A1 1 0 0 0 12.762 4H4.448l-.261-.912A1.5 1.5 0 0 0 2.746 2H2.5Zm3.274 6.637L4.734 5h8.027l-1.474 3.686a.5.5 0 0 1-.464.314H6.254a.5.5 0 0 1-.48-.363ZM6.5 14a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3Zm0-1a.5.5 0 1 1 0-1a.5.5 0 0 1 0 1Zm4 1a1.5 1.5 0 1 0 0-3a1.5 1.5 0 0 0 0 3Zm0-1a.5.5 0 1 1 0-1a.5.5 0 0 1 0 1Z" />
+                    </svg>
+                    {carrito.length > 0 && (
+                      <p className="superponer">{numeroDeArticulos}</p>
+                    )}
+                  </div>
                 </Link>
                 <svg
                   className="hamburger"
