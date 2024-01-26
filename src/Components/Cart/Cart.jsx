@@ -95,6 +95,7 @@ export const Cart = ({
                         <p>{item?.switchType}</p>
                         <p>{item?.switch}</p>
                         <p>{item?.profile}</p>
+                        <p>{item?.color[0]}</p>
                       </div>
                     </div>
                   </td>

@@ -173,6 +173,7 @@ const Navbar = ({ carrito, calcularPrecioTotal, borrarProducto }) => {
                     <Link to="/products/accessories">
                       <h3>Accessories</h3>
                       <ul>
+                        <li>Mouse</li>
                         <li>Mouse Pad</li>
                         <li>Coiled Cable</li>
                         <li>Wrist Rest</li>
@@ -270,9 +271,15 @@ const Navbar = ({ carrito, calcularPrecioTotal, borrarProducto }) => {
                                         })
                                         .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
                                     </p>
-                                    <p>{item?.switchType}</p>
-                                    <p>{item?.switch}</p>
-                                    <p>{item?.profile}</p>
+                                    {item?.color && item.color.length > 0 && (
+                                      <p>{item?.color[0]}</p>
+                                    )}
+                                    {item?.switch && <p>{item?.switch}</p>}
+                                    {item?.switchType && (
+                                      <p>{item?.switchType}</p>
+                                    )}
+                                    {item?.profile && <p>{item?.profile}</p>}
+
                                     <p>
                                       Qty: {item?.cantidad} |{" "}
                                       {(item.price * item.cantidad)

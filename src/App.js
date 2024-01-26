@@ -154,7 +154,10 @@ function App() {
       {showPopup && <Popup onClose={handleClosePopup} />}
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/products" element={<Products />} />
+        <Route
+          path="/products"
+          element={<Products agregarAlCarrito={agregarAlCarrito} />}
+        />
         <Route path="/contact" element={<Contact />} />
         <Route path="/support" element={<Support />} />
         <Route path="/about" element={<History />} />
@@ -169,10 +172,22 @@ function App() {
             />
           }
         />
-        <Route path="/products/switches" element={<Switch />} />
-        <Route path="/products/keyboards" element={<Keyboards />} />
-        <Route path="/products/keycaps" element={<Keycaps />} />
-        <Route path="/products/accessories" element={<Accessories />} />
+        <Route
+          path="/products/switches"
+          element={<Switch agregarAlCarrito={agregarAlCarrito} />}
+        />
+        <Route
+          path="/products/keyboards"
+          element={<Keyboards agregarAlCarrito={agregarAlCarrito} />}
+        />
+        <Route
+          path="/products/keycaps"
+          element={<Keycaps agregarAlCarrito={agregarAlCarrito} />}
+        />
+        <Route
+          path="/products/accessories"
+          element={<Accessories agregarAlCarrito={agregarAlCarrito} />}
+        />
         <Route path="/profile" element={<Profile />} />
         <Route
           path="/products/:id"

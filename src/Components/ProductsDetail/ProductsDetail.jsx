@@ -16,6 +16,11 @@ const ProductsDetail = ({ productos, agregarAlCarrito, toggleCart }) => {
   const [randomProducts, setRandomProducts] = useState([]);
   const navigate = useNavigate();
   const { productId } = useParams();
+  const [selectedColor, setSelectedColor] = useState(null);
+
+  const handleColorClick = (color) => {
+    setSelectedColor(color);
+  };
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -238,6 +243,27 @@ const ProductsDetail = ({ productos, agregarAlCarrito, toggleCart }) => {
               <p className="type--p">{product?.switch}</p>
             </div>
           )}
+
+          {product?.color && product.color.length > 0 && (
+            <div className="type">
+              <p>
+                Color: <span>{selectedColor || product.color[0]}</span>
+              </p>
+              <div style={{ display: "flex", gap: "20px" }}>
+                {product.color.map((color, index) => (
+                  <p
+                    key={index}
+                    className="type--p"
+                    onClick={() => handleColorClick(color)}
+                    style={{ cursor: "pointer" }}
+                  >
+                    {color}
+                  </p>
+                ))}
+              </div>
+            </div>
+          )}
+
           {product?.layout && (
             <div className="type">
               <p>

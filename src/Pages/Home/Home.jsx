@@ -8,6 +8,7 @@ import Shipping from "../../Components/Shipping/Shipping";
 import axios from "axios";
 import Loader from "../../Components/Loader/Loader";
 import { t } from "i18next";
+import RecentlyProducts from "../../Components/RecentlyProducts/RecentlyProducts";
 
 const Home = () => {
   const [data, setData] = useState(null);

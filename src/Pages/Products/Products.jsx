@@ -5,8 +5,9 @@ import Loader from "../../Components/Loader/Loader";
 import { useNavigate } from "react-router-dom";
 import Pagination from "./Pagination";
 import Shipping from "../../Components/Shipping/Shipping";
+import { toast } from "react-toastify";
 
-const Products = () => {
+const Products = ({ agregarAlCarrito }) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedTypes, setSelectedTypes] = useState([]); // Nuevo estado para los tipos seleccionados
@@ -15,6 +16,35 @@ const Products = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 16; // Número de productos por página
   const [isFiltersMobileVisible, setIsFiltersMobileVisible] = useState(false);
+  const [hoveredCard, setHoveredCard] = useState(null);
+  const [isQuickVisible, setIsQuickVisible] = useState(false);
+  const [isBackgroundBlocked, setIsBackgroundBlocked] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const notify = () =>
+    toast.success("Added to your cart!", {
+      position: "bottom-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
+  const toggleQuick = (product) => {
+    setSelectedProduct(product);
+    setIsQuickVisible(!isQuickVisible);
+    setIsBackgroundBlocked(!isBackgroundBlocked);
+  };
+
+  const handleAddToCart = () => {
+    if (selectedProduct) {
+      agregarAlCarrito(selectedProduct);
+      notify();
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,7 +65,7 @@ const Products = () => {
   }, []);
 
   const productTypes = ["keyboards", "switches", "keycaps", "accessories"];
-  const productBrand = ["Akko", "Keychron", "Gateron"];
+  const productBrand = ["Akko", "Keychron", "Gateron", "Logitech"];
 
   const toggleTypeSelection = (type) => {
     const isSelected = selectedTypes.includes(type);
@@ -280,14 +310,32 @@ const Products = () => {
             ) : (
               currentProducts.map((item, index) => (
                 <div
-                  className="keyboards--cards"
-                  onClick={() => navigate(`/products/${item?._id}`)}
+                  className={`keyboards--cards ${
+                    hoveredCard === index ? "hovered" : ""
+                  }`}
                   key={index}
+                  onMouseEnter={() => setHoveredCard(index)}
+                  onMouseLeave={() => setHoveredCard(null)}
                 >
                   <div className="keyboards--cards__img">
-                    <img src={item?.img} alt={item?.name} />
+                    <img
+                      onClick={() => navigate(`/products/${item?._id}`)}
+                      src={item?.img}
+                      alt={item?.name}
+                    />
+                    {hoveredCard === index && (
+                      <button
+                        onClick={() => toggleQuick(item)}
+                        className="boton-esquina"
+                      >
+                        + Quick add
+                      </button>
+                    )}
                   </div>
-                  <div className="keyboards--cards__text">
+                  <div
+                    onClick={() => navigate(`/products/${item?._id}`)}
+                    className="keyboards--cards__text"
+                  >
                     <p className="keyboards--cards__text--name">{item?.name}</p>
                     <p className="keyboards--cards__text--brand">
                       {item?.brand}
@@ -303,6 +351,97 @@ const Products = () => {
                   </div>
                 </div>
               ))
+            )}
+            {isQuickVisible && (
+              <div className="popupquick-container">
+                <div className="popupquick-content">
+                  <button onClick={toggleQuick}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 256 256"
+                    >
+                      <path d="M208.49 191.51a12 12 0 0 1-17 17L128 145l-63.51 63.49a12 12 0 0 1-17-17L111 128L47.51 64.49a12 12 0 0 1 17-17L128 111l63.51-63.52a12 12 0 0 1 17 17L145 128Z" />
+                    </svg>
+                  </button>
+                  <div className="popupquick-content--data">
+                    <div className="popupquick-content--data__img">
+                      <img
+                        src={selectedProduct?.img}
+                        alt={selectedProduct?.name}
+                      />
+                    </div>
+                    <div className="popupquick-content--data__text">
+                      <h2>{selectedProduct?.name}</h2>
+                      <p>
+                        {selectedProduct?.price.toLocaleString("es-ES", {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                          style: "currency",
+                          currency: "EUR",
+                        })}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="popupquick-content--botton">
+                    <div className="popupquick-content--botton__type">
+                      {selectedProduct?.switchType && (
+                        <div className="type">
+                          <p>
+                            Type: <span>{selectedProduct?.switchType}</span>
+                          </p>
+
+                          <p className="type--p">
+                            {selectedProduct?.switchType}
+                          </p>
+                        </div>
+                      )}
+                      {selectedProduct?.switch && (
+                        <div className="type">
+                          <p>
+                            Switch: <span>{selectedProduct?.switch}</span>
+                          </p>
+                          <p className="type--p">{selectedProduct?.switch}</p>
+                        </div>
+                      )}
+                      {selectedProduct?.color &&
+                        selectedProduct.color.length > 0 && (
+                          <div className="type">
+                            <p>
+                              Color: <span>{selectedProduct.color[0]}</span>
+                            </p>
+                          </div>
+                        )}
+                      {selectedProduct?.layout && (
+                        <div className="type">
+                          <p>
+                            Layout: <span>{selectedProduct?.layout}</span>
+                          </p>
+                          <p className="type--p">{selectedProduct?.layout}</p>
+                        </div>
+                      )}
+                      {selectedProduct?.profile && (
+                        <div className="type">
+                          <p>
+                            Profile: <span>{selectedProduct?.profile}</span>
+                          </p>
+                          <p className="type--p">{selectedProduct?.profile}</p>
+                        </div>
+                      )}
+                    </div>
+                    <div className="popupquick-content--botton__buttons">
+                      <button
+                        onClick={() => {
+                          handleAddToCart();
+                          toggleQuick();
+                        }}
+                      >
+                        Add to cart
+                      </button>
+                      <button onClick={toggleQuick}>Continue shopping</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             )}
           </div>
         </div>
