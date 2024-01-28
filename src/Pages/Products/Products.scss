@@ -118,6 +118,18 @@
       font-size: 100px;
     }
   }
+  &__backgroundkeyboardsfilters {
+    padding-top: 150px;
+    padding-bottom: 80px;
+
+    h2 {
+      font-size: 70px;
+      color: rgb(0, 0, 0);
+    }
+    h3 {
+      font-size: 16px;
+    }
+  }
 
   &__backgroundkeycaps {
     background-image: url("../../../public/assets/keycapstitle.jpg");
@@ -639,17 +651,17 @@
   .products {
     &__backgroundkeyboards {
       h2 {
-        font-size: 70px;
+        font-size: 65px;
       }
     }
     &__backgroundaccessories {
       h2 {
-        font-size: 68px;
+        font-size: 58px;
       }
     }
     &__backgroundkeycaps {
       h2 {
-        font-size: 90px;
+        font-size: 80px;
       }
     }
     &__backgroundallproducts {

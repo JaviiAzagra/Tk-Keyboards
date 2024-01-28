@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "./Navbar.scss";
-import Navbar2 from "../Navbar2/Navbar2";
 import { toast } from "react-toastify";
 
 const Navbar = ({ carrito, calcularPrecioTotal, borrarProducto }) => {
   const [hamburger, setHamburger] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false);
   const [colorChange, setColorChange] = useState(false);
   const [isCartVisible, setIsCartVisible] = useState(false);
   const [freeShipping, setFreeShipping] = useState(false);
@@ -89,6 +87,12 @@ const Navbar = ({ carrito, calcularPrecioTotal, borrarProducto }) => {
     setShowProductDropdown(!showProductDropdown);
   };
 
+  const [showKeyboardsDropdown, setShowKeyboardsDropdown] = useState(false);
+
+  const toggleKeyboardsDropdown = () => {
+    setShowKeyboardsDropdown(!showKeyboardsDropdown);
+  };
+
   const changeNavbarColor = () => {
     setColorChange(window.scrollY >= 300);
   };
@@ -140,12 +144,28 @@ const Navbar = ({ carrito, calcularPrecioTotal, borrarProducto }) => {
                     <Link to="/products/keyboards">
                       <h3>Keyboards</h3>
                       <ul>
-                        <li>60%</li>
-                        <li>65%</li>
-                        <li>75%</li>
-                        <li>80% | TKL</li>
-                        <li>100% | Full Size</li>
-                        <li>View All</li>
+                        <li>
+                          <Link to="/60-percent-layout-keyboards">60%</Link>
+                        </li>
+                        <li>
+                          <Link to="/65-percent-layout-keyboards">65%</Link>
+                        </li>
+                        <li>
+                          <Link to="/products/75-percent-layout-keyboards">
+                            75%
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/products/80-tkl-keyboards">80% | TKL</Link>
+                        </li>
+                        <li>
+                          <Link to="/products/100-full-size-keyboards">
+                            100% | Full Size
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/products/keyboards">View All</Link>
+                        </li>
                       </ul>
                     </Link>
                     <Link to="/products/keycaps">
@@ -166,7 +186,7 @@ const Navbar = ({ carrito, calcularPrecioTotal, borrarProducto }) => {
                       <ul>
                         <li>Linear</li>
                         <li>Tactile</li>
-                        <li>Click</li>
+                        <li>Clicky</li>
                         <li>View All</li>
                       </ul>
                     </Link>
@@ -473,7 +493,7 @@ const Navbar = ({ carrito, calcularPrecioTotal, borrarProducto }) => {
                   <NavLink
                     style={{ display: "flex" }}
                     to="/products/keyboards"
-                    onClick={hamburgerMenu}
+                    onClick={toggleKeyboardsDropdown}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -496,6 +516,119 @@ const Navbar = ({ carrito, calcularPrecioTotal, borrarProducto }) => {
                     </svg>
                     Keyboards
                   </NavLink>
+                  {showKeyboardsDropdown && (
+                    <div
+                      onClick={toggleKeyboardsDropdown}
+                      style={{ color: "grey" }}
+                      className="mobile-dropdown2"
+                    >
+                      <NavLink
+                        onClick={hamburgerMenu}
+                        to="/75-percent-layout-keyboards"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="icon icon-tabler icon-tabler-chevron-right"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          stroke-width="2"
+                          stroke="currentColor"
+                          fill="none"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                          <path d="M9 6l6 6l-6 6" />
+                        </svg>
+                        60%
+                      </NavLink>
+                      <NavLink
+                        onClick={hamburgerMenu}
+                        to="/75-percent-layout-keyboards"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="icon icon-tabler icon-tabler-chevron-right"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          stroke-width="2"
+                          stroke="currentColor"
+                          fill="none"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                          <path d="M9 6l6 6l-6 6" />
+                        </svg>
+                        65%
+                      </NavLink>
+                      <NavLink
+                        onClick={hamburgerMenu}
+                        to="/products/75-percent-layout-keyboards"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="icon icon-tabler icon-tabler-chevron-right"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          stroke-width="2"
+                          stroke="currentColor"
+                          fill="none"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                          <path d="M9 6l6 6l-6 6" />
+                        </svg>
+                        75%
+                      </NavLink>
+                      <NavLink
+                        onClick={hamburgerMenu}
+                        to="/products/80-tkl-keyboards"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="icon icon-tabler icon-tabler-chevron-right"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          stroke-width="2"
+                          stroke="currentColor"
+                          fill="none"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                          <path d="M9 6l6 6l-6 6" />
+                        </svg>
+                        80% | TKL
+                      </NavLink>
+                      <NavLink
+                        onClick={hamburgerMenu}
+                        to="/products/100-full-size-keyboards"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="icon icon-tabler icon-tabler-chevron-right"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          stroke-width="2"
+                          stroke="currentColor"
+                          fill="none"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                          <path d="M9 6l6 6l-6 6" />
+                        </svg>
+                        100% | Full Size
+                      </NavLink>
+                    </div>
+                  )}
                   <NavLink to="/products/keycaps" onClick={hamburgerMenu}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

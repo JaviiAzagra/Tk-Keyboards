@@ -27,6 +27,9 @@ import Order from "./Components/Order/Order";
 import Chatgotop from "./Components/ChatGotop/Chatgotop";
 import OrderForm from "./Pages/OrderForm/OrderForm";
 import Shipping from "./Components/Shipping/Shipping";
+import Layout75 from "./Components/Layout75/Layout75";
+import Layout80 from "./Components/Layout80/Layout80";
+import Layout100 from "./Components/Layout100/Layout100";
 
 function App() {
   const dispatch = useDispatch();
@@ -187,6 +190,18 @@ function App() {
         <Route
           path="/products/accessories"
           element={<Accessories agregarAlCarrito={agregarAlCarrito} />}
+        />
+        <Route
+          path="/products/75-percent-layout-keyboards"
+          element={<Layout75 agregarAlCarrito={agregarAlCarrito} />}
+        />
+        <Route
+          path="/products/80-tkl-keyboards"
+          element={<Layout80 agregarAlCarrito={agregarAlCarrito} />}
+        />
+        <Route
+          path="/products/100-full-size-keyboards"
+          element={<Layout100 agregarAlCarrito={agregarAlCarrito} />}
         />
         <Route path="/profile" element={<Profile />} />
         <Route
