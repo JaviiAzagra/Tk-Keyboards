@@ -168,6 +168,7 @@
   align-items: start;
   justify-content: start;
   transition: all 0.3s ease-in-out;
+  overflow-x: auto;
 
   .mobile-dropdown {
     width: 100%;
