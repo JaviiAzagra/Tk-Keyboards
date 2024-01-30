@@ -81,6 +81,35 @@ const Navbar = ({ carrito, calcularPrecioTotal, borrarProducto }) => {
     { to: "/contact", text: "Contact" },
   ];
 
+  const navLinksKeyboards = [
+    { to: "/products/75-percent-layout-keyboards", text: "75%" },
+    { to: "/products/80-tkl-keyboards", text: "80% | TKL" },
+    { to: "/products/100-full-size-keyboards", text: "100% | Full Size" },
+    { to: "/products/keyboards", text: "View All" },
+  ];
+
+  const navLinksKeycaps = [
+    { to: "/products/cherry-keycap", text: "Cherry" },
+    { to: "/products/asa-keycap", text: "ASA" },
+    { to: "/products/oem-keycap", text: "OEM" },
+    { to: "/products/keycaps", text: "View All" },
+  ];
+
+  const navLinksSwitches = [
+    { to: "/products/linear-switches", text: "Linear" },
+    { to: "/products/tactile-switches", text: "Tactile" },
+    { to: "/products/click-height-keycap-sets", text: "Click" },
+    { to: "/products/switches", text: "View All" },
+  ];
+
+  const navLinksAccessories = [
+    { to: "/products/mouse", text: "Mouse" },
+    { to: "/products/mousepad", text: "Mouse Pad" },
+    { to: "/products/coiled-cable", text: "Coiled Cable" },
+    { to: "/products/stabilizer", text: "Stabilizer" },
+    { to: "/products/accessories", text: "View All" },
+  ];
+
   const [showProductDropdown, setShowProductDropdown] = useState(false);
 
   const toggleProductDropdown = () => {
@@ -91,6 +120,24 @@ const Navbar = ({ carrito, calcularPrecioTotal, borrarProducto }) => {
 
   const toggleKeyboardsDropdown = () => {
     setShowKeyboardsDropdown(!showKeyboardsDropdown);
+  };
+
+  const [showKeycapsDropdown, setShowKeycapsDropdown] = useState(false);
+
+  const toggleKeycapsDropdown = () => {
+    setShowKeycapsDropdown(!showKeycapsDropdown);
+  };
+
+  const [showSwitchesDropdown, setShowSwitchesDropdown] = useState(false);
+
+  const toggleSwitchesDropdown = () => {
+    setShowSwitchesDropdown(!showSwitchesDropdown);
+  };
+
+  const [showAccessoriesDropdown, setShowAccessoriesDropdown] = useState(false);
+
+  const toggleAccessoriesDropdown = () => {
+    setShowAccessoriesDropdown(!showAccessoriesDropdown);
   };
 
   const changeNavbarColor = () => {
@@ -550,114 +597,36 @@ const Navbar = ({ carrito, calcularPrecioTotal, borrarProducto }) => {
                       style={{ color: "grey" }}
                       className="mobile-dropdown2"
                     >
-                      <NavLink
-                        onClick={hamburgerMenu}
-                        to="/75-percent-layout-keyboards"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="icon icon-tabler icon-tabler-chevron-right"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          stroke-width="2"
-                          stroke="currentColor"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                      {navLinksKeyboards.map((link) => (
+                        <NavLink
+                          onClick={hamburgerMenu}
+                          to={link.to}
+                          activeClassName="active"
                         >
-                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                          <path d="M9 6l6 6l-6 6" />
-                        </svg>
-                        60%
-                      </NavLink>
-                      <NavLink
-                        onClick={hamburgerMenu}
-                        to="/75-percent-layout-keyboards"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="icon icon-tabler icon-tabler-chevron-right"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          stroke-width="2"
-                          stroke="currentColor"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                          <path d="M9 6l6 6l-6 6" />
-                        </svg>
-                        65%
-                      </NavLink>
-                      <NavLink
-                        onClick={hamburgerMenu}
-                        to="/products/75-percent-layout-keyboards"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="icon icon-tabler icon-tabler-chevron-right"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          stroke-width="2"
-                          stroke="currentColor"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                          <path d="M9 6l6 6l-6 6" />
-                        </svg>
-                        75%
-                      </NavLink>
-                      <NavLink
-                        onClick={hamburgerMenu}
-                        to="/products/80-tkl-keyboards"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="icon icon-tabler icon-tabler-chevron-right"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          stroke-width="2"
-                          stroke="currentColor"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                          <path d="M9 6l6 6l-6 6" />
-                        </svg>
-                        80% | TKL
-                      </NavLink>
-                      <NavLink
-                        onClick={hamburgerMenu}
-                        to="/products/100-full-size-keyboards"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="icon icon-tabler icon-tabler-chevron-right"
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          stroke-width="2"
-                          stroke="currentColor"
-                          fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        >
-                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                          <path d="M9 6l6 6l-6 6" />
-                        </svg>
-                        100% | Full Size
-                      </NavLink>
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon icon-tabler icon-tabler-chevron-right"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            stroke-width="2"
+                            stroke="currentColor"
+                            fill="none"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M9 6l6 6l-6 6" />
+                          </svg>
+                          {link.text}
+                        </NavLink>
+                      ))}
                     </div>
                   )}
-                  <NavLink to="/products/keycaps" onClick={hamburgerMenu}>
+                  <NavLink
+                    to="/products/keycaps"
+                    onClick={toggleKeycapsDropdown}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-point-filled"
@@ -679,7 +648,42 @@ const Navbar = ({ carrito, calcularPrecioTotal, borrarProducto }) => {
                     </svg>{" "}
                     Keycaps
                   </NavLink>
-                  <NavLink to="/products/switches" onClick={hamburgerMenu}>
+                  {showKeycapsDropdown && (
+                    <div
+                      onClick={toggleKeycapsDropdown}
+                      style={{ color: "grey" }}
+                      className="mobile-dropdown2"
+                    >
+                      {navLinksKeycaps.map((link) => (
+                        <NavLink
+                          onClick={hamburgerMenu}
+                          to={link.to}
+                          activeClassName="active"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon icon-tabler icon-tabler-chevron-right"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            stroke-width="2"
+                            stroke="currentColor"
+                            fill="none"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M9 6l6 6l-6 6" />
+                          </svg>
+                          {link.text}
+                        </NavLink>
+                      ))}
+                    </div>
+                  )}
+                  <NavLink
+                    to="/products/switches"
+                    onClick={toggleSwitchesDropdown}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-point-filled"
@@ -701,7 +705,42 @@ const Navbar = ({ carrito, calcularPrecioTotal, borrarProducto }) => {
                     </svg>{" "}
                     Switches
                   </NavLink>
-                  <NavLink to="/products/accessories" onClick={hamburgerMenu}>
+                  {showSwitchesDropdown && (
+                    <div
+                      onClick={toggleSwitchesDropdown}
+                      style={{ color: "grey" }}
+                      className="mobile-dropdown2"
+                    >
+                      {navLinksSwitches.map((link) => (
+                        <NavLink
+                          onClick={hamburgerMenu}
+                          to={link.to}
+                          activeClassName="active"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon icon-tabler icon-tabler-chevron-right"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            stroke-width="2"
+                            stroke="currentColor"
+                            fill="none"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M9 6l6 6l-6 6" />
+                          </svg>
+                          {link.text}
+                        </NavLink>
+                      ))}
+                    </div>
+                  )}
+                  <NavLink
+                    to="/products/accessories"
+                    onClick={toggleAccessoriesDropdown}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       class="icon icon-tabler icon-tabler-point-filled"
@@ -723,6 +762,38 @@ const Navbar = ({ carrito, calcularPrecioTotal, borrarProducto }) => {
                     </svg>
                     Accessories
                   </NavLink>
+                  {showAccessoriesDropdown && (
+                    <div
+                      onClick={toggleAccessoriesDropdown}
+                      style={{ color: "grey" }}
+                      className="mobile-dropdown2"
+                    >
+                      {navLinksAccessories.map((link) => (
+                        <NavLink
+                          onClick={hamburgerMenu}
+                          to={link.to}
+                          activeClassName="active"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="icon icon-tabler icon-tabler-chevron-right"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            stroke-width="2"
+                            stroke="currentColor"
+                            fill="none"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          >
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M9 6l6 6l-6 6" />
+                          </svg>
+                          {link.text}
+                        </NavLink>
+                      ))}
+                    </div>
+                  )}
                   <NavLink to="/products" onClick={hamburgerMenu}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
