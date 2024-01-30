@@ -18,8 +18,8 @@ const Products = ({ agregarAlCarrito }) => {
   const [isFiltersMobileVisible, setIsFiltersMobileVisible] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(null);
   const [isQuickVisible, setIsQuickVisible] = useState(false);
-  const [isBackgroundBlocked, setIsBackgroundBlocked] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [isBackgroundBlocked, setIsBackgroundBlocked] = useState(false);
 
   const notify = () =>
     toast.success("Added to your cart!", {
@@ -136,6 +136,14 @@ const Products = ({ agregarAlCarrito }) => {
       0
     );
   };
+
+  useEffect(() => {
+    if (isBackgroundBlocked) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isBackgroundBlocked]);
 
   return (
     <div className="product">

@@ -28,6 +28,14 @@ const Clicky = ({ agregarAlCarrito }) => {
       theme: "light",
     });
 
+  useEffect(() => {
+    if (isBackgroundBlocked) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isBackgroundBlocked]);
+
   const toggleQuick = (product) => {
     setSelectedProduct(product);
     setIsQuickVisible(!isQuickVisible);

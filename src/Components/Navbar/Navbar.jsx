@@ -12,8 +12,10 @@ const Navbar = ({ carrito, calcularPrecioTotal, borrarProducto }) => {
   const navigate = useNavigate();
 
   const numeroDeArticulos = carrito.length;
+
   const hamburgerMenu = () => {
     setHamburger(!hamburger);
+    setIsBackgroundBlocked(!isBackgroundBlocked);
   };
 
   const notify = () =>
