@@ -312,7 +312,7 @@ const Layout80 = ({ agregarAlCarrito }) => {
                 >
                   <div className="keyboards--cards__img">
                     <img
-                      onClick={() => navigate(`/products/${item._id}`)}
+                      onClick={() => navigate(`/products/id/${item._id}`)}
                       src={item?.img}
                       alt={item?.name}
                     />
@@ -326,7 +326,7 @@ const Layout80 = ({ agregarAlCarrito }) => {
                     )}
                   </div>
                   <div
-                    onClick={() => navigate(`/products/${item._id}`)}
+                    onClick={() => navigate(`/products/id/${item._id}`)}
                     className="keyboards--cards__text"
                   >
                     <p className="keyboards--cards__text--name">{item?.name}</p>

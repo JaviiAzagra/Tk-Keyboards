@@ -171,34 +171,62 @@ const Navbar = ({ carrito, calcularPrecioTotal, borrarProducto }) => {
                     <Link to="/products/keycaps">
                       <h3>Keycaps</h3>
                       <ul>
-                        <li>Cherry</li>
-                        <li>ASA</li>
-                        <li>JDA</li>
+                        <li>
+                          <Link to="/products/cherry-keycap">Cherry</Link>
+                        </li>
+                        <li>
+                          <Link to="/products/asa-keycap">ASA</Link>
+                        </li>
+                        {/* <li>JDA</li>
                         <li>OSA</li>
                         <li>SAL</li>
-                        <li>OPI</li>
-                        <li>OEM</li>
-                        <li>View All</li>
+                        <li>OPI</li> */}
+                        <li>
+                          <Link to="/products/oem-keycap">OEM</Link>
+                        </li>
+                        <li>
+                          <Link to="/products/keycaps">View All</Link>
+                        </li>
                       </ul>
                     </Link>
                     <Link to="/products/switches">
                       <h3>Switches</h3>
                       <ul>
-                        <li>Linear</li>
-                        <li>Tactile</li>
-                        <li>Clicky</li>
-                        <li>View All</li>
+                        <li>
+                          <Link to="/products/linear-switches">Linear</Link>
+                        </li>
+                        <li>
+                          <Link to="/products/tactile-switches">Tactile</Link>
+                        </li>
+                        <li>
+                          <Link to="/products/click-height-keycap-sets">
+                            Click
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/products/switches">View All</Link>
+                        </li>
                       </ul>
                     </Link>
                     <Link to="/products/accessories">
                       <h3>Accessories</h3>
                       <ul>
-                        <li>Mouse</li>
-                        <li>Mouse Pad</li>
-                        <li>Coiled Cable</li>
-                        <li>Wrist Rest</li>
-                        <li>Stabilizer</li>
-                        <li>View All</li>
+                        <li>
+                          <Link to="/products/mouse">Mouse</Link>
+                        </li>
+                        <li>
+                          <Link to="/products/mousepad">Mouse Pad</Link>
+                        </li>
+                        <li>
+                          <Link to="/products/coiled-cable">Coiled Cable</Link>
+                        </li>
+                        {/* <li>Wrist Rest</li> */}
+                        <li>
+                          <Link to="/products/stabilizer">Stabilizer</Link>
+                        </li>
+                        <li>
+                          <Link to="/products/accessories">View All</Link>
+                        </li>
                       </ul>
                     </Link>
                   </div>
@@ -273,7 +301,7 @@ const Navbar = ({ carrito, calcularPrecioTotal, borrarProducto }) => {
                               >
                                 <div
                                   onClick={() => {
-                                    navigate(`/products/${item?._id}`);
+                                    navigate(`/products/id/${item?._id}`);
                                     window.location.reload();
                                   }}
                                   className="popupcart-content__top__cart__container--info"

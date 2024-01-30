@@ -75,7 +75,7 @@ const Order = ({ carrito, calcularPrecioTotal, borrarCarrito }) => {
                     <td>
                       <div className="carrito--container__product-info">
                         <img
-                          onClick={() => navigate(`/products/${item._id}`)}
+                          onClick={() => navigate(`/products/id/${item._id}`)}
                           src={item.img}
                           alt={item.name}
                         />
@@ -135,7 +135,7 @@ const Order = ({ carrito, calcularPrecioTotal, borrarCarrito }) => {
                 <div className="cart--mobile" key={index}>
                   <div className="cart--mobile__img">
                     <img
-                      onClick={() => navigate(`/products/${item._id}`)}
+                      onClick={() => navigate(`/products/id/${item._id}`)}
                       src={item.img}
                       alt={item.name}
                     />

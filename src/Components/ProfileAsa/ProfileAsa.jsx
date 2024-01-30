@@ -5,7 +5,7 @@ import Loader from "../Loader/Loader";
 import Shipping from "../Shipping/Shipping";
 import { toast } from "react-toastify";
 
-const Switch = ({ agregarAlCarrito }) => {
+const ProfileAsa = ({ agregarAlCarrito }) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedBrands, setSelectedBrands] = useState([]);
@@ -49,11 +49,11 @@ const Switch = ({ agregarAlCarrito }) => {
         );
 
         // Filter only the keyboards from the API response
-        const keyboardsData = response.data.filter(
-          (item) => item.type === "switches"
+        const filteredData = response.data.filter(
+          (item) => item.type === "keycaps" && item.profile === "ASA"
         );
 
-        setData(keyboardsData);
+        setData(filteredData);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -64,8 +64,8 @@ const Switch = ({ agregarAlCarrito }) => {
     fetchData();
   }, []);
 
-  const productBrand = ["Akko", "Gateron"];
-  const productType = ["Linear", "Tactile", "Clicky"];
+  const productBrand = ["Akko", "Keychron"];
+  const productType = ["Cherry"];
 
   const toggleBrandSelection = (brand) => {
     const isSelected = selectedBrands.includes(brand);
@@ -98,7 +98,7 @@ const Switch = ({ agregarAlCarrito }) => {
 
   const countProductsByType = (type) => {
     return filteredProducts.reduce(
-      (count, product) => (product.switchType === type ? count + 1 : count),
+      (count, product) => (product.profile === type ? count + 1 : count),
       0
     );
   };
@@ -111,8 +111,7 @@ const Switch = ({ agregarAlCarrito }) => {
         (product) =>
           (selectedBrands.length === 0 ||
             selectedBrands.includes(product.brand)) &&
-          (selectedType.length === 0 ||
-            selectedType.includes(product.switchType))
+          (selectedType.length === 0 || selectedType.includes(product.profile))
       );
     }
   };
@@ -127,8 +126,9 @@ const Switch = ({ agregarAlCarrito }) => {
 
   return (
     <div className="products">
-      <div className="products__backgroundswitches">
-        <h2>Switches</h2>
+      <div className="products__backgroundkeyboardsfilters">
+        <h2>ASA</h2>
+        <h3>All ASA height keycap sets.</h3>
       </div>
       {loading ? (
         <>
@@ -434,4 +434,4 @@ const Switch = ({ agregarAlCarrito }) => {
   );
 };
 
-export default Switch;
+export default ProfileAsa;

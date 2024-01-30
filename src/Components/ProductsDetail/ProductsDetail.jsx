@@ -353,6 +353,15 @@ const ProductsDetail = ({ productos, agregarAlCarrito, toggleCart }) => {
               Share
             </button>
           </div>
+          {product?.switchType && product?.brand === "Gateron" && (
+            <>
+              <iframe
+                width="320"
+                height="190"
+                src="https://www.youtube.com/embed/yXfysGqNLeE"
+              ></iframe>
+            </>
+          )}
         </div>
       </div>
       <ToastContainer
@@ -617,7 +626,7 @@ const ProductsDetail = ({ productos, agregarAlCarrito, toggleCart }) => {
             <div
               className="keyboards--cards"
               onClick={() => {
-                navigate(`/products/${randomProduct?._id}`);
+                navigate(`/products/id/${randomProduct?._id}`);
                 window.location.reload();
               }}
               key={randomProduct.id}

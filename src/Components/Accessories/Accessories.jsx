@@ -9,6 +9,7 @@ const Accessories = ({ agregarAlCarrito }) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedBrands, setSelectedBrands] = useState([]);
+  const [selectedType, setSelectedType] = useState([]);
   const navigate = useNavigate();
   const [hoveredCard, setHoveredCard] = useState(null);
   const [isQuickVisible, setIsQuickVisible] = useState(false);
@@ -63,7 +64,15 @@ const Accessories = ({ agregarAlCarrito }) => {
     fetchData();
   }, []);
 
-  const productBrand = ["Akko", "Keychron", "Logitech"];
+  const productBrand = [
+    "Akko",
+    "Keychron",
+    "SteelSeries",
+    "Logitech",
+    "Razer",
+    "Glorious",
+    "Vaxee",
+  ];
   const productType = [
     "Mouse",
     "Mousepad",
@@ -83,6 +92,17 @@ const Accessories = ({ agregarAlCarrito }) => {
     }
   };
 
+  const toggleTypeSelection = (type) => {
+    const isSelected = selectedType.includes(type);
+    if (isSelected) {
+      setSelectedType(
+        selectedType.filter((selectedType) => selectedType !== type)
+      );
+    } else {
+      setSelectedType([...selectedType, type]);
+    }
+  };
+
   const countProductsByBrand = (brand) => {
     return filteredProducts.reduce(
       (count, product) => (product.brand === brand ? count + 1 : count),
@@ -90,18 +110,29 @@ const Accessories = ({ agregarAlCarrito }) => {
     );
   };
 
-  const filterProductsByBrands = () => {
-    if (selectedBrands.length === 0) {
+  const countProductsByType = (type) => {
+    return filteredProducts.reduce(
+      (count, product) =>
+        product.accessoriesType === type ? count + 1 : count,
+      0
+    );
+  };
+
+  const filterProductsByTypesAndBrands = () => {
+    if (selectedType.length === 0 && selectedBrands.length === 0) {
       return data; // Si no hay tipos ni marcas seleccionadas, mostrar todos los productos
     } else {
       return data.filter(
         (product) =>
-          selectedBrands.length === 0 || selectedBrands.includes(product.brand)
+          (selectedBrands.length === 0 ||
+            selectedBrands.includes(product.brand)) &&
+          (selectedType.length === 0 ||
+            selectedType.includes(product.accessoriesType))
       );
     }
   };
 
-  const filteredProducts = data ? filterProductsByBrands() : [];
+  const filteredProducts = data ? filterProductsByTypesAndBrands() : [];
 
   const [isFiltersMobileVisible, setIsFiltersMobileVisible] = useState(false);
 
@@ -172,14 +203,14 @@ const Accessories = ({ agregarAlCarrito }) => {
             <div className="product--filter">
               <h2>Type</h2>
               <div className="product--filter__inputs">
-                {productType.map((brand) => (
-                  <label key={brand}>
+                {productType.map((type) => (
+                  <label key={type}>
                     <input
                       type="checkbox"
-                      checked={selectedBrands.includes(brand)}
-                      onChange={() => toggleBrandSelection(brand)}
+                      checked={selectedType.includes(type)}
+                      onChange={() => toggleTypeSelection(type)}
                     />
-                    {brand}
+                    {type} ({countProductsByType(type)})
                   </label>
                 ))}
               </div>
@@ -258,14 +289,14 @@ const Accessories = ({ agregarAlCarrito }) => {
                   <div className="product--filter">
                     <h2>Type</h2>
                     <div className="product--filter__inputs">
-                      {productType.map((brand) => (
-                        <label key={brand}>
+                      {productType.map((type) => (
+                        <label key={type}>
                           <input
                             type="checkbox"
-                            checked={selectedBrands.includes(brand)}
-                            onChange={() => toggleBrandSelection(brand)}
+                            checked={selectedType.includes(type)}
+                            onChange={() => toggleTypeSelection(type)}
                           />
-                          {brand}
+                          {type} ({countProductsByType(type)})
                         </label>
                       ))}
                     </div>
@@ -294,7 +325,7 @@ const Accessories = ({ agregarAlCarrito }) => {
                 >
                   <div className="keyboards--cards__img">
                     <img
-                      onClick={() => navigate(`/products/${item._id}`)}
+                      onClick={() => navigate(`/products/id/${item._id}`)}
                       src={item?.img}
                       alt={item?.name}
                     />
@@ -308,7 +339,7 @@ const Accessories = ({ agregarAlCarrito }) => {
                     )}
                   </div>
                   <div
-                    onClick={() => navigate(`/products/${item._id}`)}
+                    onClick={() => navigate(`/products/id/${item._id}`)}
                     className="keyboards--cards__text"
                   >
                     <p className="keyboards--cards__text--name">{item?.name}</p>

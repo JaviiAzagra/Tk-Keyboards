@@ -65,7 +65,14 @@ const Products = ({ agregarAlCarrito }) => {
   }, []);
 
   const productTypes = ["keyboards", "switches", "keycaps", "accessories"];
-  const productBrand = ["Akko", "Keychron", "Gateron", "Logitech"];
+  const productBrand = [
+    "Akko",
+    "Keychron",
+    "Gateron",
+    "Logitech",
+    "Razer",
+    "Glorious",
+  ];
 
   const toggleTypeSelection = (type) => {
     const isSelected = selectedTypes.includes(type);
@@ -319,7 +326,7 @@ const Products = ({ agregarAlCarrito }) => {
                 >
                   <div className="keyboards--cards__img">
                     <img
-                      onClick={() => navigate(`/products/${item?._id}`)}
+                      onClick={() => navigate(`/products/id/${item?._id}`)}
                       src={item?.img}
                       alt={item?.name}
                     />
@@ -333,7 +340,7 @@ const Products = ({ agregarAlCarrito }) => {
                     )}
                   </div>
                   <div
-                    onClick={() => navigate(`/products/${item?._id}`)}
+                    onClick={() => navigate(`/products/id/${item?._id}`)}
                     className="keyboards--cards__text"
                   >
                     <p className="keyboards--cards__text--name">{item?.name}</p>
@@ -363,6 +370,7 @@ const Products = ({ agregarAlCarrito }) => {
                       <path d="M208.49 191.51a12 12 0 0 1-17 17L128 145l-63.51 63.49a12 12 0 0 1-17-17L111 128L47.51 64.49a12 12 0 0 1 17-17L128 111l63.51-63.52a12 12 0 0 1 17 17L145 128Z" />
                     </svg>
                   </button>
+
                   <div className="popupquick-content--data">
                     <div className="popupquick-content--data__img">
                       <img

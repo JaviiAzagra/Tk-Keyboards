@@ -322,7 +322,7 @@ const OrderForm = ({ carrito, calcularPrecioTotal }) => {
               <div className="orderform--left__cart__container" key={index}>
                 <div className="orderform--left__cart__container--img">
                   <img
-                    onClick={() => navigate(`/products/${item._id}`)}
+                    onClick={() => navigate(`/products/id/${item._id}`)}
                     src={item.img}
                     alt={item.name}
                   />

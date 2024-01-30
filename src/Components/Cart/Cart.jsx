@@ -79,7 +79,7 @@ export const Cart = ({
                   <td>
                     <div
                       className="carrito--container__product-info"
-                      onClick={() => navigate(`/products/${item._id}`)}
+                      onClick={() => navigate(`/products/id/${item._id}`)}
                     >
                       <img src={item.img} alt={item.name} />
                       <div>
@@ -142,7 +142,7 @@ export const Cart = ({
               <div className="cart--mobile" key={index}>
                 <div className="cart--mobile__img">
                   <img
-                    onClick={() => navigate(`/products/${item._id}`)}
+                    onClick={() => navigate(`/products/id/${item._id}`)}
                     src={item.img}
                     alt={item.name}
                   />

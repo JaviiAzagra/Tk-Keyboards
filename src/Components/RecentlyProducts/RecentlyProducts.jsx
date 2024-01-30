@@ -28,7 +28,7 @@ const RecentlyProducts = () => {
                 style={{ width: "240px" }}
                 className="keyboards--cards"
                 onClick={() => {
-                  navigate(`/products/${product?._id}`);
+                  navigate(`/products/id/${product?._id}`);
                   window.location.reload();
                 }}
                 key={product.id}

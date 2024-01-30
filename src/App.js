@@ -30,6 +30,16 @@ import Shipping from "./Components/Shipping/Shipping";
 import Layout75 from "./Components/Layout75/Layout75";
 import Layout80 from "./Components/Layout80/Layout80";
 import Layout100 from "./Components/Layout100/Layout100";
+import ProfileCherry from "./Components/ProfileCherry/ProfileCherry";
+import ProfileAsa from "./Components/ProfileAsa/ProfileAsa";
+import ProfileOem from "./Components/ProfileOem/ProfileOem";
+import Clicky from "./Components/SwitchType/Clicky";
+import Tactile from "./Components/SwitchType/Tactile";
+import Linear from "./Components/SwitchType/Linear";
+import Mouse from "./Components/AccessoriesType/Mouse";
+import Mousepad from "./Components/AccessoriesType/Mousepad";
+import CoiledCable from "./Components/AccessoriesType/CoiledCable";
+import Stabilizer from "./Components/AccessoriesType/Stabilizer";
 
 function App() {
   const dispatch = useDispatch();
@@ -203,9 +213,49 @@ function App() {
           path="/products/100-full-size-keyboards"
           element={<Layout100 agregarAlCarrito={agregarAlCarrito} />}
         />
+        <Route
+          path="/products/cherry-keycap"
+          element={<ProfileCherry agregarAlCarrito={agregarAlCarrito} />}
+        />
+        <Route
+          path="/products/asa-keycap"
+          element={<ProfileAsa agregarAlCarrito={agregarAlCarrito} />}
+        />
+        <Route
+          path="/products/oem-keycap"
+          element={<ProfileOem agregarAlCarrito={agregarAlCarrito} />}
+        />
+        <Route
+          path="/products/click-height-keycap-sets"
+          element={<Clicky agregarAlCarrito={agregarAlCarrito} />}
+        />
+        <Route
+          path="/products/tactile-switches"
+          element={<Tactile agregarAlCarrito={agregarAlCarrito} />}
+        />
+        <Route
+          path="/products/linear-switches"
+          element={<Linear agregarAlCarrito={agregarAlCarrito} />}
+        />
+        <Route
+          path="/products/mouse"
+          element={<Mouse agregarAlCarrito={agregarAlCarrito} />}
+        />
+        <Route
+          path="/products/mousepad"
+          element={<Mousepad agregarAlCarrito={agregarAlCarrito} />}
+        />
+        <Route
+          path="/products/coiled-cable"
+          element={<CoiledCable agregarAlCarrito={agregarAlCarrito} />}
+        />
+        <Route
+          path="/products/stabilizer"
+          element={<Stabilizer agregarAlCarrito={agregarAlCarrito} />}
+        />
         <Route path="/profile" element={<Profile />} />
         <Route
-          path="/products/:id"
+          path="/products/id/:id"
           element={
             <ProductsDetail
               productos={productos}

@@ -5,7 +5,7 @@ import Loader from "../Loader/Loader";
 import Shipping from "../Shipping/Shipping";
 import { toast } from "react-toastify";
 
-const Switch = ({ agregarAlCarrito }) => {
+const Linear = ({ agregarAlCarrito }) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedBrands, setSelectedBrands] = useState([]);
@@ -49,11 +49,11 @@ const Switch = ({ agregarAlCarrito }) => {
         );
 
         // Filter only the keyboards from the API response
-        const keyboardsData = response.data.filter(
-          (item) => item.type === "switches"
+        const filteredData = response.data.filter(
+          (item) => item.type === "switches" && item.switchType === "Linear"
         );
 
-        setData(keyboardsData);
+        setData(filteredData);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -65,7 +65,7 @@ const Switch = ({ agregarAlCarrito }) => {
   }, []);
 
   const productBrand = ["Akko", "Gateron"];
-  const productType = ["Linear", "Tactile", "Clicky"];
+  const productType = ["Linear"];
 
   const toggleBrandSelection = (brand) => {
     const isSelected = selectedBrands.includes(brand);
@@ -127,8 +127,9 @@ const Switch = ({ agregarAlCarrito }) => {
 
   return (
     <div className="products">
-      <div className="products__backgroundswitches">
-        <h2>Switches</h2>
+      <div className="products__backgroundkeyboardsfilters">
+        <h2>Linear</h2>
+        <h3>All linear switches.</h3>
       </div>
       {loading ? (
         <>
@@ -434,4 +435,4 @@ const Switch = ({ agregarAlCarrito }) => {
   );
 };
 
-export default Switch;
+export default Linear;

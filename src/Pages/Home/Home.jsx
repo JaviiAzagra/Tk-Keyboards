@@ -180,7 +180,7 @@ const Home = () => {
               <div
                 style={{ marginBottom: "30px" }}
                 className="keyboards--cards"
-                onClick={() => navigate(`/products/${keyboard?._id}`)}
+                onClick={() => navigate(`/products/id/${keyboard?._id}`)}
                 key={keyboard._id}
               >
                 <div className="keyboards--cards__img">
