@@ -9,6 +9,7 @@ const Navbar = ({ carrito, calcularPrecioTotal, borrarProducto }) => {
   const [isCartVisible, setIsCartVisible] = useState(false);
   const [freeShipping, setFreeShipping] = useState(false);
   const [isBackgroundBlocked, setIsBackgroundBlocked] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const numeroDeArticulos = carrito.length;
@@ -16,6 +17,16 @@ const Navbar = ({ carrito, calcularPrecioTotal, borrarProducto }) => {
   const hamburgerMenu = () => {
     setHamburger(!hamburger);
     setIsBackgroundBlocked(!isBackgroundBlocked);
+  };
+
+  const toggleCartCheckout = () => {
+    setLoading(true);
+    setIsBackgroundBlocked(!isBackgroundBlocked);
+    setTimeout(() => {
+      setLoading(false);
+      navigate("/checkout");
+      setIsCartVisible(!isCartVisible);
+    }, 2000);
   };
 
   const notify = () =>
@@ -453,8 +464,90 @@ const Navbar = ({ carrito, calcularPrecioTotal, borrarProducto }) => {
                           </div>
                           <p>Taxes and shipping calculated at checkout</p>
                           <div className="popupcart-content__botton--buttons">
-                            <Link to="/checkout" onClick={toggleCart}>
-                              Checkout
+                            <Link onClick={toggleCartCheckout}>
+                              {loading ? (
+                                <svg
+                                  width="80"
+                                  height="8"
+                                  viewBox="0 0 120 30"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  fill="#fff"
+                                >
+                                  <circle cx="15" cy="15" r="15">
+                                    <animate
+                                      attributeName="r"
+                                      from="15"
+                                      to="15"
+                                      begin="0s"
+                                      dur="0.8s"
+                                      values="15;9;15"
+                                      calcMode="linear"
+                                      repeatCount="indefinite"
+                                    />
+                                    <animate
+                                      attributeName="fill-opacity"
+                                      from="1"
+                                      to="1"
+                                      begin="0s"
+                                      dur="0.8s"
+                                      values="1;.5;1"
+                                      calcMode="linear"
+                                      repeatCount="indefinite"
+                                    />
+                                  </circle>
+                                  <circle
+                                    cx="60"
+                                    cy="15"
+                                    r="9"
+                                    fill-opacity="0.3"
+                                  >
+                                    <animate
+                                      attributeName="r"
+                                      from="9"
+                                      to="9"
+                                      begin="0s"
+                                      dur="0.8s"
+                                      values="9;15;9"
+                                      calcMode="linear"
+                                      repeatCount="indefinite"
+                                    />
+                                    <animate
+                                      attributeName="fill-opacity"
+                                      from="0.5"
+                                      to="0.5"
+                                      begin="0s"
+                                      dur="0.8s"
+                                      values=".5;1;.5"
+                                      calcMode="linear"
+                                      repeatCount="indefinite"
+                                    />
+                                  </circle>
+                                  <circle cx="105" cy="15" r="15">
+                                    <animate
+                                      attributeName="r"
+                                      from="15"
+                                      to="15"
+                                      begin="0s"
+                                      dur="0.8s"
+                                      values="15;9;15"
+                                      calcMode="linear"
+                                      repeatCount="indefinite"
+                                    />
+                                    <animate
+                                      attributeName="fill-opacity"
+                                      from="1"
+                                      to="1"
+                                      begin="0s"
+                                      dur="0.8s"
+                                      values="1;.5;1"
+                                      calcMode="linear"
+                                      repeatCount="indefinite"
+                                    />
+                                  </circle>
+                                </svg>
+                              ) : (
+                                "Checkout"
+                              )}
                             </Link>
                             <Link to="/cart" onClick={toggleCart}>
                               View cart
