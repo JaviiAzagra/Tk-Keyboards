@@ -43,7 +43,6 @@ const Navbar = ({ carrito, calcularPrecioTotal, borrarProducto }) => {
 
   const handleDelete = (product) => {
     borrarProducto(product);
-    notify();
   };
 
   useEffect(() => {

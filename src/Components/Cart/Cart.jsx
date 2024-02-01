@@ -38,7 +38,6 @@ export const Cart = ({
 
   const handleDelete = (product) => {
     borrarProducto(product);
-    notify();
   };
 
   const handleCheckout = () => {
