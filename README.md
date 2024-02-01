@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# Tk Keyboards
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+Tk Keyboards is a web platform dedicated to providing a curated collection of high-quality keyboards for enthusiasts and professionals. Our mission is to offer a diverse range of keyboards that cater to different preferences and needs.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Extensive Collection:** Browse through a wide variety of keyboards, including mechanical, membrane, ergonomic, and more.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Detailed Information:** Each keyboard listing includes detailed specifications, reviews, and images to help users make informed decisions.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **User Reviews:** Share your experiences and read reviews from other users to find the perfect keyboard for your setup.
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To explore Tk Keyboards, simply visit [tk-keyboards.vercel.app](https://tk-keyboards.vercel.app/). You can browse keyboards, read reviews, and participate in the community forum without the need for an account.
 
-### `npm run build`
+If you want to contribute by adding your reviews or participating in the forum discussions, you can create a free account.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Tk Keyboards is a web-based platform, and there is no need for any installation. Simply use your preferred web browser to access the website.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Contributing
 
-### `npm run eject`
+We welcome contributions from the community. If you have a favorite keyboard that's not listed, feel free to add it to our collection. To contribute, follow the guidelines outlined in [CONTRIBUTING.md](CONTRIBUTING.md).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Feedback
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Have feedback or found a bug? We'd love to hear from you. Please submit an issue on our [GitHub repository](https://github.com/JaviiAzagra/Tk-Keyboards/issues).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## License
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
-## Learn More
+## Acknowledgments
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Thanks to the keyboard enthusiasts who contributed to the development and curation of the keyboard database.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Special thanks to the open-source community for providing tools and frameworks that made this project possible.
