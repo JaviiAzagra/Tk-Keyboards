@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./Cart.scss";
 import { Link, useNavigate } from "react-router-dom";
 import Shipping from "../Shipping/Shipping";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Loader from "../Loader/Loader";
 
 export const Cart = ({
   carrito,
@@ -14,27 +13,11 @@ export const Cart = ({
 }) => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const numeroDeArticulos = carrito.length;
   const [freeShipping, setFreeShipping] = useState(false); // Nuevo estado para el envío gratuito
 
-  // ... (resto del código)
-
   useEffect(() => {
-    // Verifica si el precio total es menor a $50 para habilitar el envío gratuito
     setFreeShipping(calcularPrecioTotal() > 50);
-  }, [carrito]);
-
-  const notify = () =>
-    toast.success("Product removed from the cart!", {
-      position: "bottom-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
+  }, [calcularPrecioTotal, carrito]);
 
   const handleDelete = (product) => {
     borrarProducto(product);
@@ -47,10 +30,6 @@ export const Cart = ({
       navigate("/checkout");
     }, 2000);
   };
-
-  const precioTotal = calcularPrecioTotal();
-  const costoEnvio = precioTotal < 50 ? 10.0 : 0.0;
-  const totalConEnvio = precioTotal + costoEnvio;
 
   return (
     <div className="carrito">

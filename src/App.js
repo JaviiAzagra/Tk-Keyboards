@@ -71,7 +71,6 @@ function App() {
   const [carrito, setCarrito] = useState([]);
 
   useEffect(() => {
-    // Obtener productos de la API (reemplaza la URL con tu API real)
     fetch("https://tkkeyboards-api.vercel.app/products")
       .then((response) => response.json())
       .then((data) => setProductos(data))
@@ -82,7 +81,6 @@ function App() {
     const productoExistente = carrito.find((item) => item._id === producto._id);
 
     if (productoExistente) {
-      // Si el producto ya está en el carrito, actualizar cantidad y precio total
       const carritoActualizado = carrito.map((item) =>
         item._id === producto._id
           ? {
@@ -95,7 +93,6 @@ function App() {
       setCarrito(carritoActualizado);
       localStorage.setItem("carrito", JSON.stringify(carritoActualizado));
     } else {
-      // Si el producto no está en el carrito, agregarlo con la cantidad proporcionada
       const nuevoCarrito = [
         ...carrito,
         { ...producto, cantidad, precioTotal: cantidad * producto.price },
