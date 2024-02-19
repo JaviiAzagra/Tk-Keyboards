@@ -12,6 +12,17 @@ const Navbar = ({ carrito, calcularPrecioTotal, borrarProducto }) => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  const [isOpen, setIsOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsClosing(false);
+    } else {
+      setIsClosing(true);
+    }
+  }, [isOpen]);
+
   const numeroDeArticulos = carrito.length;
 
   const hamburgerMenu = () => {
@@ -336,7 +347,11 @@ const Navbar = ({ carrito, calcularPrecioTotal, borrarProducto }) => {
               </Link>
               {isCartVisible && (
                 <div className="popupcart-container">
-                  <div className="popupcart-content">
+                  <div
+                    className={`popupcart-content ${isOpen ? "open" : ""} ${
+                      isClosing ? "closing" : ""
+                    }`}
+                  >
                     {carrito.length > 0 ? (
                       <>
                         <div className="popupcart-content__top">

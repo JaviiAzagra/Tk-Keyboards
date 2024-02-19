@@ -1,11 +1,13 @@
 .userprofile {
-  padding-top: 180px;
-  padding-bottom: 100px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width: 600px) {
   .userprofile {
     padding-top: 120px;
-    padding-bottom: 100px;
+    padding-bottom: 60px;
   }
 }

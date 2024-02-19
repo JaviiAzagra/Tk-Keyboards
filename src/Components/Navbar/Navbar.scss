@@ -146,7 +146,7 @@
 }
 
 .closed-menu {
-  left: -100% !important;
+  left: 100% !important;
 }
 
 .open-menu {
@@ -159,8 +159,6 @@
   width: 100%;
   height: 100vh;
   z-index: 300;
-  /* -webkit-backdrop-filter: blur(90px);
-  backdrop-filter: blur(90px); */
   background-color: white;
   position: fixed;
   top: 0;
@@ -431,6 +429,16 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  animation: slideDown 0.3s ease-in-out forwards;
+
+  @keyframes slideDown {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
 
   button {
     position: absolute;
@@ -449,6 +457,7 @@
   }
 
   &__top {
+    overflow-y: auto;
     &--title {
       display: flex;
       align-items: center;
@@ -464,12 +473,9 @@
     }
 
     &__cart {
-      margin-top: 10px;
-      height: 580px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      overflow-x: auto;
+      gap: 30px;
 
       &__container {
         display: flex;
@@ -598,26 +604,10 @@
       background-color: rgb(89, 93, 95);
     }
   }
-}
 
-.popupcart-content__cart__container::-webkit-scrollbar {
-  /* width: 12px; */
-  height: 8px;
-  border-radius: 20px;
-  cursor: pointer; /* width of the entire scrollbar */
-}
-
-.popupcart-content__cart__container::-webkit-scrollbar-track {
-  background: rgb(232, 3, 3);
-  border-radius: 20px;
-  cursor: pointer; /* color of the tracking area */
-}
-
-.popupcart-content__cart__container::-webkit-scrollbar-thumb {
-  background-color: rgb(175, 0, 0);
-  border-radius: 20px;
-  border: 1px solid rgb(130, 130, 130);
-  cursor: pointer;
+  ::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .enlarge-on-hover img {

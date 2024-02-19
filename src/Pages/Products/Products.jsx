@@ -42,7 +42,6 @@ const Products = ({ agregarAlCarrito }) => {
   const handleAddToCart = () => {
     if (selectedProduct) {
       agregarAlCarrito(selectedProduct);
-      notify();
     }
   };
 
