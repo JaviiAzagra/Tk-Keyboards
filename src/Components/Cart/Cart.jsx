@@ -16,7 +16,7 @@ export const Cart = ({
   const [freeShipping, setFreeShipping] = useState(false); // Nuevo estado para el envío gratuito
 
   useEffect(() => {
-    setFreeShipping(calcularPrecioTotal() > 50);
+    setFreeShipping(calcularPrecioTotal() > 49.99);
   }, [calcularPrecioTotal, carrito]);
 
   const handleDelete = (product) => {
@@ -37,7 +37,7 @@ export const Cart = ({
       <h1 style={{ fontSize: "20px", fontWeight: "300" }}>
         {freeShipping
           ? "You are eligible for free shipping."
-          : "Free Shipping Over $50.00"}
+          : "Free Shipping Over 50.00 €"}
       </h1>
       <div className="carrito--line"></div>
 
